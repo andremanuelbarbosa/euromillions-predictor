@@ -7,11 +7,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-/**
- * The Application's "main" class
- */
 @SuppressWarnings("serial")
-public class MyVaadinUI extends UI {
+public class EuroMillionsPredictorUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
