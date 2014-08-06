@@ -14,7 +14,7 @@
     <init-param>
       <description>Vaadin UI to display</description>
       <param-name>UI</param-name>
-      <param-value>com.andremanuelbarbosa.euromillions.predictor</param-value>
+      <param-value>com.andremanuelbarbosa.euromillions.predictor.MyVaadinUI</param-value>
     </init-param>
 <!--     <init-param> -->
 <!--       <description>Application widgetset</description> -->

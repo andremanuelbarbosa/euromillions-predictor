@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.andremanuelbarbosa</groupId>
   <artifactId>euromillions-predictor</artifactId>
@@ -23,7 +22,7 @@
 
   <properties>
     <!-- Dependencies -->
-    <vaadin.version>7.0.7</vaadin.version>
+    <vaadin.version>7.2.6</vaadin.version>
 
     <!-- Logging -->
     <slf4j.version>1.7.7</slf4j.version>
@@ -37,7 +36,7 @@
 
     <!-- Encoding -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
   <repositories>
@@ -70,6 +69,12 @@
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-server</artifactId>
       <version>${vaadin.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.vaadin.external.google</groupId>
+          <artifactId>android-json</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -184,6 +189,14 @@
             <include>**/*IntegrationTest.java</include>
           </includes>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -196,6 +209,9 @@
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
+        <configuration>
+          <port>9090</port>
+        </configuration>
         <executions>
           <execution>
             <id>tomcat-startup</id>
@@ -215,6 +231,18 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+
+      <plugin>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-maven-plugin</artifactId>
+        <version>${vaadin.version}</version>
       </plugin>
     </plugins>
   </build>
