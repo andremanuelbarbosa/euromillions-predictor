@@ -23,8 +23,5 @@ public class DrawsIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
     assertTrue(Draws.getNumbers().get(random.nextInt(Draws.getNumbers().size())).getRelativeFreq() > 0);
     assertTrue(Draws.getStars().get(random.nextInt(Draws.getStars().size())).getRelativeFreq() > 0);
-
-    System.out.println(Draws.getNumbers());
-    System.out.println(Draws.getStars());
   }
 }

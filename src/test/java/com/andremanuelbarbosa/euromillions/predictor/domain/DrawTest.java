@@ -13,11 +13,14 @@ import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorTest;
 
 public class DrawTest extends EuroMillionsPredictorTest {
 
-  private void assertDraw(Draw draw) {
+  private static final String DRAW_LINE_VALID_1 = "1  Tue 05 Aug 2014  05 07 19 21 42 *05 11*  17,029,645";
+  private static final String DRAW_LINE_VALID_2 = "5  Tue 05 Aug 2014  05 07 19 21 42 *05 11*  17,029,645";
+
+  private void assertDraw(Draw draw, int expectedIndex) {
 
     assertNotNull(draw);
 
-    assertEquals(717, draw.getIndex());
+    assertEquals(expectedIndex, draw.getIndex());
 
     assertEquals(new DateTime(2014, 8, 5, 0, 0).toDate(), draw.getDate());
 
@@ -38,24 +41,30 @@ public class DrawTest extends EuroMillionsPredictorTest {
   @Test
   public void shouldCreateDrawWhenLineIsValid() throws Exception {
 
-    assertDraw(new Draw("717  Tue 05 Aug 2014  05 07 19 21 42 *05 11*  17,029,645"));
+    assertDraw(new Draw(DRAW_LINE_VALID_1), 1);
   }
 
   @Test
   public void shouldCreateDrawWhenLineIsValidAndHasSpacesAtTheEnd() throws Exception {
 
-    assertDraw(new Draw("717  Tue 05 Aug 2014  05 07 19 21 42 *05 11*  17,029,645   "));
+    assertDraw(new Draw(DRAW_LINE_VALID_1 + "   "), 1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowIllegalArgumentExceptionWhenLineIsInvalid() throws Exception {
 
-    new Draw("717  Tue 05 Aug 2014  0507 19 21 42 *05 11*  17,029,645");
+    new Draw("1  Tue 05 Aug 2014  0507 19 21 42 *05 11*  17,029,645");
   }
 
   @Test(expected = ParseException.class)
   public void shouldThrowParseExceptionWhenDateInLineHasInvalidFormat() throws Exception {
 
-    new Draw("717  Tue 05 Aun 2014  05 07 19 21 42 *05 11*  17,029,645");
+    new Draw("1  Tue 05 Aun 2014  05 07 19 21 42 *05 11*  17,029,645");
+  }
+
+  @Test
+  public void shouldReturnTheIndexDifferenceBetweenTwoDrawsWhenCompareTo() throws Exception {
+
+    assertEquals(4, new Draw(DRAW_LINE_VALID_2).compareTo(new Draw(DRAW_LINE_VALID_1)));
   }
 }

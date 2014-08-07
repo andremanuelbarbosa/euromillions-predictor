@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -16,7 +18,7 @@ public abstract class Draws {
 
   private static final String DRAWS_CSV = "src/main/resources/draws.csv";
 
-  private static final List<Draw> DRAWS = new LinkedList<>();
+  private static final SortedSet<Draw> DRAWS = new TreeSet<>();
   private static final List<Number> NUMBERS = new LinkedList<>();
   private static final List<Star> STARS = new LinkedList<>();
 
@@ -26,7 +28,7 @@ public abstract class Draws {
     loadStatistics();
   }
 
-  public static List<Draw> getDraws() {
+  public static SortedSet<Draw> getDraws() {
 
     return DRAWS;
   }

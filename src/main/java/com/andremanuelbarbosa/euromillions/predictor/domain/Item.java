@@ -1,8 +1,9 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class Item {
+public class Item implements Comparable<Item> {
 
   private final int id;
   private final ItemType itemType;
@@ -31,8 +32,14 @@ public class Item {
   }
 
   @Override
+  public int compareTo(Item item) {
+
+    return id - item.getId();
+  }
+
+  @Override
   public String toString() {
 
-    return ToStringBuilder.reflectionToString(this);
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
   }
 }
