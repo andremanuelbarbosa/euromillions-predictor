@@ -1,19 +1,22 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Result {
 
-  final Set<Integer> numbers = new HashSet<>(5);
-  final Set<Integer> stars = new HashSet<>(2);
+  public static final int NUMBERS_COUNT = 5;
+  public static final int STARS_COUNT = 2;
 
-  public Set<Integer> getNumbers() {
+  final SortedSet<Integer> numbers = new TreeSet<>();
+  final SortedSet<Integer> stars = new TreeSet<>();
+
+  public SortedSet<Integer> getNumbers() {
 
     return numbers;
   }
 
-  public Set<Integer> getStars() {
+  public SortedSet<Integer> getStars() {
 
     return stars;
   }

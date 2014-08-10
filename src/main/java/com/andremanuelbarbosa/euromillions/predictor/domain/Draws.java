@@ -88,12 +88,12 @@ public abstract class Draws {
 
   private static void loadStatistics() {
 
-    for (int i = 1; i <= 50; i++) {
+    for (int i = 1; i <= Number.COUNT; i++) {
 
       NUMBERS.add(new Number(i, (double) getFreq(i, ItemType.NUMBER) / DRAWS.size()));
     }
 
-    for (int i = 1; i <= 11; i++) {
+    for (int i = 1; i <= Star.COUNT; i++) {
 
       STARS.add(new Star(i, i < 10 ? (double) getFreq(i, ItemType.STAR) / DRAWS.size() : (double) getFreq(i,
           ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS));

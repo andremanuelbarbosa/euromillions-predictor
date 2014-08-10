@@ -3,7 +3,7 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
+import java.util.SortedSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -56,12 +56,12 @@ public class Draw extends Result implements Comparable<Draw> {
     return date;
   }
 
-  public Set<Integer> getNumbers() {
+  public SortedSet<Integer> getNumbers() {
 
     return numbers;
   }
 
-  public Set<Integer> getStars() {
+  public SortedSet<Integer> getStars() {
 
     return stars;
   }
