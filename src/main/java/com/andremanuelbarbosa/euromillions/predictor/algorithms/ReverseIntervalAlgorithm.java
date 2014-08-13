@@ -16,11 +16,11 @@ public class ReverseIntervalAlgorithm extends Algorithm {
     super(false);
   }
 
-  private static Integer getMinimumIntervalItem(SortedSet<Integer> items, ItemType itemType) {
+  private static Integer getMaximumIntervalItem(SortedSet<Integer> items, ItemType itemType) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int maximumInterval = -1;
 
-    Integer minimumIntervalItem = 0;
+    Integer maximumIntervalItem = 0;
 
     for (Integer item : items) {
 
@@ -35,59 +35,59 @@ public class ReverseIntervalAlgorithm extends Algorithm {
         itemInterval = Draws.getStars().get(item - 1).getInterval();
       }
 
-      if (itemInterval < minimumInterval) {
+      if (itemInterval > maximumInterval) {
 
-        minimumInterval = itemInterval;
+        maximumInterval = itemInterval;
 
-        minimumIntervalItem = item;
+        maximumIntervalItem = item;
       }
     }
 
-    return minimumIntervalItem;
+    return maximumIntervalItem;
   }
 
-  public int getMinimumIntervalFromNumbers(SortedSet<Integer> numbers) {
+  public int getMaximumIntervalFromNumbers(SortedSet<Integer> numbers) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int maximumInterval = -1;
 
     for (Integer number : numbers) {
 
-      int numberMinimumInterval = Draws.getNumbers().get(number - 1).getInterval();
+      int numberInterval = Draws.getNumbers().get(number - 1).getInterval();
 
-      if (numberMinimumInterval < minimumInterval) {
+      if (numberInterval >= maximumInterval) {
 
-        minimumInterval = numberMinimumInterval;
+        maximumInterval = numberInterval;
       }
     }
 
-    return minimumInterval < Draws.getDraws().size() ? minimumInterval : 0;
+    return maximumInterval > -1 ? maximumInterval : Draws.getDraws().size();
   }
 
-  public Integer getMinimumIntervalNumber(SortedSet<Integer> numbers) {
+  public Integer getMaximumIntervalNumber(SortedSet<Integer> numbers) {
 
-    return getMinimumIntervalItem(numbers, ItemType.NUMBER);
+    return getMaximumIntervalItem(numbers, ItemType.NUMBER);
   }
 
-  public int getMinimumIntervalFromStars(SortedSet<Integer> stars) {
+  public int getMaximumIntervalFromStars(SortedSet<Integer> stars) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int maximumInterval = -1;
 
     for (Integer star : stars) {
 
-      int starMinimumInterval = Draws.getNumbers().get(star - 1).getInterval();
+      int starInterval = Draws.getStars().get(star - 1).getInterval();
 
-      if (starMinimumInterval < minimumInterval) {
+      if (starInterval >= maximumInterval) {
 
-        minimumInterval = starMinimumInterval;
+        maximumInterval = starInterval;
       }
     }
 
-    return minimumInterval < Draws.getDraws().size() ? minimumInterval : 0;
+    return maximumInterval > -1 ? maximumInterval : Draws.getDraws().size();
   }
 
-  public Integer getMinimumIntervalStar(SortedSet<Integer> stars) {
+  public Integer getMaximumIntervalStar(SortedSet<Integer> stars) {
 
-    return getMinimumIntervalItem(stars, ItemType.STAR);
+    return getMaximumIntervalItem(stars, ItemType.STAR);
   }
 
   @Override
@@ -97,11 +97,11 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
     for (Number number : Draws.getNumbers()) {
 
-      if (number.getInterval() > getMinimumIntervalFromNumbers(bet.getNumbers())) {
+      if (number.getInterval() < getMaximumIntervalFromNumbers(bet.getNumbers())) {
 
         if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
 
-          bet.getNumbers().remove(getMinimumIntervalNumber(bet.getNumbers()));
+          bet.getNumbers().remove(getMaximumIntervalNumber(bet.getNumbers()));
         }
 
         bet.addNumber(number.getId());
@@ -110,11 +110,11 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
     for (Star star : Draws.getStars()) {
 
-      if (star.getInterval() > getMinimumIntervalFromStars(bet.getStars())) {
+      if (star.getInterval() < getMaximumIntervalFromStars(bet.getStars())) {
 
         if (bet.getStars().size() >= Result.STARS_COUNT) {
 
-          bet.getStars().remove(getMinimumIntervalStar(bet.getStars()));
+          bet.getStars().remove(getMaximumIntervalStar(bet.getStars()));
         }
 
         bet.addStar(star.getId());

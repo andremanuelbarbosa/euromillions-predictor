@@ -12,14 +12,12 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
 public class ReverseIntervalAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
 
-  private ReverseIntervalAlgorithm reverseIntervalAlgorithm = new ReverseIntervalAlgorithm();
+  private ReverseIntervalAlgorithm intervalAlgorithm = new ReverseIntervalAlgorithm();
 
   @Test
   public void shouldReturnNextBet() {
 
-    Bet bet = reverseIntervalAlgorithm.getNextBet();
-
-    System.out.println(bet.toString());
+    Bet bet = intervalAlgorithm.getNextBet();
 
     assertNotNull(bet);
 
@@ -27,7 +25,7 @@ public class ReverseIntervalAlgorithmIntegrationTest extends AlgorithmIntegratio
 
       if (!bet.getNumbers().contains(number.getId())) {
 
-        assertTrue(number.getInterval() >= reverseIntervalAlgorithm.getMinimumIntervalFromNumbers(bet.getNumbers()));
+        assertTrue(number.getInterval() >= intervalAlgorithm.getMaximumIntervalFromNumbers(bet.getNumbers()));
       }
     }
 
@@ -35,7 +33,7 @@ public class ReverseIntervalAlgorithmIntegrationTest extends AlgorithmIntegratio
 
       if (!bet.getStars().contains(star.getId())) {
 
-        assertTrue(star.getRelativeFreq() >= reverseIntervalAlgorithm.getMinimumIntervalFromStars(bet.getStars()));
+        assertTrue(star.getRelativeFreq() >= intervalAlgorithm.getMaximumIntervalFromStars(bet.getStars()));
       }
     }
 

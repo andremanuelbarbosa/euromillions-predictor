@@ -89,10 +89,10 @@ public abstract class Draws {
 
     int interval = 0;
 
-    for (int i = DRAWS.size() - 1; i >= 0; i--) {
+    for (Draw draw : DRAWS) {
 
-      if ((itemType == ItemType.NUMBER && DRAWS.get(i).getNumbers().contains(id))
-          || (itemType == ItemType.STAR && DRAWS.get(i).getStars().contains(id))) {
+      if ((itemType == ItemType.NUMBER && draw.getNumbers().contains(id))
+          || (itemType == ItemType.STAR && draw.getStars().contains(id))) {
 
         break;
 

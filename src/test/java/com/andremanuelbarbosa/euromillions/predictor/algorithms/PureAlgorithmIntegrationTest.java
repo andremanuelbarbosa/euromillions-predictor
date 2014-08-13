@@ -18,8 +18,6 @@ public class PureAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
 
     assertNotNull(bet);
 
-    System.out.println(bet.toString());
-
     assertTrue(BET_PATTERN.matcher(bet.toString()).matches());
   }
 }
