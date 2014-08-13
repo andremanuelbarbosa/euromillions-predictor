@@ -9,7 +9,7 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
 
 public class PureAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
 
-  private PureAlgorithm pureAlgorithm = new PureAlgorithm();
+  private PureAlgorithm pureAlgorithm = new PureAlgorithm(FULL_SNAPSHOT);
 
   @Test
   public void shouldReturnNextBet() {
@@ -17,8 +17,6 @@ public class PureAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
     Bet bet = pureAlgorithm.getNextBet();
 
     assertNotNull(bet);
-
-    System.out.println(bet.toString());
 
     assertTrue(BET_PATTERN.matcher(bet.toString()).matches());
   }

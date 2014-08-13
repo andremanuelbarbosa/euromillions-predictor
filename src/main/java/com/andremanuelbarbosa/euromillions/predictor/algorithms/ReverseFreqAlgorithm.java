@@ -3,20 +3,20 @@ package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 import java.util.SortedSet;
 
 import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draws;
 import com.andremanuelbarbosa.euromillions.predictor.domain.ItemType;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Result;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
 public class ReverseFreqAlgorithm extends Algorithm {
 
-  public ReverseFreqAlgorithm() {
+  public ReverseFreqAlgorithm(Snapshot snapshot) {
 
-    super(false);
+    super(snapshot, false);
   }
 
-  private static Integer getMaximumRelativeFreqItem(SortedSet<Integer> items, ItemType itemType) {
+  private Integer getMaximumRelativeFreqItem(SortedSet<Integer> items, ItemType itemType) {
 
     double maximumRelativeFreq = 0.0;
 
@@ -28,11 +28,11 @@ public class ReverseFreqAlgorithm extends Algorithm {
 
       if (itemType == ItemType.NUMBER) {
 
-        itemRelativeFreq = Draws.getNumbers().get(item - 1).getRelativeFreq();
+        itemRelativeFreq = snapshot.getNumbers().get(item - 1).getRelativeFreq();
 
       } else if (itemType == ItemType.STAR) {
 
-        itemRelativeFreq = Draws.getStars().get(item - 1).getRelativeFreq();
+        itemRelativeFreq = snapshot.getStars().get(item - 1).getRelativeFreq();
       }
 
       if (itemRelativeFreq > maximumRelativeFreq) {
@@ -52,7 +52,7 @@ public class ReverseFreqAlgorithm extends Algorithm {
 
     for (Integer number : numbers) {
 
-      double numberMaximumRelativeFreq = Draws.getNumbers().get(number - 1).getRelativeFreq();
+      double numberMaximumRelativeFreq = snapshot.getNumbers().get(number - 1).getRelativeFreq();
 
       if (numberMaximumRelativeFreq > maximumRelativeFreq) {
 
@@ -74,7 +74,7 @@ public class ReverseFreqAlgorithm extends Algorithm {
 
     for (Integer star : stars) {
 
-      double starMaximumRelativeFreq = Draws.getStars().get(star - 1).getRelativeFreq();
+      double starMaximumRelativeFreq = snapshot.getStars().get(star - 1).getRelativeFreq();
 
       if (starMaximumRelativeFreq > maximumRelativeFreq) {
 
@@ -95,20 +95,7 @@ public class ReverseFreqAlgorithm extends Algorithm {
 
     Bet bet = new Bet(this);
 
-    for (Number number : Draws.getNumbers()) {
-
-      if (number.getRelativeFreq() < getMaximumRelativeFreqFromNumbers(bet.getNumbers())) {
-
-        if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
-
-          bet.getNumbers().remove(getMaximumRelativeFreqNumber(bet.getNumbers()));
-        }
-
-        bet.addNumber(number.getId());
-      }
-    }
-
-    for (Star star : Draws.getStars()) {
+    for (Star star : snapshot.getStars()) {
 
       if (star.getRelativeFreq() < getMaximumRelativeFreqFromStars(bet.getStars())) {
 
@@ -118,6 +105,19 @@ public class ReverseFreqAlgorithm extends Algorithm {
         }
 
         bet.addStar(star.getId());
+      }
+    }
+
+    for (Number number : snapshot.getNumbers()) {
+
+      if (number.getRelativeFreq() < getMaximumRelativeFreqFromNumbers(bet.getNumbers())) {
+
+        if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
+
+          bet.getNumbers().remove(getMaximumRelativeFreqNumber(bet.getNumbers()));
+        }
+
+        bet.addNumber(number.getId());
       }
     }
 

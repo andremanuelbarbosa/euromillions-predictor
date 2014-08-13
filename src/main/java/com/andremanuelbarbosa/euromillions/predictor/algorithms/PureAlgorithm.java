@@ -1,13 +1,15 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draws;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Result;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 
 public class PureAlgorithm extends Algorithm {
 
-  public PureAlgorithm() {
+  public PureAlgorithm(Snapshot snapshot) {
 
-    super(true);
+    super(snapshot, true);
   }
 
   @Override
@@ -15,20 +17,7 @@ public class PureAlgorithm extends Algorithm {
 
     Bet bet = new Bet(this);
 
-    for (int i = 0; i < 5; i++) {
-
-      int numberIndex = -1;
-
-      do {
-
-        numberIndex = RANDOM.nextInt(50);
-
-      } while (bet.getNumbers().contains(Draws.getNumbers().get(numberIndex).getId()));
-
-      bet.addNumber(Draws.getNumbers().get(numberIndex).getId());
-    }
-
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < Result.STARS_COUNT; i++) {
 
       int starIndex = -1;
 
@@ -36,9 +25,22 @@ public class PureAlgorithm extends Algorithm {
 
         starIndex = RANDOM.nextInt(11);
 
-      } while (bet.getStars().contains(Draws.getStars().get(starIndex).getId()));
+      } while (bet.getStars().contains(snapshot.getStars().get(starIndex).getId()));
 
-      bet.addStar(Draws.getStars().get(starIndex).getId());
+      bet.addStar(snapshot.getStars().get(starIndex).getId());
+    }
+
+    for (int i = 0; i < Result.NUMBERS_COUNT; i++) {
+
+      int numberIndex = -1;
+
+      do {
+
+        numberIndex = RANDOM.nextInt(Number.COUNT);
+
+      } while (bet.getNumbers().contains(snapshot.getNumbers().get(numberIndex).getId()));
+
+      bet.addNumber(snapshot.getNumbers().get(numberIndex).getId());
     }
 
     return bet;

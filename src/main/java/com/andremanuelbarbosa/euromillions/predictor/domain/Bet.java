@@ -11,24 +11,24 @@ public class Bet extends Result {
     this.algorithm = algorithm;
   }
 
-  public void addNumber(Integer number) {
-
-    if (numbers.size() >= 5) {
-
-      throw new IllegalStateException("Reached the limit of Numbers in the Bet : " + numbers.toString());
-    }
-
-    numbers.add(number);
-  }
-
   public void addStar(Integer star) {
 
-    if (stars.size() >= 5) {
+    if (stars.size() >= STARS_COUNT) {
 
       throw new IllegalStateException("Reached the limit of Stars in the Bet : " + stars.toString());
     }
 
     stars.add(star);
+  }
+
+  public void addNumber(Integer number) {
+
+    if (numbers.size() >= NUMBERS_COUNT) {
+
+      throw new IllegalStateException("Reached the limit of Numbers in the Bet : " + numbers.toString());
+    }
+
+    numbers.add(number);
   }
 
   public Algorithm getAlgorithm() {
@@ -39,10 +39,10 @@ public class Bet extends Result {
   @Override
   public String toString() {
 
-    if (numbers.size() != NUMBERS_COUNT || stars.size() != STARS_COUNT) {
+    if (stars.size() != STARS_COUNT || numbers.size() != NUMBERS_COUNT) {
 
-      throw new IllegalStateException("Bet does not have the correct amount of Numbers or Stars : "
-          + numbers.toString() + " - " + stars.toString());
+      throw new IllegalStateException("Bet does not have the correct amount of Stars or Numbers : " + stars.toString()
+          + " - " + numbers.toString());
     }
 
     StringBuilder stringBuilder = new StringBuilder();

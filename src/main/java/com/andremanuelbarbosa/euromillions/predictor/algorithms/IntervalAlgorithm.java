@@ -3,22 +3,22 @@ package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 import java.util.SortedSet;
 
 import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draws;
 import com.andremanuelbarbosa.euromillions.predictor.domain.ItemType;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Result;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
-public class ReverseIntervalAlgorithm extends Algorithm {
+public class IntervalAlgorithm extends Algorithm {
 
-  public ReverseIntervalAlgorithm() {
+  public IntervalAlgorithm(Snapshot snapshot) {
 
-    super(false);
+    super(snapshot, false);
   }
 
-  private static Integer getMinimumIntervalItem(SortedSet<Integer> items, ItemType itemType) {
+  private Integer getMinimumIntervalItem(SortedSet<Integer> items, ItemType itemType) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int minimumInterval = snapshot.getDraws().size();
 
     Integer minimumIntervalItem = 0;
 
@@ -26,13 +26,13 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
       int itemInterval = 0;
 
-      if (itemType == ItemType.NUMBER) {
+      if (itemType == ItemType.STAR) {
 
-        itemInterval = Draws.getNumbers().get(item - 1).getInterval();
+        itemInterval = snapshot.getStars().get(item - 1).getInterval();
 
-      } else if (itemType == ItemType.STAR) {
+      } else if (itemType == ItemType.NUMBER) {
 
-        itemInterval = Draws.getStars().get(item - 1).getInterval();
+        itemInterval = snapshot.getNumbers().get(item - 1).getInterval();
       }
 
       if (itemInterval < minimumInterval) {
@@ -48,11 +48,11 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
   public int getMinimumIntervalFromNumbers(SortedSet<Integer> numbers) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int minimumInterval = snapshot.getDraws().size();
 
     for (Integer number : numbers) {
 
-      int numberMinimumInterval = Draws.getNumbers().get(number - 1).getInterval();
+      int numberMinimumInterval = snapshot.getNumbers().get(number - 1).getInterval();
 
       if (numberMinimumInterval < minimumInterval) {
 
@@ -60,7 +60,7 @@ public class ReverseIntervalAlgorithm extends Algorithm {
       }
     }
 
-    return minimumInterval < Draws.getDraws().size() ? minimumInterval : 0;
+    return minimumInterval < snapshot.getDraws().size() ? minimumInterval : 0;
   }
 
   public Integer getMinimumIntervalNumber(SortedSet<Integer> numbers) {
@@ -70,11 +70,11 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
   public int getMinimumIntervalFromStars(SortedSet<Integer> stars) {
 
-    int minimumInterval = Draws.getDraws().size();
+    int minimumInterval = snapshot.getDraws().size();
 
     for (Integer star : stars) {
 
-      int starMinimumInterval = Draws.getNumbers().get(star - 1).getInterval();
+      int starMinimumInterval = snapshot.getNumbers().get(star - 1).getInterval();
 
       if (starMinimumInterval < minimumInterval) {
 
@@ -82,7 +82,7 @@ public class ReverseIntervalAlgorithm extends Algorithm {
       }
     }
 
-    return minimumInterval < Draws.getDraws().size() ? minimumInterval : 0;
+    return minimumInterval < snapshot.getDraws().size() ? minimumInterval : 0;
   }
 
   public Integer getMinimumIntervalStar(SortedSet<Integer> stars) {
@@ -95,20 +95,7 @@ public class ReverseIntervalAlgorithm extends Algorithm {
 
     Bet bet = new Bet(this);
 
-    for (Number number : Draws.getNumbers()) {
-
-      if (number.getInterval() > getMinimumIntervalFromNumbers(bet.getNumbers())) {
-
-        if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
-
-          bet.getNumbers().remove(getMinimumIntervalNumber(bet.getNumbers()));
-        }
-
-        bet.addNumber(number.getId());
-      }
-    }
-
-    for (Star star : Draws.getStars()) {
+    for (Star star : snapshot.getStars()) {
 
       if (star.getInterval() > getMinimumIntervalFromStars(bet.getStars())) {
 
@@ -118,6 +105,19 @@ public class ReverseIntervalAlgorithm extends Algorithm {
         }
 
         bet.addStar(star.getId());
+      }
+    }
+
+    for (Number number : snapshot.getNumbers()) {
+
+      if (number.getInterval() > getMinimumIntervalFromNumbers(bet.getNumbers())) {
+
+        if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
+
+          bet.getNumbers().remove(getMinimumIntervalNumber(bet.getNumbers()));
+        }
+
+        bet.addNumber(number.getId());
       }
     }
 
