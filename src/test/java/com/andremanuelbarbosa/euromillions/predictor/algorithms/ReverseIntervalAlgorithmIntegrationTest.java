@@ -10,14 +10,16 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Draws;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
-public class ReverseFreqAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
+public class ReverseIntervalAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
 
-  private ReverseFreqAlgorithm reverseFreqAlgorithm = new ReverseFreqAlgorithm();
+  private ReverseIntervalAlgorithm reverseIntervalAlgorithm = new ReverseIntervalAlgorithm();
 
   @Test
   public void shouldReturnNextBet() {
 
-    Bet bet = reverseFreqAlgorithm.getNextBet();
+    Bet bet = reverseIntervalAlgorithm.getNextBet();
+
+    System.out.println(bet.toString());
 
     assertNotNull(bet);
 
@@ -25,7 +27,7 @@ public class ReverseFreqAlgorithmIntegrationTest extends AlgorithmIntegrationTes
 
       if (!bet.getNumbers().contains(number.getId())) {
 
-        assertTrue(number.getRelativeFreq() >= reverseFreqAlgorithm.getMaximumRelativeFreqFromNumbers(bet.getNumbers()));
+        assertTrue(number.getInterval() >= reverseIntervalAlgorithm.getMinimumIntervalFromNumbers(bet.getNumbers()));
       }
     }
 
@@ -33,7 +35,7 @@ public class ReverseFreqAlgorithmIntegrationTest extends AlgorithmIntegrationTes
 
       if (!bet.getStars().contains(star.getId())) {
 
-        assertTrue(star.getRelativeFreq() >= reverseFreqAlgorithm.getMaximumRelativeFreqFromStars(bet.getStars()));
+        assertTrue(star.getRelativeFreq() >= reverseIntervalAlgorithm.getMinimumIntervalFromStars(bet.getStars()));
       }
     }
 

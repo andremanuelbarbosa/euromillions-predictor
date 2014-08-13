@@ -4,8 +4,8 @@ public class Star extends Item {
 
   public static final int COUNT = 11;
 
-  public Star(int id, double relativeFreq) {
+  public Star(int id, int interval, double relativeFreq) {
 
-    super(id, ItemType.STAR, relativeFreq);
+    super(id, ItemType.STAR, interval, relativeFreq);
   }
 }

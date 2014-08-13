@@ -4,8 +4,8 @@ public class Number extends Item {
 
   public static final int COUNT = 50;
 
-  public Number(int id, double relativeFreq) {
+  public Number(int id, int interval, double relativeFreq) {
 
-    super(id, ItemType.NUMBER, relativeFreq);
+    super(id, ItemType.NUMBER, interval, relativeFreq);
   }
 }

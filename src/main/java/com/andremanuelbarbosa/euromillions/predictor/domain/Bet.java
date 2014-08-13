@@ -39,7 +39,7 @@ public class Bet extends Result {
   @Override
   public String toString() {
 
-    if (numbers.size() != Number.COUNT || stars.size() != Star.COUNT) {
+    if (numbers.size() != NUMBERS_COUNT || stars.size() != STARS_COUNT) {
 
       throw new IllegalStateException("Bet does not have the correct amount of Numbers or Stars : "
           + numbers.toString() + " - " + stars.toString());

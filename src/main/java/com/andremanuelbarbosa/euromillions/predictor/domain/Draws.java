@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -18,7 +16,7 @@ public abstract class Draws {
 
   private static final String DRAWS_CSV = "src/main/resources/draws.csv";
 
-  private static final SortedSet<Draw> DRAWS = new TreeSet<>();
+  private static final List<Draw> DRAWS = new LinkedList<>();
   private static final List<Number> NUMBERS = new LinkedList<>();
   private static final List<Star> STARS = new LinkedList<>();
 
@@ -26,9 +24,10 @@ public abstract class Draws {
 
     loadDraws();
     loadStatistics();
+    showStatistics();
   }
 
-  public static SortedSet<Draw> getDraws() {
+  public static List<Draw> getDraws() {
 
     return DRAWS;
   }
@@ -86,17 +85,57 @@ public abstract class Draws {
     return freq;
   }
 
+  private static int getInterval(int id, ItemType itemType) {
+
+    int interval = 0;
+
+    for (int i = DRAWS.size() - 1; i >= 0; i--) {
+
+      if ((itemType == ItemType.NUMBER && DRAWS.get(i).getNumbers().contains(id))
+          || (itemType == ItemType.STAR && DRAWS.get(i).getStars().contains(id))) {
+
+        break;
+
+      } else {
+
+        interval++;
+      }
+    }
+
+    return interval;
+  }
+
   private static void loadStatistics() {
 
     for (int i = 1; i <= Number.COUNT; i++) {
 
-      NUMBERS.add(new Number(i, (double) getFreq(i, ItemType.NUMBER) / DRAWS.size()));
+      NUMBERS.add(new Number(i, getInterval(i, ItemType.NUMBER), (double) getFreq(i, ItemType.NUMBER) / DRAWS.size()));
     }
 
     for (int i = 1; i <= Star.COUNT; i++) {
 
-      STARS.add(new Star(i, i < 10 ? (double) getFreq(i, ItemType.STAR) / DRAWS.size() : (double) getFreq(i,
-          ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS));
+      STARS.add(new Star(i, getInterval(i, ItemType.STAR), i < 10 ? (double) getFreq(i, ItemType.STAR) / DRAWS.size()
+          : (double) getFreq(i, ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS));
+    }
+  }
+
+  private static void showStatistics() {
+
+    System.out.println("NUMBER | INTERVAL | RELATIVE FREQ");
+    System.out.println("---------------------------------");
+
+    for (Number number : NUMBERS) {
+
+      System.out.println(number.getStatisticsLine());
+    }
+
+    System.out.println("");
+    System.out.println("  STAR | INTERVAL | RELATIVE FREQ");
+    System.out.println("---------------------------------");
+
+    for (Star star : STARS) {
+
+      System.out.println(star.getStatisticsLine());
     }
   }
 }
