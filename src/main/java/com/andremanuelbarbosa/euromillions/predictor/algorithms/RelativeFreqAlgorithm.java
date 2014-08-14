@@ -3,9 +3,9 @@ package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 
-public class ReverseFreqAlgorithm extends Algorithm {
+public class RelativeFreqAlgorithm extends Algorithm {
 
-  public ReverseFreqAlgorithm(Snapshot snapshot) {
+  public RelativeFreqAlgorithm(Snapshot snapshot) {
 
     super(snapshot, false);
   }
