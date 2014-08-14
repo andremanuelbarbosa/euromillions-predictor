@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-abstract class Item implements Comparable<Item> {
+public abstract class Item implements Comparable<Item> {
 
   private static final DecimalFormat DECIMAL_FORMAT_RELATIVE_FREQ = new DecimalFormat(".000000000000");
 

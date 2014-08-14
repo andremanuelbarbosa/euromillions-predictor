@@ -30,5 +30,15 @@ public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTes
 
     assertTrue(snapshot.getStars().get(starIndex).getRelativeFreq() > 0);
     assertTrue(snapshot.getNumbers().get(numberIndex).getRelativeFreq() > 0);
+
+    int starsMaximumInterval = snapshot.getStarsMaximumInterval();
+    for (Star star : snapshot.getStars()) {
+      assertTrue(starsMaximumInterval >= star.getInterval());
+    }
+
+    int numbersMaximumInterval = snapshot.getNumbersMaximumInterval();
+    for (Number number : snapshot.getNumbers()) {
+      assertTrue(numbersMaximumInterval >= number.getInterval());
+    }
   }
 }

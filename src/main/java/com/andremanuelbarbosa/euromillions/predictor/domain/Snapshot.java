@@ -11,6 +11,9 @@ public class Snapshot {
   final List<Star> stars = new LinkedList<>();
   final List<Number> numbers = new LinkedList<>();
 
+  int starsMaximumInterval;
+  int numbersMaximumInterval;
+
   public Snapshot(List<Draw> draws) {
 
     this.draws = draws;
@@ -75,6 +78,9 @@ public class Snapshot {
 
       numbers.add(new Number(i, getInterval(i, ItemType.NUMBER), (double) getFreq(i, ItemType.NUMBER) / draws.size()));
     }
+
+    starsMaximumInterval = getItemMaximumInterval(ItemType.STAR);
+    numbersMaximumInterval = getItemMaximumInterval(ItemType.NUMBER);
   }
 
   public List<Draw> getDraws() {
@@ -90,6 +96,44 @@ public class Snapshot {
   public List<Number> getNumbers() {
 
     return numbers;
+  }
+
+  private int getItemMaximumInterval(ItemType itemType) {
+
+    int itemMaximumInterval = 0;
+
+    if (itemType == ItemType.STAR) {
+
+      for (Star star : stars) {
+
+        if (star.getInterval() > itemMaximumInterval) {
+
+          itemMaximumInterval = star.getInterval();
+        }
+      }
+
+    } else if (itemType == ItemType.NUMBER) {
+
+      for (Number mumber : numbers) {
+
+        if (mumber.getInterval() > itemMaximumInterval) {
+
+          itemMaximumInterval = mumber.getInterval();
+        }
+      }
+    }
+
+    return itemMaximumInterval;
+  }
+
+  public int getStarsMaximumInterval() {
+
+    return starsMaximumInterval;
+  }
+
+  public int getNumbersMaximumInterval() {
+
+    return numbersMaximumInterval;
   }
 
   public void showStatistics() {
