@@ -10,7 +10,7 @@ public class RandomAlgorithm extends Algorithm {
 
   public RandomAlgorithm(Snapshot snapshot) {
 
-    super(snapshot, true);
+    super(snapshot);
   }
 
   @Override

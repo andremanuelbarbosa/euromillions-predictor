@@ -8,7 +8,7 @@ public class IntervalAlgorithm extends Algorithm {
 
   public IntervalAlgorithm(Snapshot snapshot) {
 
-    super(snapshot, false);
+    super(snapshot);
   }
 
   @Override

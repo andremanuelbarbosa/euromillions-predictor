@@ -17,18 +17,9 @@ public abstract class Algorithm {
 
   final Snapshot snapshot;
 
-  private final boolean randomized;
-
-  public Algorithm(Snapshot snapshot, boolean randomized) {
+  public Algorithm(Snapshot snapshot) {
 
     this.snapshot = snapshot;
-
-    this.randomized = randomized;
-  }
-
-  public boolean isRandomized() {
-
-    return randomized;
   }
 
   abstract double getItemWeight(Item item);
