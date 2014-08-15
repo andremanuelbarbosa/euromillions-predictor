@@ -35,7 +35,7 @@ public abstract class Algorithm {
 
   private double getMinimumWeightFromStars(SortedSet<Integer> stars) {
 
-    double starsMinimumWeight = Double.MAX_VALUE;
+    double starsMinimumWeight = 1.0;
 
     for (Integer star : stars) {
 
@@ -52,7 +52,7 @@ public abstract class Algorithm {
 
   private double getMinimumWeightFromNumbers(SortedSet<Integer> numbers) {
 
-    double numbersMinimumWeight = Double.MAX_VALUE;
+    double numbersMinimumWeight = 1.0;
 
     for (Integer number : numbers) {
 
@@ -72,7 +72,7 @@ public abstract class Algorithm {
     double minimumWeight = itemType == ItemType.STAR ? getMinimumWeightFromStars(items)
         : getMinimumWeightFromNumbers(items);
 
-    return minimumWeight < Double.MAX_VALUE ? minimumWeight : 0.0;
+    return minimumWeight < 1.0 ? minimumWeight : 0.0;
   }
 
   Integer getMinimumWeightItem(SortedSet<Integer> items, ItemType itemType) {

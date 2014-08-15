@@ -7,14 +7,14 @@ import org.mockito.Mock;
 
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorTest;
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
-import com.andremanuelbarbosa.euromillions.predictor.algorithms.PureAlgorithm;
+import com.andremanuelbarbosa.euromillions.predictor.algorithms.RandomAlgorithm;
 
 public class BetTest extends EuroMillionsPredictorTest {
 
   @Mock
   private Snapshot snapshot;
 
-  private final Algorithm algorithm = new PureAlgorithm(snapshot);
+  private final Algorithm algorithm = new RandomAlgorithm(snapshot);
   private final Bet bet = new Bet(algorithm);
 
   @Test

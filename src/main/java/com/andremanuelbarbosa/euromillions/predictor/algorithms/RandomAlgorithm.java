@@ -6,9 +6,9 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
-public class PureAlgorithm extends Algorithm {
+public class RandomAlgorithm extends Algorithm {
 
-  public PureAlgorithm(Snapshot snapshot) {
+  public RandomAlgorithm(Snapshot snapshot) {
 
     super(snapshot, true);
   }
