@@ -36,6 +36,29 @@ public class Bet extends Result {
     return algorithm;
   }
 
+  public int getPoints(Result result) {
+
+    int points = 0;
+
+    for (Integer star : stars) {
+
+      if (result.getStars().contains(star)) {
+
+        points++;
+      }
+    }
+
+    for (Integer number : numbers) {
+
+      if (result.getNumbers().contains(number)) {
+
+        points++;
+      }
+    }
+
+    return points;
+  }
+
   @Override
   public String toString() {
 
