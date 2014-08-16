@@ -30,9 +30,9 @@ public class TimeMachine {
 
   private void loadSnapshots() {
 
-    for (int i = (draws.size() - 1); i >= MINIMUM_DRAWS_INDEX; i--) {
+    for (int i = MINIMUM_DRAWS_INDEX; i < (draws.size() - 1); i++) {
 
-      Snapshot snapshot = new Snapshot(draws.subList(i, draws.size()));
+      Snapshot snapshot = new Snapshot(draws.subList(0, (i + 1)));
 
       snapshots.add(snapshot);
       executeAlgorithms(snapshot);

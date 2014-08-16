@@ -13,4 +13,13 @@ public class DrawsIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
     assertTrue(Draws.getDraws().size() > 0);
   }
+
+  @Test
+  public void shouldLoadDrawsOrderedAscending() {
+
+    for (int i = 0; i < Draws.getDraws().size() - 1; i++) {
+
+      assertTrue(Draws.getDraws().get(i).getIndex() < Draws.getDraws().get(i + 1).getIndex());
+    }
+  }
 }

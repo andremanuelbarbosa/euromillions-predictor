@@ -100,7 +100,7 @@ public class Snapshot {
 
   public Draw getLastDraw() {
 
-    return draws.get(0);
+    return draws.get(draws.size() - 1);
   }
 
   private int getItemMaximumInterval(ItemType itemType) {

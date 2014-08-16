@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class Draw extends Result implements Comparable<Draw> {
+public class Draw extends Result {
 
   private static final Pattern DRAW_PATTERN = Pattern
       .compile("^[ ]*([0-9]{1,3})[ ]{2}([ a-zA-Z0-9]{15})[ ]{2}([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) [*]([0-9]{2}) ([0-9]{2})[*][ ]{1,3}([0-9]{1,3}[,][0-9]{3}[,][0-9]{3})[ ]*$");
@@ -69,12 +69,6 @@ public class Draw extends Result implements Comparable<Draw> {
   public long getJackpot() {
 
     return jackpot;
-  }
-
-  @Override
-  public int compareTo(Draw draw) {
-
-    return index - draw.getIndex();
   }
 
   @Override

@@ -15,7 +15,7 @@ public abstract class Draws {
 
   private static final String DRAWS_CSV = "src/main/resources/draws.csv";
 
-  private static final List<Draw> DRAWS = new LinkedList<>();
+  private static List<Draw> draws;
 
   static {
 
@@ -24,10 +24,12 @@ public abstract class Draws {
 
   public static List<Draw> getDraws() {
 
-    return DRAWS;
+    return draws;
   }
 
   private static void loadDraws() {
+
+    List<Draw> unorderedDraws = new LinkedList<>();
 
     try (BufferedReader bufferedReader = new BufferedReader(new FileReader(DRAWS_CSV))) {
 
@@ -35,7 +37,7 @@ public abstract class Draws {
 
         if (!StringUtils.isEmpty(line)) {
 
-          DRAWS.add(new Draw(line));
+          unorderedDraws.add(new Draw(line));
         }
       }
 
@@ -43,5 +45,29 @@ public abstract class Draws {
 
       throw new IllegalStateException(e);
     }
+
+    draws = orderDraws(unorderedDraws);
+  }
+
+  private static List<Draw> orderDraws(List<Draw> unorderedDraws) {
+
+    List<Draw> orderedDraws = new LinkedList<>();
+
+    orderedDraws.add(unorderedDraws.get(0));
+
+    for (int i = 1; i < unorderedDraws.size(); i++) {
+
+      orderedDraws.add(unorderedDraws.get(i));
+
+      int previousIndex = i - 1;
+
+      while (previousIndex >= 0 && unorderedDraws.get(i).getIndex() < orderedDraws.get(previousIndex).getIndex()) {
+
+        orderedDraws.set(previousIndex + 1, orderedDraws.get(previousIndex));
+        orderedDraws.set(previousIndex--, unorderedDraws.get(i));
+      }
+    }
+
+    return orderedDraws;
   }
 }

@@ -18,14 +18,9 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
   }
 
   @Test
-  public void shouldReturnAlgorithmsPointsSum() {
+  public void shouldReturnAlgorithmsStatistics() {
 
     assertNotNull(timeMachine.getAlgorithmsPointsSum());
-  }
-
-  @Test
-  public void shouldReturnAlgorithmsMaximumPoints() {
-
     assertNotNull(timeMachine.getAlgorithmsMaximumPoints());
   }
 }
