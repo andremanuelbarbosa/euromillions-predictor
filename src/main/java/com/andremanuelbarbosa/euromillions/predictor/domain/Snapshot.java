@@ -98,6 +98,11 @@ public class Snapshot {
     return numbers;
   }
 
+  public Draw getLastDraw() {
+
+    return draws.get(0);
+  }
+
   private int getItemMaximumInterval(ItemType itemType) {
 
     int itemMaximumInterval = 0;

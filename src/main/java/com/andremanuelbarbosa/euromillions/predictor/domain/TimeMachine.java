@@ -12,17 +12,14 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 
 public class TimeMachine {
 
-  private static final int MINIMUM_DRAWS_INDEX = 0;
+  private static final int MINIMUM_DRAWS_INDEX = 1;
 
-  private final Map<Class<? extends Algorithm>, Integer> algorithmsPoints = new HashMap<Class<? extends Algorithm>, Integer>();
+  private final Map<Class<? extends Algorithm>, Integer> algorithmsPointsSum = new HashMap<Class<? extends Algorithm>, Integer>();
+  private final Map<Class<? extends Algorithm>, Integer> algorithmsMaximumPoints = new HashMap<Class<? extends Algorithm>, Integer>();
 
   private final List<Snapshot> snapshots = new LinkedList<>();
 
   private final List<Draw> draws;
-
-  private int maximumPoints = 0;
-
-  private Algorithm maximumPointsAlgorithm;
 
   public TimeMachine(List<Draw> draws) {
 
@@ -33,15 +30,16 @@ public class TimeMachine {
 
   private void loadSnapshots() {
 
-    for (int i = MINIMUM_DRAWS_INDEX; i < (draws.size() - 1); i++) {
+    for (int i = (draws.size() - 1); i >= MINIMUM_DRAWS_INDEX; i--) {
 
-      Snapshot snapshot = new Snapshot(draws.subList(MINIMUM_DRAWS_INDEX, i + 1));
+      Snapshot snapshot = new Snapshot(draws.subList(i, draws.size()));
 
       snapshots.add(snapshot);
       executeAlgorithms(snapshot);
     }
 
-    System.out.println("Maximum Points [" + maximumPointsAlgorithm.getClass().getName() + "," + maximumPoints + "]");
+    System.out.println("Points Sum : " + algorithmsPointsSum.toString());
+    System.out.println("Maximum Points : " + algorithmsMaximumPoints.toString());
   }
 
   private List<Algorithm> getAlgorithms(Snapshot snapshot) {
@@ -75,30 +73,27 @@ public class TimeMachine {
 
       Bet bet = algorithm.getNextBet();
 
-      int points = bet.getPoints(getLastDraw());
+      int points = bet.getPoints(snapshot.getLastDraw());
 
-      algorithmsPoints.put(algorithm.getClass(),
-          algorithmsPoints.containsKey(algorithm.getClass()) ? algorithmsPoints.get(algorithm.getClass()) + points
-              : points);
+      algorithmsPointsSum.put(algorithm.getClass(),
+          algorithmsPointsSum.containsKey(algorithm.getClass()) ? algorithmsPointsSum.get(algorithm.getClass())
+              + points : points);
 
-      if (points > maximumPoints) {
+      if (!algorithmsMaximumPoints.containsKey(algorithm.getClass())
+          || points > algorithmsMaximumPoints.get(algorithm.getClass())) {
 
-        maximumPoints = points;
-
-        maximumPointsAlgorithm = algorithm;
+        algorithmsMaximumPoints.put(algorithm.getClass(), points);
       }
     }
-
-    System.out.println(algorithmsPoints.toString());
   }
 
-  public Draw getLastDraw() {
+  public Map<Class<? extends Algorithm>, Integer> getAlgorithmsPointsSum() {
 
-    return draws.get(draws.size() - 1);
+    return algorithmsPointsSum;
   }
 
-  public Algorithm getMaximumPointsAlgorithm() {
+  public Map<Class<? extends Algorithm>, Integer> getAlgorithmsMaximumPoints() {
 
-    return maximumPointsAlgorithm;
+    return algorithmsMaximumPoints;
   }
 }
