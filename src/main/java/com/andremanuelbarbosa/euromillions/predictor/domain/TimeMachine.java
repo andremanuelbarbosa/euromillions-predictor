@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +12,8 @@ import org.reflections.Reflections;
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 
 public class TimeMachine {
+
+  private static final DecimalFormat DECIMAL_FORMAT_AVERAGE_POINTS = new DecimalFormat("0.00");
 
   private final Map<Class<? extends Algorithm>, Integer> algorithmsPointsSum = new HashMap<Class<? extends Algorithm>, Integer>();
   private final Map<Class<? extends Algorithm>, Integer> algorithmsMaximumPoints = new HashMap<Class<? extends Algorithm>, Integer>();
@@ -108,5 +111,15 @@ public class TimeMachine {
   public Map<Class<? extends Algorithm>, Double> getAlgorithmsAveragePoints() {
 
     return algorithmsAveragePoints;
+  }
+
+  public void showAlgorithmsPoints() {
+
+    for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
+
+      System.out.println(String.format("%32s %3s %s %s", algorithmClass.getSimpleName(),
+          algorithmsPointsSum.get(algorithmClass).toString(), algorithmsMaximumPoints.get(algorithmClass).toString(),
+          DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass))));
+    }
   }
 }

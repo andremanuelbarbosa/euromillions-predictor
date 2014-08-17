@@ -15,11 +15,16 @@ public abstract class Algorithm {
 
   static final Random RANDOM = new Random();
 
-  final Snapshot snapshot;
+  private final Snapshot snapshot;
 
   public Algorithm(Snapshot snapshot) {
 
     this.snapshot = snapshot;
+  }
+
+  public Snapshot getSnapshot() {
+
+    return snapshot;
   }
 
   abstract double getItemWeight(Item item);
@@ -30,7 +35,7 @@ public abstract class Algorithm {
 
     for (Integer star : stars) {
 
-      double starWeight = getItemWeight(snapshot.getStars().get(star - 1));
+      double starWeight = getItemWeight(getSnapshot().getStars().get(star - 1));
 
       if (starWeight < starsMinimumWeight) {
 
@@ -47,7 +52,7 @@ public abstract class Algorithm {
 
     for (Integer number : numbers) {
 
-      double numberWeight = getItemWeight(snapshot.getNumbers().get(number - 1));
+      double numberWeight = getItemWeight(getSnapshot().getNumbers().get(number - 1));
 
       if (numberWeight < numbersMinimumWeight) {
 
@@ -79,7 +84,7 @@ public abstract class Algorithm {
 
       if (itemType == ItemType.STAR) {
 
-        if (getItemWeight(snapshot.getStars().get(item - 1)) == minimumWeight) {
+        if (getItemWeight(getSnapshot().getStars().get(item - 1)) == minimumWeight) {
 
           return item;
         }
@@ -87,7 +92,7 @@ public abstract class Algorithm {
 
       if (itemType == ItemType.NUMBER) {
 
-        if (getItemWeight(snapshot.getNumbers().get(item - 1)) == minimumWeight) {
+        if (getItemWeight(getSnapshot().getNumbers().get(item - 1)) == minimumWeight) {
 
           return item;
         }
@@ -101,7 +106,7 @@ public abstract class Algorithm {
 
     Bet bet = new Bet(this);
 
-    for (Star star : snapshot.getStars()) {
+    for (Star star : getSnapshot().getStars()) {
 
       if (bet.getStars().size() < Result.STARS_COUNT) {
 
@@ -115,7 +120,7 @@ public abstract class Algorithm {
       }
     }
 
-    for (Number number : snapshot.getNumbers()) {
+    for (Number number : getSnapshot().getNumbers()) {
 
       if (bet.getNumbers().size() < Result.NUMBERS_COUNT) {
 

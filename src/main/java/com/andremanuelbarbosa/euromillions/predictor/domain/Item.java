@@ -2,6 +2,8 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import java.text.DecimalFormat;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -51,6 +53,18 @@ public abstract class Item implements Comparable<Item> {
   public String getStatisticsLine() {
 
     return String.format("%6s | %8s | %s", id, interval, DECIMAL_FORMAT_RELATIVE_FREQ.format(relativeFreq));
+  }
+
+  @Override
+  public int hashCode() {
+
+    return HashCodeBuilder.reflectionHashCode(this);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+
+    return EqualsBuilder.reflectionEquals(this, obj);
   }
 
   @Override
