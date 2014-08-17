@@ -12,25 +12,26 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 
 public class TimeMachine {
 
-  private static final int MINIMUM_DRAWS_INDEX = 1;
-
   private final Map<Class<? extends Algorithm>, Integer> algorithmsPointsSum = new HashMap<Class<? extends Algorithm>, Integer>();
   private final Map<Class<? extends Algorithm>, Integer> algorithmsMaximumPoints = new HashMap<Class<? extends Algorithm>, Integer>();
+  private final Map<Class<? extends Algorithm>, Double> algorithmsAveragePoints = new HashMap<Class<? extends Algorithm>, Double>();
 
   private final List<Snapshot> snapshots = new LinkedList<>();
 
-  private final List<Draw> draws;
+  private final List<? extends Draw> draws;
+  private final int minimumDrawsIndex;
 
-  public TimeMachine(List<Draw> draws) {
+  public TimeMachine(List<? extends Draw> draws, int minimumDrawsIndex) {
 
     this.draws = draws;
+    this.minimumDrawsIndex = minimumDrawsIndex;
 
     loadSnapshots();
   }
 
   private void loadSnapshots() {
 
-    for (int i = MINIMUM_DRAWS_INDEX; i < (draws.size() - 1); i++) {
+    for (int i = minimumDrawsIndex; i < (draws.size() - 1); i++) {
 
       Snapshot snapshot = new Snapshot(draws.subList(0, (i + 1)));
 
@@ -38,8 +39,10 @@ public class TimeMachine {
       executeAlgorithms(snapshot);
     }
 
-    System.out.println("Points Sum : " + algorithmsPointsSum.toString());
-    System.out.println("Maximum Points : " + algorithmsMaximumPoints.toString());
+    for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
+
+      algorithmsAveragePoints.put(algorithmClass, (double) algorithmsPointsSum.get(algorithmClass) / snapshots.size());
+    }
   }
 
   private List<Algorithm> getAlgorithms(Snapshot snapshot) {
@@ -87,6 +90,11 @@ public class TimeMachine {
     }
   }
 
+  public List<? extends Draw> getDraws() {
+
+    return draws;
+  }
+
   public Map<Class<? extends Algorithm>, Integer> getAlgorithmsPointsSum() {
 
     return algorithmsPointsSum;
@@ -95,5 +103,10 @@ public class TimeMachine {
   public Map<Class<? extends Algorithm>, Integer> getAlgorithmsMaximumPoints() {
 
     return algorithmsMaximumPoints;
+  }
+
+  public Map<Class<? extends Algorithm>, Double> getAlgorithmsAveragePoints() {
+
+    return algorithmsAveragePoints;
   }
 }

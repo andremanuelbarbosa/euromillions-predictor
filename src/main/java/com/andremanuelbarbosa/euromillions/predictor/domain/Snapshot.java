@@ -7,14 +7,14 @@ public class Snapshot {
 
   private static final int DRAWS_COUNT_BEFORE_ELEVEN_STARS = 378;
 
-  final List<Draw> draws;
+  final List<? extends Draw> draws;
   final List<Star> stars = new LinkedList<>();
   final List<Number> numbers = new LinkedList<>();
 
   int starsMaximumInterval;
   int numbersMaximumInterval;
 
-  public Snapshot(List<Draw> draws) {
+  public Snapshot(List<? extends Draw> draws) {
 
     this.draws = draws;
 
@@ -50,7 +50,7 @@ public class Snapshot {
 
     int interval = 0;
 
-    for (int i = 0; i < draws.size(); i++) {
+    for (int i = (draws.size() - 1); i >= 0; i--) {
 
       if ((itemType == ItemType.STAR && draws.get(i).getStars().contains(id))
           || (itemType == ItemType.NUMBER && draws.get(i).getNumbers().contains(id))) {
@@ -83,7 +83,7 @@ public class Snapshot {
     numbersMaximumInterval = getItemMaximumInterval(ItemType.NUMBER);
   }
 
-  public List<Draw> getDraws() {
+  public List<? extends Draw> getDraws() {
 
     return draws;
   }

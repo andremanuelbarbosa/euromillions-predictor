@@ -1,5 +1,8 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 
 public class Bet extends Result {
@@ -57,6 +60,18 @@ public class Bet extends Result {
     }
 
     return points;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+
+    return EqualsBuilder.reflectionEquals(this, o);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 
   @Override

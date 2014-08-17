@@ -109,10 +109,7 @@ public abstract class Algorithm {
 
       } else if (getItemWeight(star) > getMinimumWeight(bet.getStars(), ItemType.STAR)) {
 
-        if (bet.getStars().size() >= Result.STARS_COUNT) {
-
-          bet.getStars().remove(getMinimumWeightItem(bet.getStars(), ItemType.STAR));
-        }
+        bet.getStars().remove(getMinimumWeightItem(bet.getStars(), ItemType.STAR));
 
         bet.addStar(star.getId());
       }
@@ -126,10 +123,7 @@ public abstract class Algorithm {
 
       } else if (getItemWeight(number) > getMinimumWeight(bet.getNumbers(), ItemType.NUMBER)) {
 
-        if (bet.getNumbers().size() >= Result.NUMBERS_COUNT) {
-
-          bet.getNumbers().remove(getMinimumWeightItem(bet.getNumbers(), ItemType.NUMBER));
-        }
+        bet.getNumbers().remove(getMinimumWeightItem(bet.getNumbers(), ItemType.NUMBER));
 
         bet.addNumber(number.getId());
       }

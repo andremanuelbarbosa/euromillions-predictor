@@ -9,7 +9,7 @@ import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegr
 
 public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
-  private final Snapshot snapshot = new Snapshot(Draws.getDraws());
+  private final Snapshot snapshot = new Snapshot(RealDraws.getRealDraws());
 
   @Test
   public void shouldLoadStarsAndNumbers() {
@@ -18,10 +18,10 @@ public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTes
     assertEquals(snapshot.getNumbers().size(), Number.COUNT);
 
     int starIndex = random.nextInt(Star.COUNT);
-    int starIndexInterval = snapshot.getStars().get(starIndex).getInterval();
+    int starIndexInterval = snapshot.getDraws().size() - snapshot.getStars().get(starIndex).getInterval() - 1;
 
     int numberIndex = random.nextInt(Number.COUNT);
-    int numberIndexInterval = snapshot.getNumbers().get(numberIndex).getInterval();
+    int numberIndexInterval = snapshot.getDraws().size() - snapshot.getNumbers().get(numberIndex).getInterval() - 1;
 
     assertTrue(snapshot.getDraws().get(starIndexInterval).getStars()
         .contains(snapshot.getStars().get(starIndex).getId()));

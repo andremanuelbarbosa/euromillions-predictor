@@ -14,8 +14,8 @@ public class IntervalAlgorithm extends Algorithm {
   @Override
   double getItemWeight(Item item) {
 
-    return (double) item.getInterval()
+    return (double) (item.getInterval() + 1)
         / ((item.getItemType() == ItemType.STAR ? snapshot.getStarsMaximumInterval() : snapshot
-            .getNumbersMaximumInterval()) + 1);
+            .getNumbersMaximumInterval()) + 2);
   }
 }

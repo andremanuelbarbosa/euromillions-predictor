@@ -1,5 +1,7 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
 public class RandomAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
@@ -10,5 +12,11 @@ public class RandomAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
   public void shouldReturnNextBet() {
 
     assertNextBet(randomAlgorithm);
+  }
+
+  @Test
+  public void shouldReturnTwoDifferentBetsForConsecutiveRequests() {
+
+    assertFalse(randomAlgorithm.getNextBet().equals(randomAlgorithm.getNextBet()));
   }
 }

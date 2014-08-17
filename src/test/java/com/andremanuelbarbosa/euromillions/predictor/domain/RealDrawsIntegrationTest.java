@@ -6,20 +6,20 @@ import org.junit.Test;
 
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
 
-public class DrawsIntegrationTest extends EuroMillionsPredictorIntegrationTest {
+public class RealDrawsIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
   @Test
   public void shouldLoadDrawsAndStatistics() {
 
-    assertTrue(Draws.getDraws().size() > 0);
+    assertTrue(RealDraws.getRealDraws().size() > 0);
   }
 
   @Test
   public void shouldLoadDrawsOrderedAscending() {
 
-    for (int i = 0; i < Draws.getDraws().size() - 1; i++) {
+    for (int i = 0; i < RealDraws.getRealDraws().size() - 1; i++) {
 
-      assertTrue(Draws.getDraws().get(i).getIndex() < Draws.getDraws().get(i + 1).getIndex());
+      assertTrue(RealDraws.getRealDraws().get(i).getIndex() < RealDraws.getRealDraws().get(i + 1).getIndex());
     }
   }
 }
