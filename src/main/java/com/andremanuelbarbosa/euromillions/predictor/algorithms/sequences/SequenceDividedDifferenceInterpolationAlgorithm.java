@@ -2,14 +2,14 @@ package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
 
 import java.util.List;
 
-import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
+import org.apache.commons.math3.analysis.interpolation.DividedDifferenceInterpolator;
 
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
-public class SequenceLinearInterpolationAlgorithm extends SequenceInterpolationAlgorithm {
+public class SequenceDividedDifferenceInterpolationAlgorithm extends SequenceInterpolationAlgorithm {
 
-  public SequenceLinearInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
+  public SequenceDividedDifferenceInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
 
     super(item, draws);
   }
@@ -24,7 +24,7 @@ public class SequenceLinearInterpolationAlgorithm extends SequenceInterpolationA
 
     } else {
 
-      nextValue = new LinearInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(
+      nextValue = new DividedDifferenceInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(
           item.getIntervals().size());
     }
   }

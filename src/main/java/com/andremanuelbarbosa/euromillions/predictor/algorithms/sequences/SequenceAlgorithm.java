@@ -7,7 +7,7 @@ import java.util.Map;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
-public abstract class SequenceAlgorithm {
+abstract class SequenceAlgorithm {
 
   final Item item;
   final List<? extends Draw> draws;
