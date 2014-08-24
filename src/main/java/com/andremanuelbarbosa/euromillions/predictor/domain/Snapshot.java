@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Snapshot {
 
-  private static final int DRAWS_COUNT_BEFORE_ELEVEN_STARS = 378;
+  public static final int DRAWS_COUNT_BEFORE_ELEVEN_STARS = 378;
 
   final List<? extends Draw> draws;
   final List<Star> stars = new LinkedList<>();
@@ -66,17 +66,72 @@ public class Snapshot {
     return interval;
   }
 
+  private List<Integer> getIntervals(int id, ItemType itemType) {
+
+    int index = 0;
+
+    List<Integer> intervals = new LinkedList<>();
+
+    if (itemType == ItemType.STAR) {
+
+      while (index < draws.size() && !draws.get(index++).getStars().contains(id))
+        ;
+
+      index++;
+      int interval = 0;
+
+      for (int i = index; i < draws.size(); i++) {
+
+        if (draws.get(i).getStars().contains(id)) {
+
+          intervals.add(interval);
+
+          interval = 0;
+
+        } else {
+
+          interval++;
+        }
+      }
+
+    } else if (itemType == ItemType.NUMBER) {
+
+      while (index++ < draws.size() && !draws.get(index).getNumbers().contains(id))
+        ;
+
+      index++;
+      int interval = 0;
+
+      for (int i = index; i < draws.size(); i++) {
+
+        if (draws.get(i).getNumbers().contains(id)) {
+
+          intervals.add(interval);
+
+          interval = 0;
+
+        } else {
+
+          interval++;
+        }
+      }
+    }
+
+    return intervals;
+  }
+
   private void loadStarsAndNumbers() {
 
     for (int i = 1; i <= Star.COUNT; i++) {
 
       stars.add(new Star(i, getInterval(i, ItemType.STAR), i < 10 ? (double) getFreq(i, ItemType.STAR) / draws.size()
-          : (double) getFreq(i, ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS));
+          : (double) getFreq(i, ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS, getIntervals(i, ItemType.STAR)));
     }
 
     for (int i = 1; i <= Number.COUNT; i++) {
 
-      numbers.add(new Number(i, getInterval(i, ItemType.NUMBER), (double) getFreq(i, ItemType.NUMBER) / draws.size()));
+      numbers.add(new Number(i, getInterval(i, ItemType.NUMBER), (double) getFreq(i, ItemType.NUMBER) / draws.size(),
+          getIntervals(i, ItemType.NUMBER)));
     }
 
     starsMaximumInterval = getItemMaximumInterval(ItemType.STAR);

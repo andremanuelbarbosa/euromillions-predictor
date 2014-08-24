@@ -16,8 +16,11 @@ public class TimeMachine {
   private static final DecimalFormat DECIMAL_FORMAT_AVERAGE_POINTS = new DecimalFormat("0.00");
 
   private final Map<Class<? extends Algorithm>, Integer> algorithmsPointsSum = new HashMap<Class<? extends Algorithm>, Integer>();
+  private final Map<Class<? extends Algorithm>, Integer> algorithmsModePoints = new HashMap<Class<? extends Algorithm>, Integer>();
   private final Map<Class<? extends Algorithm>, Integer> algorithmsMaximumPoints = new HashMap<Class<? extends Algorithm>, Integer>();
   private final Map<Class<? extends Algorithm>, Double> algorithmsAveragePoints = new HashMap<Class<? extends Algorithm>, Double>();
+
+  private final Map<Class<? extends Algorithm>, HashMap<Integer, Integer>> algorithmsPoints = new HashMap<Class<? extends Algorithm>, HashMap<Integer, Integer>>();
 
   private final List<Snapshot> snapshots = new LinkedList<>();
 
@@ -81,6 +84,16 @@ public class TimeMachine {
 
       int points = bet.getPoints(snapshot.getLastDraw());
 
+      if (!algorithmsPoints.containsKey(algorithm.getClass())) {
+
+        algorithmsPoints.put(algorithm.getClass(), new HashMap<Integer, Integer>());
+      }
+
+      algorithmsPoints.get(algorithm.getClass()).put(
+          points,
+          algorithmsPoints.get(algorithm.getClass()).containsKey(points) ? algorithmsPoints.get(algorithm.getClass())
+              .get(points) + 1 : 1);
+
       algorithmsPointsSum.put(algorithm.getClass(),
           algorithmsPointsSum.containsKey(algorithm.getClass()) ? algorithmsPointsSum.get(algorithm.getClass())
               + points : points);
@@ -90,6 +103,25 @@ public class TimeMachine {
 
         algorithmsMaximumPoints.put(algorithm.getClass(), points);
       }
+    }
+
+    for (Algorithm algorithm : algorithms) {
+
+      Integer algorithmMode = null;
+
+      int algorithmPointsMaxFreq = 0;
+
+      for (Integer points : algorithmsPoints.get(algorithm.getClass()).keySet()) {
+
+        if (algorithmsPoints.get(algorithm.getClass()).get(points) > algorithmPointsMaxFreq) {
+
+          algorithmMode = points;
+
+          algorithmPointsMaxFreq = algorithmsPoints.get(algorithm.getClass()).get(points);
+        }
+      }
+
+      algorithmsModePoints.put(algorithm.getClass(), algorithmMode);
     }
   }
 
@@ -103,6 +135,11 @@ public class TimeMachine {
     return algorithmsPointsSum;
   }
 
+  public Map<Class<? extends Algorithm>, Integer> getAlgorithmsModePoints() {
+
+    return algorithmsModePoints;
+  }
+
   public Map<Class<? extends Algorithm>, Integer> getAlgorithmsMaximumPoints() {
 
     return algorithmsMaximumPoints;
@@ -113,12 +150,22 @@ public class TimeMachine {
     return algorithmsAveragePoints;
   }
 
-  public void showAlgorithmsPoints() {
+  public void showAlgorithmsPoints(String title) {
+
+    StringBuilder stringBuilder = new StringBuilder(title);
+
+    for (int i = title.length(); i < 35; i++) {
+
+      stringBuilder.append(" ");
+    }
+
+    System.out.println(stringBuilder.toString() + "ALGORITHM SUM MODE MAX AVERAGE");
 
     for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
 
-      System.out.println(String.format("%32s %3s %s %s", algorithmClass.getSimpleName(),
-          algorithmsPointsSum.get(algorithmClass).toString(), algorithmsMaximumPoints.get(algorithmClass).toString(),
+      System.out.println(String.format("%44s %3s %4s %3s %7s", algorithmClass.getSimpleName(),
+          algorithmsPointsSum.get(algorithmClass).toString(), algorithmsModePoints.get(algorithmClass).toString(),
+          algorithmsMaximumPoints.get(algorithmClass).toString(),
           DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass))));
     }
   }

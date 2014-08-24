@@ -2,7 +2,6 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
@@ -11,31 +10,30 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
 
   private TimeMachine timeMachine;
 
-  private void assertAlgorithmsStatistics() {
+  private void assertAlgorithmsStatistics(String title) {
 
     assertNotNull(timeMachine.getAlgorithmsPointsSum());
     assertNotNull(timeMachine.getAlgorithmsMaximumPoints());
     assertNotNull(timeMachine.getAlgorithmsAveragePoints());
 
-    System.out.println(timeMachine.getDraws().get(0).getClass().getSimpleName());
-    timeMachine.showAlgorithmsPoints();
+    timeMachine.showAlgorithmsPoints(title);
     System.out.println("");
   }
 
   @Test
-  @Ignore
   public void shouldReturnAlgorithmsStatisticsForRandomDraws() {
 
-    timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(), 100);
+    timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(),
+        Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
 
-    assertAlgorithmsStatistics();
+    assertAlgorithmsStatistics("RANDOM");
   }
 
   @Test
   public void shouldReturnAlgorithmsStatisticsForRealDraws() {
 
-    timeMachine = new TimeMachine(RealDraws.getRealDraws(), 100);
+    timeMachine = new TimeMachine(RealDraws.getRealDraws(), Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
 
-    assertAlgorithmsStatistics();
+    assertAlgorithmsStatistics("REAL");
   }
 }

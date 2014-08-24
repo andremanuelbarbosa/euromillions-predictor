@@ -18,7 +18,7 @@ public abstract class AlgorithmIntegrationTest extends EuroMillionsPredictorInte
   private static final Pattern BET_PATTERN = Pattern
       .compile("^([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) [*]([0-9]{2}) ([0-9]{2})[*]$");
 
-  static final Snapshot FULL_SNAPSHOT = new Snapshot(RealDraws.getRealDraws());
+  protected static final Snapshot FULL_SNAPSHOT = new Snapshot(RealDraws.getRealDraws());
 
   void assertNextBet(Algorithm algorithm) {
 

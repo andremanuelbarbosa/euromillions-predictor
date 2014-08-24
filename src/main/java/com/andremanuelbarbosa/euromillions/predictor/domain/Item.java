@@ -1,6 +1,7 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -15,13 +16,15 @@ public abstract class Item implements Comparable<Item> {
   private final ItemType itemType;
   private final int interval;
   private final double relativeFreq;
+  private final List<Integer> intervals;
 
-  public Item(int id, ItemType itemType, int interval, double relativeFreq) {
+  public Item(int id, ItemType itemType, int interval, double relativeFreq, List<Integer> intervals) {
 
     this.id = id;
     this.itemType = itemType;
     this.interval = interval;
     this.relativeFreq = relativeFreq;
+    this.intervals = intervals;
   }
 
   @Override
@@ -29,6 +32,8 @@ public abstract class Item implements Comparable<Item> {
 
     return id - item.getId();
   }
+
+  public abstract double getAverageInterval();
 
   public int getId() {
 
@@ -53,6 +58,11 @@ public abstract class Item implements Comparable<Item> {
   public String getStatisticsLine() {
 
     return String.format("%6s | %8s | %s", id, interval, DECIMAL_FORMAT_RELATIVE_FREQ.format(relativeFreq));
+  }
+
+  public List<Integer> getIntervals() {
+
+    return intervals;
   }
 
   @Override
