@@ -20,12 +20,17 @@ public class SequenceLoessInterpolationAlgorithm extends SequenceInterpolationAl
 
     if (valuesPolynomialX.length < 2) {
 
-      nextValue = draws.size();
+      nextValue = (double) draws.size();
 
     } else {
 
       nextValue = new LoessInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(
           item.getIntervals().size());
+
+      if (Double.isNaN(nextValue)) {
+
+        nextValue = (double) draws.size();
+      }
     }
   }
 }
