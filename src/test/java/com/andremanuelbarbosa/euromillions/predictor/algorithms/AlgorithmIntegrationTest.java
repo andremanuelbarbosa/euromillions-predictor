@@ -26,7 +26,7 @@ public abstract class AlgorithmIntegrationTest extends EuroMillionsPredictorInte
 
     assertNotNull(bet);
 
-    System.out.println(String.format("%63s %22s", algorithm.getClass().getSimpleName(), bet.toString()));
+    System.out.println(String.format("%63s  %22s", algorithm.getClass().getSimpleName(), bet.toString()));
 
     for (Star star : FULL_SNAPSHOT.getStars()) {
 
