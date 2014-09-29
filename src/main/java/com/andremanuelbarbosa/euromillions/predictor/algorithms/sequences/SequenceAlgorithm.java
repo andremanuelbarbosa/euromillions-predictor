@@ -7,14 +7,14 @@ import java.util.Map;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
-abstract class SequenceAlgorithm {
+public abstract class SequenceAlgorithm {
 
-  final Item item;
-  final List<? extends Draw> draws;
+  protected final Item item;
+  protected final List<? extends Draw> draws;
 
-  final Map<Integer, Integer> valuesFreq = new HashMap<>();
+  protected final Map<Integer, Integer> valuesFreq = new HashMap<>();
 
-  double nextValue;
+  protected double nextValue;
 
   public SequenceAlgorithm(Item item, List<? extends Draw> draws) {
 
@@ -25,7 +25,7 @@ abstract class SequenceAlgorithm {
     calculateNextValue();
   }
 
-  abstract void calculateNextValue();
+  protected abstract void calculateNextValue();
 
   public double getNextValue() {
 

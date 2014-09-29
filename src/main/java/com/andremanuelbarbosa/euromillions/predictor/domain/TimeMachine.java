@@ -154,7 +154,7 @@ public class TimeMachine {
 
     StringBuilder stringBuilder = new StringBuilder(title);
 
-    for (int i = title.length(); i < 54; i++) {
+    for (int i = title.length(); i < 53; i++) {
 
       stringBuilder.append(" ");
     }
@@ -163,7 +163,7 @@ public class TimeMachine {
 
     for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
 
-      System.out.println(String.format("%63s %3s %4s %3s %7s", algorithmClass.getSimpleName(),
+      System.out.println(String.format("%62s %3s %4s %3s %7s", algorithmClass.getSimpleName(),
           algorithmsPointsSum.get(algorithmClass).toString(), algorithmsModePoints.get(algorithmClass).toString(),
           algorithmsMaximumPoints.get(algorithmClass).toString(),
           DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass))));

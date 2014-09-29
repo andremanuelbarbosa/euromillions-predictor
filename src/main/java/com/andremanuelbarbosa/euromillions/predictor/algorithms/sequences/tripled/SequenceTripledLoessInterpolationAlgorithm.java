@@ -1,4 +1,4 @@
-package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
+package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.tripled;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.apache.commons.math3.analysis.interpolation.LoessInterpolator;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
-public class SequenceLoessInterpolationAlgorithm extends SequenceInterpolationAlgorithm {
+public class SequenceTripledLoessInterpolationAlgorithm extends SequenceTripledInterpolationAlgorithm {
 
-  public SequenceLoessInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
+  public SequenceTripledLoessInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
 
     super(item, draws);
   }

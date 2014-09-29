@@ -2,6 +2,7 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
@@ -21,6 +22,7 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
   }
 
   @Test
+  @Ignore
   public void shouldReturnAlgorithmsStatisticsForRandomDraws() {
 
     timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(),

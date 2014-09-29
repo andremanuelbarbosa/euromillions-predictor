@@ -1,4 +1,4 @@
-package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
+package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.cyclic;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
-public class SequenceSplineInterpolationAlgorithm extends SequenceInterpolationAlgorithm {
+public class SequenceCyclicSplineInterpolationAlgorithm extends SequenceCyclicInterpolationAlgorithm {
 
-  public SequenceSplineInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
+  public SequenceCyclicSplineInterpolationAlgorithm(Item item, List<? extends Draw> draws) {
 
     super(item, draws);
   }

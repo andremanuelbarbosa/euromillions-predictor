@@ -4,9 +4,9 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.Sequen
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 
-public class IntervalSequenceIntervalDividedDifferenceInterpolationAlgorithm extends Algorithm {
+public class IntervalSequenceDividedDifferenceInterpolationAlgorithm extends Algorithm {
 
-  public IntervalSequenceIntervalDividedDifferenceInterpolationAlgorithm(Snapshot snapshot) {
+  public IntervalSequenceDividedDifferenceInterpolationAlgorithm(Snapshot snapshot) {
 
     super(snapshot);
   }

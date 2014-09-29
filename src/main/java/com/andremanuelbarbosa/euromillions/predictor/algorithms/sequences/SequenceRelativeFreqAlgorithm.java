@@ -12,7 +12,7 @@ public class SequenceRelativeFreqAlgorithm extends SequenceAlgorithm {
     super(item, draws);
   }
 
-  void calculateNextValue() {
+  protected void calculateNextValue() {
 
     nextValue = 0.0;
 
