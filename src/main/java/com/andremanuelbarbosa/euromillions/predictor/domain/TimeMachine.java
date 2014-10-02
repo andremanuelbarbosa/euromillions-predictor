@@ -159,14 +159,15 @@ public class TimeMachine {
       stringBuilder.append(" ");
     }
 
-    System.out.println(stringBuilder.toString() + "ALGORITHM SUM MODE MAX AVERAGE");
+    System.out.println(stringBuilder.toString() + "ALGORITHM SUM MODE MAX AVERAGE                 DISTRIBUTED FREQ");
 
     for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
 
-      System.out.println(String.format("%62s %3s %4s %3s %7s", algorithmClass.getSimpleName(),
+      System.out.println(String.format("%62s %3s %4s %3s %7s %32s", algorithmClass.getSimpleName(),
           algorithmsPointsSum.get(algorithmClass).toString(), algorithmsModePoints.get(algorithmClass).toString(),
           algorithmsMaximumPoints.get(algorithmClass).toString(),
-          DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass))));
+          DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass)),
+          algorithmsPoints.get(algorithmClass).toString()));
     }
   }
 }
