@@ -20,6 +20,8 @@ public class TimeMachine {
   private final Map<Class<? extends Algorithm>, Integer> algorithmsMaximumPoints = new HashMap<Class<? extends Algorithm>, Integer>();
   private final Map<Class<? extends Algorithm>, Double> algorithmsAveragePoints = new HashMap<Class<? extends Algorithm>, Double>();
 
+  private final Map<Class<? extends Algorithm>, Integer> algorithmsWinningPointsSum = new HashMap<Class<? extends Algorithm>, Integer>();
+
   private final Map<Class<? extends Algorithm>, HashMap<Integer, Integer>> algorithmsPoints = new HashMap<Class<? extends Algorithm>, HashMap<Integer, Integer>>();
 
   private final List<Snapshot> snapshots = new LinkedList<>();
@@ -98,6 +100,14 @@ public class TimeMachine {
           algorithmsPointsSum.containsKey(algorithm.getClass()) ? algorithmsPointsSum.get(algorithm.getClass())
               + points : points);
 
+      if (bet.isWinner(snapshot.getLastDraw())) {
+
+        algorithmsWinningPointsSum.put(
+            algorithm.getClass(),
+            algorithmsWinningPointsSum.containsKey(algorithm.getClass()) ? algorithmsWinningPointsSum.get(algorithm
+                .getClass()) + points : points);
+      }
+
       if (!algorithmsMaximumPoints.containsKey(algorithm.getClass())
           || points > algorithmsMaximumPoints.get(algorithm.getClass())) {
 
@@ -159,14 +169,16 @@ public class TimeMachine {
       stringBuilder.append(" ");
     }
 
-    System.out.println(stringBuilder.toString() + "ALGORITHM SUM MODE MAX AVERAGE                 DISTRIBUTED FREQ");
+    System.out.println(stringBuilder.toString()
+        + "ALGORITHM SUM MODE MAX AVERAGE WIN_SUM                 DISTRIBUTED_FREQ");
 
     for (Class<? extends Algorithm> algorithmClass : algorithmsPointsSum.keySet()) {
 
-      System.out.println(String.format("%62s %3s %4s %3s %7s %32s", algorithmClass.getSimpleName(),
+      System.out.println(String.format("%62s %3s %4s %3s %7s %7s %32s", algorithmClass.getSimpleName(),
           algorithmsPointsSum.get(algorithmClass).toString(), algorithmsModePoints.get(algorithmClass).toString(),
-          algorithmsMaximumPoints.get(algorithmClass).toString(),
-          DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass)),
+          algorithmsMaximumPoints.get(algorithmClass).toString(), DECIMAL_FORMAT_AVERAGE_POINTS
+              .format(algorithmsAveragePoints.get(algorithmClass)), algorithmsWinningPointsSum
+              .containsKey(algorithmClass) ? algorithmsWinningPointsSum.get(algorithmClass).toString() : "0",
           algorithmsPoints.get(algorithmClass).toString()));
     }
   }

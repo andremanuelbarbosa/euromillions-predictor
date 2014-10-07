@@ -62,6 +62,35 @@ public class Bet extends Result {
     return points;
   }
 
+  public boolean isWinner(Result result) {
+
+    int points = getPoints(result);
+
+    if (points > 2) {
+
+      return true;
+
+    } else if (points == 2) {
+
+      int numberPoints = 0;
+
+      for (Integer number : numbers) {
+
+        if (result.getNumbers().contains(number)) {
+
+          numberPoints++;
+        }
+      }
+
+      if (numberPoints >= 2) {
+
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @Override
   public boolean equals(Object o) {
 
