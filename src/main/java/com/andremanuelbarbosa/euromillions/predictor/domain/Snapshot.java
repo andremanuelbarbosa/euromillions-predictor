@@ -12,15 +12,18 @@ public class Snapshot implements Runnable {
     public static final int DRAWS_COUNT_BEFORE_TWELVE_STARS = 940;
 
     final List<? extends Draw> draws;
+    final Draw lastDraw;
+
     final List<Star> stars = new LinkedList<>();
     final List<Number> numbers = new LinkedList<>();
 
     int starsMaximumInterval;
     int numbersMaximumInterval;
 
-    public Snapshot(List<? extends Draw> draws) {
+    public Snapshot(List<? extends Draw> draws, Draw lastDraw) {
 
         this.draws = draws;
+        this.lastDraw = lastDraw;
     }
 
     private int getFreq(int id, ItemType itemType) {
@@ -151,6 +154,11 @@ public class Snapshot implements Runnable {
         return draws;
     }
 
+    public Draw getLastDraw() {
+
+        return lastDraw;
+    }
+
     public List<Star> getStars() {
 
         return stars;
@@ -159,11 +167,6 @@ public class Snapshot implements Runnable {
     public List<Number> getNumbers() {
 
         return numbers;
-    }
-
-    public Draw getLastDraw() {
-
-        return draws.get(draws.size() - 1);
     }
 
     private int getItemMaximumInterval(ItemType itemType) {

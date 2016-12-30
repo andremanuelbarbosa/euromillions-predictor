@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import com.andremanuelbarbosa.euromillions.predictor.algorithms.RelativeFreqAndReverseRelativeIntervalAlgorithm;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

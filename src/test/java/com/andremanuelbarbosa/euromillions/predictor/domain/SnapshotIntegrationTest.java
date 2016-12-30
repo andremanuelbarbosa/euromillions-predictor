@@ -42,7 +42,7 @@ public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTes
     @Test
     public void shouldCreateSnapshotFromDraws() {
 
-        final Snapshot snapshot = new Snapshot(RealDraws.getRealDraws());
+        final Snapshot snapshot = new Snapshot(RealDraws.getRealDraws(), RealDraws.getRealDraws().get(RealDraws.getRealDraws().size() - 1));
 
         assertStarsAndNumbers(snapshot);
 

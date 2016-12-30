@@ -17,7 +17,7 @@ public abstract class AlgorithmIntegrationTest extends EuroMillionsPredictorInte
         .compile("^([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) [*]([0-9]{2}) ([0-9]{2})[*]$");
 
     protected static final List<RealDraw> REAL_DRAWS = RealDraws.getRealDraws();
-    protected static final Snapshot FULL_SNAPSHOT = new Snapshot(REAL_DRAWS);
+    protected static final Snapshot FULL_SNAPSHOT = new Snapshot(REAL_DRAWS, REAL_DRAWS.get(REAL_DRAWS.size() - 1));
 
     @BeforeClass
     public static void setUpBeforeClass() {

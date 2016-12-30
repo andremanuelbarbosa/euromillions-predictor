@@ -33,7 +33,7 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
     public void shouldReturnAlgorithmsStatisticsForRealDraws() {
 
         timeMachine = new TimeMachine(RealDraws.getRealDraws());
-//        timeMachine = new TimeMachine(RealDraws.getRealDraws(), Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
+//        timeMachine = new TimeMachine(RealDraws.getRealDraws(), RealDraws.getRealDraws().size() - 1);
 
         assertAlgorithmsStatistics("REAL");
     }

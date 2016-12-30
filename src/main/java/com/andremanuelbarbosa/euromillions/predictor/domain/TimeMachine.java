@@ -71,9 +71,9 @@ public class TimeMachine {
 
     private void loadSnapshots() {
 
-        for (int i = minimumDrawsIndex; i < (draws.size() - 1); i++) {
+        for (int i = minimumDrawsIndex; i < draws.size(); i++) {
 
-            final Snapshot snapshot = new Snapshot(draws.subList(0, (i + 1)));
+            final Snapshot snapshot = new Snapshot(draws.subList(0, i), draws.get(i));
 
             snapshots.add(snapshot);
             executorServiceSnapshots.execute(snapshot);
@@ -144,13 +144,12 @@ public class TimeMachine {
 
     public void showAlgorithmsPoints(String title) {
 
-        System.out.println("Draws: " + draws.size() + ", Algorithms: " + algorithmClasses.size() + ", Execution Time: " + DurationFormatUtils.formatDuration(executionTime, "m'm' s's'") + ".");
-        System.out.println("");
-        System.out.println("                                                         ALGORITHM MODE MAX AVERAGE WINS  % STARS_DISTRIBUTED_FREQ          NUMBERS_DISTRIBUTED_FREQ                            DISTRIBUTED_FREQ");
+        System.out.println("##### Draws: " + draws.size() + ", Snapshots: " + snapshots.size() + ", Algorithms: " + algorithmClasses.size() + ", Execution Time: " + DurationFormatUtils.formatDuration(executionTime, "m'm' s's'") + ".");
+        System.out.println("                                                             ALGORITHM MODE MAX AVERAGE WINS (%) STARS_DISTRIBUTED_FREQ          NUMBERS_DISTRIBUTED_FREQ                            DISTRIBUTED_FREQ");
 
         algorithmClasses.forEach(algorithmClass -> {
 
-            System.out.println(String.format("%66s %4s %3s %7s %4s %2s %22s %33s %43s",
+            System.out.println(String.format("    %66s %4s %3s %7s %4s %3s %22s %33s %43s",
                 algorithmClass.getSimpleName(),
                 algorithmsModePoints.get(algorithmClass).toString(),
                 algorithmsMaximumPoints.get(algorithmClass).toString(),
