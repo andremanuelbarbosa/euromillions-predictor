@@ -18,7 +18,7 @@ public class SequenceLoessInterpolationAlgorithm extends SequenceInterpolationAl
 
     loadValuesPolynomial();
 
-    if (valuesPolynomialX.length < 2) {
+    if (valuesPolynomialX.length < 7) {
 
       nextValue = (double) draws.size();
 

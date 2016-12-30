@@ -2,20 +2,22 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 
 import java.util.List;
 
+import static com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS;
+import static com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot.DRAWS_COUNT_BEFORE_TWELVE_STARS;
+
 public class Star extends Item {
 
-  private static final double AVERAGE_INTERVAL = 4.5;
+    public static final int COUNT = 12;
+    public static final int COUNT_PER_DRAW = 2;
 
-  public static final int COUNT = 11;
+    public Star(int id, int interval, int freq, double relativeFreq, List<Integer> intervals) {
 
-  public Star(int id, int interval, double relativeFreq, List<Integer> intervals) {
+        super(id, ItemType.STAR, interval, freq, relativeFreq, intervals);
+    }
 
-    super(id, ItemType.STAR, interval, relativeFreq, intervals);
-  }
+    @Override
+    public double getAverageInterval(int numDraws) {
 
-  @Override
-  public double getAverageInterval() {
-
-    return AVERAGE_INTERVAL;
-  }
+        return (double) (numDraws <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (numDraws <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : 12)) / COUNT_PER_DRAW;
+    }
 }

@@ -18,7 +18,7 @@ public class SequenceSplineInterpolationAlgorithm extends SequenceInterpolationA
 
     loadValuesPolynomial();
 
-    if (valuesPolynomialX.length < 2) {
+    if (valuesPolynomialX.length < 3) {
 
       nextValue = draws.size();
 

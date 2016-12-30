@@ -9,61 +9,54 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 
 public abstract class SequenceAlgorithm {
 
-  protected final Item item;
-  protected final List<? extends Draw> draws;
+    protected final Item item;
+    protected final List<? extends Draw> draws;
 
-  protected final Map<Integer, Integer> valuesFreq = new HashMap<>();
+    protected final Map<Integer, Integer> valuesFreq = new HashMap<>();
 
-  protected double nextValue;
+    protected double nextValue;
 
-  public SequenceAlgorithm(Item item, List<? extends Draw> draws) {
+    public SequenceAlgorithm(Item item, List<? extends Draw> draws) {
 
-    this.item = item;
-    this.draws = draws;
+        this.item = item;
+        this.draws = draws;
 
-    loadValuesFreq();
-    calculateNextValue();
-  }
-
-  protected abstract void calculateNextValue();
-
-  public double getNextValue() {
-
-    return nextValue;
-  }
-
-  Integer getMaximumValue() {
-
-    Integer maximumValue = 0;
-
-    for (Integer value : item.getIntervals()) {
-
-      if (value > maximumValue) {
-
-        maximumValue = value;
-      }
+        loadValuesFreq();
+        calculateNextValue();
     }
 
-    return maximumValue;
-  }
+    protected abstract void calculateNextValue();
 
-  public Map<Integer, Integer> getValuesFreq() {
+    public double getNextValue() {
 
-    return valuesFreq;
-  }
-
-  void loadValuesFreq() {
-
-    for (Integer value : item.getIntervals()) {
-
-      if (!valuesFreq.containsKey(value)) {
-
-        valuesFreq.put(value, 1);
-
-      } else {
-
-        valuesFreq.put(value, valuesFreq.get(value) + 1);
-      }
+        return nextValue;
     }
-  }
+
+    Integer getMaximumValue() {
+
+        Integer maximumValue = 0;
+
+        for (Integer value : item.getIntervals()) {
+
+            if (value > maximumValue) {
+
+                maximumValue = value;
+            }
+        }
+
+        return maximumValue;
+    }
+
+    public Map<Integer, Integer> getValuesFreq() {
+
+        return valuesFreq;
+    }
+
+    void loadValuesFreq() {
+
+        for (Integer value : item.getIntervals()) {
+
+            valuesFreq.put(value, valuesFreq.containsKey(value) ? valuesFreq.get(value) + 1 : 1);
+        }
+    }
 }

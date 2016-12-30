@@ -9,41 +9,43 @@ import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegr
 
 public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
-  private void assertStarsAndNumbers(Snapshot snapshot) {
+    private void assertStarsAndNumbers(Snapshot snapshot) {
 
-    assertEquals(snapshot.getStars().size(), Star.COUNT);
-    assertEquals(snapshot.getNumbers().size(), Number.COUNT);
+        assertEquals(snapshot.getStars().size(), Star.COUNT);
+        assertEquals(snapshot.getNumbers().size(), Number.COUNT);
 
-    int starIndex = random.nextInt(Star.COUNT);
-    int starIndexInterval = snapshot.getDraws().size() - snapshot.getStars().get(starIndex).getInterval() - 1;
+        int starIndex = random.nextInt(Star.COUNT);
+        int starIndexInterval = snapshot.getDraws().size() - snapshot.getStars().get(starIndex).getInterval() - 1;
 
-    int numberIndex = random.nextInt(Number.COUNT);
-    int numberIndexInterval = snapshot.getDraws().size() - snapshot.getNumbers().get(numberIndex).getInterval() - 1;
+        int numberIndex = random.nextInt(Number.COUNT);
+        int numberIndexInterval = snapshot.getDraws().size() - snapshot.getNumbers().get(numberIndex).getInterval() - 1;
 
-    assertTrue(snapshot.getDraws().get(starIndexInterval).getStars()
-        .contains(snapshot.getStars().get(starIndex).getId()));
-    assertTrue(snapshot.getDraws().get(numberIndexInterval).getNumbers()
-        .contains(snapshot.getNumbers().get(numberIndex).getId()));
+        assertTrue(snapshot.getDraws().get(starIndexInterval).getStars()
+            .contains(snapshot.getStars().get(starIndex).getId()));
+        assertTrue(snapshot.getDraws().get(numberIndexInterval).getNumbers()
+            .contains(snapshot.getNumbers().get(numberIndex).getId()));
 
-    assertTrue(snapshot.getStars().get(starIndex).getRelativeFreq() > 0);
-    assertTrue(snapshot.getNumbers().get(numberIndex).getRelativeFreq() > 0);
+        assertTrue(snapshot.getStars().get(starIndex).getRelativeFreq() > 0);
+        assertTrue(snapshot.getNumbers().get(numberIndex).getRelativeFreq() > 0);
 
-    int starsMaximumInterval = snapshot.getStarsMaximumInterval();
-    for (Star star : snapshot.getStars()) {
-      assertTrue(starsMaximumInterval >= star.getInterval());
+        int starsMaximumInterval = snapshot.getStarsMaximumInterval();
+        for (Star star : snapshot.getStars()) {
+            assertTrue(starsMaximumInterval >= star.getInterval());
+        }
+
+        int numbersMaximumInterval = snapshot.getNumbersMaximumInterval();
+        for (Number number : snapshot.getNumbers()) {
+            assertTrue(numbersMaximumInterval >= number.getInterval());
+        }
     }
 
-    int numbersMaximumInterval = snapshot.getNumbersMaximumInterval();
-    for (Number number : snapshot.getNumbers()) {
-      assertTrue(numbersMaximumInterval >= number.getInterval());
+    @Test
+    public void shouldCreateSnapshotFromDraws() {
+
+        final Snapshot snapshot = new Snapshot(RealDraws.getRealDraws());
+
+        assertStarsAndNumbers(snapshot);
+
+        snapshot.showStatistics();
     }
-
-    System.out.println(snapshot.getStars().get(0).getIntervals().toString());
-  }
-
-  @Test
-  public void shouldCreateSnapshotFromDraws() {
-
-    assertStarsAndNumbers(new Snapshot(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws()));
-  }
 }

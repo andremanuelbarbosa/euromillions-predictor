@@ -1,41 +1,40 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
-import static org.junit.Assert.assertNotNull;
-
+import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
+import static org.junit.Assert.assertNotNull;
 
 public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
-  private TimeMachine timeMachine;
+    private TimeMachine timeMachine;
 
-  private void assertAlgorithmsStatistics(String title) {
+    private void assertAlgorithmsStatistics(String title) {
 
-    assertNotNull(timeMachine.getAlgorithmsPointsSum());
-    assertNotNull(timeMachine.getAlgorithmsMaximumPoints());
-    assertNotNull(timeMachine.getAlgorithmsAveragePoints());
+        assertNotNull(timeMachine.getAlgorithmsPointsSum());
+        assertNotNull(timeMachine.getAlgorithmsMaximumPoints());
+        assertNotNull(timeMachine.getAlgorithmsAveragePoints());
 
-    timeMachine.showAlgorithmsPoints(title);
-    System.out.println("");
-  }
+        timeMachine.showAlgorithmsPoints(title);
+    }
 
-  @Test
-  @Ignore
-  public void shouldReturnAlgorithmsStatisticsForRandomDraws() {
+    @Test
+    @Ignore
+    public void shouldReturnAlgorithmsStatisticsForRandomDraws() {
 
-    timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(),
-        Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
+        timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(),
+            Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
 
-    assertAlgorithmsStatistics("RANDOM");
-  }
+        assertAlgorithmsStatistics("RANDOM");
+    }
 
-  @Test
-  public void shouldReturnAlgorithmsStatisticsForRealDraws() {
+    @Test
+    public void shouldReturnAlgorithmsStatisticsForRealDraws() {
 
-    timeMachine = new TimeMachine(RealDraws.getRealDraws(), Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
+        timeMachine = new TimeMachine(RealDraws.getRealDraws());
+//        timeMachine = new TimeMachine(RealDraws.getRealDraws(), Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
 
-    assertAlgorithmsStatistics("REAL");
-  }
+        assertAlgorithmsStatistics("REAL");
+    }
 }

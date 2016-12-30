@@ -29,7 +29,7 @@ public class SequenceLinearInterpolationAlgorithmTest extends AlgorithmIntegrati
       intervals.add(item);
     }
 
-    sequenceLinearInterpolationAlgorithm = new SequenceLinearInterpolationAlgorithm(new Star(1, 3, 0.025, intervals),
+    sequenceLinearInterpolationAlgorithm = new SequenceLinearInterpolationAlgorithm(new Star(1, 3, 1, 0.025, intervals),
         FULL_SNAPSHOT.getDraws());
   }
 

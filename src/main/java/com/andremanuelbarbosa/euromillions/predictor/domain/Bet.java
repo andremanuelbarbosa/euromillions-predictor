@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import com.google.common.collect.Sets;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -7,137 +8,124 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 
 public class Bet extends Result {
 
-  private final Algorithm algorithm;
+    private final Algorithm algorithm;
 
-  public Bet(Algorithm algorithm) {
+    public Bet(Algorithm algorithm) {
 
-    this.algorithm = algorithm;
-  }
-
-  public void addStar(Integer star) {
-
-    if (stars.size() >= STARS_COUNT) {
-
-      throw new IllegalStateException("Reached the limit of Stars in the Bet : " + stars.toString());
+        this.algorithm = algorithm;
     }
 
-    stars.add(star);
-  }
+    public void addStar(Integer star) {
 
-  public void addNumber(Integer number) {
+        if (stars.size() >= STARS_COUNT) {
 
-    if (numbers.size() >= NUMBERS_COUNT) {
-
-      throw new IllegalStateException("Reached the limit of Numbers in the Bet : " + numbers.toString());
-    }
-
-    numbers.add(number);
-  }
-
-  public Algorithm getAlgorithm() {
-
-    return algorithm;
-  }
-
-  public int getPoints(Result result) {
-
-    int points = 0;
-
-    for (Integer star : stars) {
-
-      if (result.getStars().contains(star)) {
-
-        points++;
-      }
-    }
-
-    for (Integer number : numbers) {
-
-      if (result.getNumbers().contains(number)) {
-
-        points++;
-      }
-    }
-
-    return points;
-  }
-
-  public boolean isWinner(Result result) {
-
-    int points = getPoints(result);
-
-    if (points > 2) {
-
-      return true;
-
-    } else if (points == 2) {
-
-      int numberPoints = 0;
-
-      for (Integer number : numbers) {
-
-        if (result.getNumbers().contains(number)) {
-
-          numberPoints++;
+            throw new IllegalStateException("Reached the limit of Stars in the Bet : " + stars.toString());
         }
-      }
 
-      if (numberPoints >= 2) {
-
-        return true;
-      }
+        stars.add(star);
     }
 
-    return false;
-  }
+    public void addNumber(Integer number) {
 
-  @Override
-  public boolean equals(Object o) {
+        if (numbers.size() >= NUMBERS_COUNT) {
 
-    return EqualsBuilder.reflectionEquals(this, o);
-  }
+            throw new IllegalStateException("Reached the limit of Numbers in the Bet : " + numbers.toString());
+        }
 
-  @Override
-  public int hashCode() {
-
-    return HashCodeBuilder.reflectionHashCode(this);
-  }
-
-  @Override
-  public String toString() {
-
-    if (stars.size() != STARS_COUNT || numbers.size() != NUMBERS_COUNT) {
-
-      throw new IllegalStateException("Bet does not have the correct amount of Stars or Numbers : " + stars.toString()
-          + " - " + numbers.toString());
+        numbers.add(number);
     }
 
-    StringBuilder stringBuilder = new StringBuilder();
+    public Algorithm getAlgorithm() {
 
-    for (Integer number : numbers) {
-
-      stringBuilder.append(String.format("%2s", number).replace(' ', '0'));
-      stringBuilder.append(" ");
+        return algorithm;
     }
 
-    int startIndex = 0;
+    public int getStarsPoints(Result result) {
 
-    stringBuilder.append("*");
+        return Sets.intersection(stars, result.getStars()).size();
+    }
 
-    for (Integer star : stars) {
+    public int getNumbersPoints(Result result) {
 
-      stringBuilder.append(String.format("%2s", star).replace(' ', '0'));
+        return Sets.intersection(numbers, result.getNumbers()).size();
+    }
 
-      if (++startIndex > 1) {
+    public int getPoints(Result result) {
+
+        return getStarsPoints(result) + getNumbersPoints(result);
+    }
+
+    public boolean isWinner(Result result) {
+
+        int matchingStars = 0;
+        int matchingNumbers = 0;
+
+        for (Integer star : stars) {
+
+            if (result.getStars().contains(star)) {
+
+                matchingStars++;
+            }
+        }
+
+        for (Integer number : numbers) {
+
+            if (result.getNumbers().contains(number)) {
+
+                matchingNumbers++;
+            }
+        }
+
+        return matchingNumbers >= 2 || (matchingStars == 2 && matchingNumbers >= 1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        return EqualsBuilder.reflectionEquals(this, o);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    @Override
+    public String toString() {
+
+        if (stars.size() != STARS_COUNT || numbers.size() != NUMBERS_COUNT) {
+
+            throw new IllegalStateException("Bet does not have the correct amount of Stars or Numbers : " + stars.toString()
+                + " - " + numbers.toString());
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Integer number : numbers) {
+
+            stringBuilder.append(String.format("%2s", number).replace(' ', '0'));
+            stringBuilder.append(" ");
+        }
+
+        int startIndex = 0;
 
         stringBuilder.append("*");
 
-      } else {
+        for (Integer star : stars) {
 
-        stringBuilder.append(" ");
-      }
+            stringBuilder.append(String.format("%2s", star).replace(' ', '0'));
+
+            if (++startIndex > 1) {
+
+                stringBuilder.append("*");
+
+            } else {
+
+                stringBuilder.append(" ");
+            }
+        }
+
+        return stringBuilder.toString();
     }
-
-    return stringBuilder.toString();
-  }
 }

@@ -3,216 +3,224 @@ package com.andremanuelbarbosa.euromillions.predictor.domain;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Snapshot {
+/**
+ * Snapshot is the representation of the metrics based on a set of Draws
+ */
+public class Snapshot implements Runnable {
 
-  public static final int DRAWS_COUNT_BEFORE_ELEVEN_STARS = 378;
+    public static final int DRAWS_COUNT_BEFORE_ELEVEN_STARS = 378;
+    public static final int DRAWS_COUNT_BEFORE_TWELVE_STARS = 940;
 
-  final List<? extends Draw> draws;
-  final List<Star> stars = new LinkedList<>();
-  final List<Number> numbers = new LinkedList<>();
+    final List<? extends Draw> draws;
+    final List<Star> stars = new LinkedList<>();
+    final List<Number> numbers = new LinkedList<>();
 
-  int starsMaximumInterval;
-  int numbersMaximumInterval;
+    int starsMaximumInterval;
+    int numbersMaximumInterval;
 
-  public Snapshot(List<? extends Draw> draws) {
+    public Snapshot(List<? extends Draw> draws) {
 
-    this.draws = draws;
+        this.draws = draws;
+    }
 
-    loadStarsAndNumbers();
-  }
+    private int getFreq(int id, ItemType itemType) {
 
-  private int getFreq(int id, ItemType itemType) {
+        int freq = 0;
 
-    int freq = 0;
+        for (Draw draw : draws) {
 
-    for (Draw draw : draws) {
+            if (itemType == ItemType.STAR) {
 
-      if (itemType == ItemType.STAR) {
+                if (draw.getStars().contains(id)) {
 
-        if (draw.getNumbers().contains(id)) {
+                    freq++;
+                }
 
-          freq++;
+            } else if (itemType == ItemType.NUMBER) {
+
+                if (draw.getNumbers().contains(id)) {
+
+                    freq++;
+                }
+            }
         }
 
-      } else if (itemType == ItemType.NUMBER) {
+        return freq;
+    }
 
-        if (draw.getNumbers().contains(id)) {
+    private int getInterval(int id, ItemType itemType) {
 
-          freq++;
+        int interval = 0;
+
+        for (int i = (draws.size() - 1); i >= 0; i--) {
+
+            if ((itemType == ItemType.STAR && draws.get(i).getStars().contains(id))
+                || (itemType == ItemType.NUMBER && draws.get(i).getNumbers().contains(id))) {
+
+                break;
+
+            } else {
+
+                interval++;
+            }
         }
-      }
+
+        return interval;
     }
 
-    return freq;
-  }
+    private List<Integer> getIntervals(int id, ItemType itemType) {
 
-  private int getInterval(int id, ItemType itemType) {
+        int index = 0;
 
-    int interval = 0;
+        List<Integer> intervals = new LinkedList<>();
 
-    for (int i = (draws.size() - 1); i >= 0; i--) {
+        if (itemType == ItemType.STAR) {
 
-      if ((itemType == ItemType.STAR && draws.get(i).getStars().contains(id))
-          || (itemType == ItemType.NUMBER && draws.get(i).getNumbers().contains(id))) {
+            while (index < draws.size() && !draws.get(index++).getStars().contains(id));
 
-        break;
+            index++;
+            int interval = 0;
 
-      } else {
+            for (int i = index; i < draws.size(); i++) {
 
-        interval++;
-      }
-    }
+                if (draws.get(i).getStars().contains(id)) {
 
-    return interval;
-  }
+                    intervals.add(interval);
 
-  private List<Integer> getIntervals(int id, ItemType itemType) {
+                    interval = 0;
 
-    int index = 0;
+                } else {
 
-    List<Integer> intervals = new LinkedList<>();
+                    interval++;
+                }
+            }
 
-    if (itemType == ItemType.STAR) {
+        } else if (itemType == ItemType.NUMBER) {
 
-      while (index < draws.size() && !draws.get(index++).getStars().contains(id))
-        ;
+            while (index++ < draws.size() && !draws.get(index).getNumbers().contains(id));
 
-      index++;
-      int interval = 0;
+            index++;
+            int interval = 0;
 
-      for (int i = index; i < draws.size(); i++) {
+            for (int i = index; i < draws.size(); i++) {
 
-        if (draws.get(i).getStars().contains(id)) {
+                if (draws.get(i).getNumbers().contains(id)) {
 
-          intervals.add(interval);
+                    intervals.add(interval);
 
-          interval = 0;
+                    interval = 0;
 
-        } else {
+                } else {
 
-          interval++;
+                    interval++;
+                }
+            }
         }
-      }
 
-    } else if (itemType == ItemType.NUMBER) {
+        return intervals;
+    }
 
-      while (index++ < draws.size() && !draws.get(index).getNumbers().contains(id))
-        ;
+    @Override
+    public void run() {
 
-      index++;
-      int interval = 0;
+        loadStarsAndNumbers();
+    }
 
-      for (int i = index; i < draws.size(); i++) {
+    private void loadStarsAndNumbers() {
 
-        if (draws.get(i).getNumbers().contains(id)) {
+        for (int i = 1; i <= (draws.size() <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (draws.size() <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : 12)); i++) {
 
-          intervals.add(interval);
+            final int freq = getFreq(i, ItemType.STAR);
 
-          interval = 0;
-
-        } else {
-
-          interval++;
+            stars.add(new Star(i, getInterval(i, ItemType.STAR), freq, (double) freq / (draws.size() - (i <= 10 ? 0 : (i <= 11 ? DRAWS_COUNT_BEFORE_ELEVEN_STARS : DRAWS_COUNT_BEFORE_TWELVE_STARS))), getIntervals(i, ItemType.STAR)));
         }
-      }
-    }
 
-    return intervals;
-  }
+        for (int i = 1; i <= Number.COUNT; i++) {
 
-  private void loadStarsAndNumbers() {
+            final int freq = getFreq(i, ItemType.NUMBER);
 
-    for (int i = 1; i <= Star.COUNT; i++) {
-
-      stars.add(new Star(i, getInterval(i, ItemType.STAR), i < 10 ? (double) getFreq(i, ItemType.STAR) / draws.size()
-          : (double) getFreq(i, ItemType.STAR) / DRAWS_COUNT_BEFORE_ELEVEN_STARS, getIntervals(i, ItemType.STAR)));
-    }
-
-    for (int i = 1; i <= Number.COUNT; i++) {
-
-      numbers.add(new Number(i, getInterval(i, ItemType.NUMBER), (double) getFreq(i, ItemType.NUMBER) / draws.size(),
-          getIntervals(i, ItemType.NUMBER)));
-    }
-
-    starsMaximumInterval = getItemMaximumInterval(ItemType.STAR);
-    numbersMaximumInterval = getItemMaximumInterval(ItemType.NUMBER);
-  }
-
-  public List<? extends Draw> getDraws() {
-
-    return draws;
-  }
-
-  public List<Star> getStars() {
-
-    return stars;
-  }
-
-  public List<Number> getNumbers() {
-
-    return numbers;
-  }
-
-  public Draw getLastDraw() {
-
-    return draws.get(draws.size() - 1);
-  }
-
-  private int getItemMaximumInterval(ItemType itemType) {
-
-    int itemMaximumInterval = 0;
-
-    if (itemType == ItemType.STAR) {
-
-      for (Star star : stars) {
-
-        if (star.getInterval() > itemMaximumInterval) {
-
-          itemMaximumInterval = star.getInterval();
+            numbers.add(new Number(i, getInterval(i, ItemType.NUMBER), freq, (double) freq / draws.size(), getIntervals(i, ItemType.NUMBER)));
         }
-      }
 
-    } else if (itemType == ItemType.NUMBER) {
+        starsMaximumInterval = getItemMaximumInterval(ItemType.STAR);
+        numbersMaximumInterval = getItemMaximumInterval(ItemType.NUMBER);
+    }
 
-      for (Number mumber : numbers) {
+    public List<? extends Draw> getDraws() {
 
-        if (mumber.getInterval() > itemMaximumInterval) {
+        return draws;
+    }
 
-          itemMaximumInterval = mumber.getInterval();
+    public List<Star> getStars() {
+
+        return stars;
+    }
+
+    public List<Number> getNumbers() {
+
+        return numbers;
+    }
+
+    public Draw getLastDraw() {
+
+        return draws.get(draws.size() - 1);
+    }
+
+    private int getItemMaximumInterval(ItemType itemType) {
+
+        int itemMaximumInterval = 0;
+
+        if (itemType == ItemType.STAR) {
+
+            for (Star star : stars) {
+
+                if (star.getInterval() > itemMaximumInterval) {
+
+                    itemMaximumInterval = star.getInterval();
+                }
+            }
+
+        } else if (itemType == ItemType.NUMBER) {
+
+            for (Number mumber : numbers) {
+
+                if (mumber.getInterval() > itemMaximumInterval) {
+
+                    itemMaximumInterval = mumber.getInterval();
+                }
+            }
         }
-      }
+
+        return itemMaximumInterval;
     }
 
-    return itemMaximumInterval;
-  }
+    public int getStarsMaximumInterval() {
 
-  public int getStarsMaximumInterval() {
-
-    return starsMaximumInterval;
-  }
-
-  public int getNumbersMaximumInterval() {
-
-    return numbersMaximumInterval;
-  }
-
-  public void showStatistics() {
-
-    System.out.println("  STAR | INTERVAL | RELATIVE FREQ");
-    System.out.println("---------------------------------");
-
-    for (Star star : stars) {
-
-      System.out.println(star.getStatisticsLine());
+        return starsMaximumInterval;
     }
 
-    System.out.println("");
-    System.out.println("NUMBER | INTERVAL | RELATIVE FREQ");
-    System.out.println("---------------------------------");
+    public int getNumbersMaximumInterval() {
 
-    for (Number number : numbers) {
-
-      System.out.println(number.getStatisticsLine());
+        return numbersMaximumInterval;
     }
-  }
+
+    public void showStatistics() {
+
+        System.out.println("  STAR | INTERVAL | FREQ | RELATIVE FREQ");
+        System.out.println("----------------------------------------");
+
+        for (Star star : stars) {
+
+            System.out.println(star.getStatisticsLine());
+        }
+
+        System.out.println("");
+        System.out.println("NUMBER | INTERVAL | FREQ | RELATIVE FREQ");
+        System.out.println("----------------------------------------");
+
+        for (Number number : numbers) {
+
+            System.out.println(number.getStatisticsLine());
+        }
+    }
 }

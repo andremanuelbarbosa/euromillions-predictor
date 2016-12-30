@@ -18,7 +18,7 @@ public class SequenceCyclicSplineInterpolationAlgorithm extends SequenceCyclicIn
 
     loadValuesPolynomial();
 
-    if (valuesPolynomialX.length < 2) {
+    if (valuesPolynomialX.length <= 2) {
 
       nextValue = draws.size();
 

@@ -1,74 +1,70 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-
 public abstract class RealDraws {
 
-  public static final Date DATE_ELEVEN_STARS = new DateTime(2011, 5, 10, 0, 0, 0).toDate();
+    private static final String DRAWS_CSV = "src/main/resources/draws.csv";
 
-  private static final String DRAWS_CSV = "src/main/resources/draws.csv";
+    private static List<RealDraw> realDraws;
 
-  private static List<RealDraw> realDraws;
+    static {
 
-  static {
+        loadRealDraws();
+    }
 
-    loadRealDraws();
-  }
+    public static List<RealDraw> getRealDraws() {
 
-  public static List<RealDraw> getRealDraws() {
+        return realDraws;
+    }
 
-    return realDraws;
-  }
+    private static void loadRealDraws() {
 
-  private static void loadRealDraws() {
+        List<RealDraw> unorderedRealDraws = new LinkedList<>();
 
-    List<RealDraw> unorderedRealDraws = new LinkedList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(DRAWS_CSV))) {
 
-    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(DRAWS_CSV))) {
+            for (String line; (line = bufferedReader.readLine()) != null; ) {
 
-      for (String line; (line = bufferedReader.readLine()) != null;) {
+                if (!StringUtils.isEmpty(line)) {
 
-        if (!StringUtils.isEmpty(line)) {
+                    unorderedRealDraws.add(new RealDraw(line));
+                }
+            }
 
-          unorderedRealDraws.add(new RealDraw(line));
+        } catch (Exception e) {
+
+            throw new IllegalStateException(e);
         }
-      }
 
-    } catch (Exception e) {
-
-      throw new IllegalStateException(e);
+        realDraws = orderRealDraws(unorderedRealDraws);
     }
 
-    realDraws = orderRealDraws(unorderedRealDraws);
-  }
+    private static List<RealDraw> orderRealDraws(List<RealDraw> unorderedRealDraws) {
 
-  private static List<RealDraw> orderRealDraws(List<RealDraw> unorderedRealDraws) {
+        List<RealDraw> orderedRealDraws = new LinkedList<>();
 
-    List<RealDraw> orderedRealDraws = new LinkedList<>();
+        orderedRealDraws.add(unorderedRealDraws.get(0));
 
-    orderedRealDraws.add(unorderedRealDraws.get(0));
+        for (int i = 1; i < unorderedRealDraws.size(); i++) {
 
-    for (int i = 1; i < unorderedRealDraws.size(); i++) {
+            orderedRealDraws.add(unorderedRealDraws.get(i));
 
-      orderedRealDraws.add(unorderedRealDraws.get(i));
+            int previousIndex = i - 1;
 
-      int previousIndex = i - 1;
+            while (previousIndex >= 0
+                && unorderedRealDraws.get(i).getIndex() < orderedRealDraws.get(previousIndex).getIndex()) {
 
-      while (previousIndex >= 0
-          && unorderedRealDraws.get(i).getIndex() < orderedRealDraws.get(previousIndex).getIndex()) {
+                orderedRealDraws.set(previousIndex + 1, orderedRealDraws.get(previousIndex));
+                orderedRealDraws.set(previousIndex--, unorderedRealDraws.get(i));
+            }
+        }
 
-        orderedRealDraws.set(previousIndex + 1, orderedRealDraws.get(previousIndex));
-        orderedRealDraws.set(previousIndex--, unorderedRealDraws.get(i));
-      }
+        return orderedRealDraws;
     }
-
-    return orderedRealDraws;
-  }
 }

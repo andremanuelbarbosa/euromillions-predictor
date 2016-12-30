@@ -13,127 +13,126 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
 
 public abstract class Algorithm {
 
-  static final Random RANDOM = new Random();
+    static final Random RANDOM = new Random();
 
-  private final Snapshot snapshot;
+    private final Snapshot snapshot;
 
-  public Algorithm(Snapshot snapshot) {
+    public Algorithm(Snapshot snapshot) {
 
-    this.snapshot = snapshot;
-  }
-
-  public Snapshot getSnapshot() {
-
-    return snapshot;
-  }
-
-  abstract double getItemWeight(Item item);
-
-  private double getMinimumWeightFromStars(SortedSet<Integer> stars) {
-
-    double starsMinimumWeight = 1.0;
-
-    for (Integer star : stars) {
-
-      double starWeight = getItemWeight(getSnapshot().getStars().get(star - 1));
-
-      if (starWeight < starsMinimumWeight) {
-
-        starsMinimumWeight = starWeight;
-      }
+        this.snapshot = snapshot;
     }
 
-    return starsMinimumWeight;
-  }
+    public Snapshot getSnapshot() {
 
-  private double getMinimumWeightFromNumbers(SortedSet<Integer> numbers) {
-
-    double numbersMinimumWeight = 1.0;
-
-    for (Integer number : numbers) {
-
-      double numberWeight = getItemWeight(getSnapshot().getNumbers().get(number - 1));
-
-      if (numberWeight < numbersMinimumWeight) {
-
-        numbersMinimumWeight = numberWeight;
-      }
+        return snapshot;
     }
 
-    return numbersMinimumWeight;
-  }
+    abstract double getItemWeight(Item item);
 
-  double getMinimumWeight(SortedSet<Integer> items, ItemType itemType) {
+    private double getMinimumWeightFromStars(SortedSet<Integer> stars) {
 
-    double minimumWeight = itemType == ItemType.STAR ? getMinimumWeightFromStars(items)
-        : getMinimumWeightFromNumbers(items);
+        double starsMinimumWeight = 1.0;
 
-    return minimumWeight < 1.0 ? minimumWeight : 0.0;
-  }
+        for (Integer star : stars) {
 
-  Integer getMinimumWeightItem(SortedSet<Integer> items, ItemType itemType) {
+            double starWeight = getItemWeight(getSnapshot().getStars().get(star - 1));
 
-    double minimumWeight = getMinimumWeight(items, itemType);
+            if (starWeight < starsMinimumWeight) {
 
-    for (Integer item : items) {
-
-      if (minimumWeight == 0.0) {
-
-        return item;
-      }
-
-      if (itemType == ItemType.STAR) {
-
-        if (getItemWeight(getSnapshot().getStars().get(item - 1)) == minimumWeight) {
-
-          return item;
+                starsMinimumWeight = starWeight;
+            }
         }
-      }
 
-      if (itemType == ItemType.NUMBER) {
+        return starsMinimumWeight;
+    }
 
-        if (getItemWeight(getSnapshot().getNumbers().get(item - 1)) == minimumWeight) {
+    private double getMinimumWeightFromNumbers(SortedSet<Integer> numbers) {
 
-          return item;
+        double numbersMinimumWeight = 1.0;
+
+        for (Integer number : numbers) {
+
+            double numberWeight = getItemWeight(getSnapshot().getNumbers().get(number - 1));
+
+            if (numberWeight < numbersMinimumWeight) {
+
+                numbersMinimumWeight = numberWeight;
+            }
         }
-      }
+
+        return numbersMinimumWeight;
     }
 
-    throw new IllegalStateException("Unable to find the Minimum Weight Item in " + items.toString());
-  }
+    double getMinimumWeight(SortedSet<Integer> items, ItemType itemType) {
 
-  public Bet getNextBet() {
+        double minimumWeight = itemType == ItemType.STAR ? getMinimumWeightFromStars(items) : getMinimumWeightFromNumbers(items);
 
-    Bet bet = new Bet(this);
-
-    for (Star star : getSnapshot().getStars()) {
-
-      if (bet.getStars().size() < Result.STARS_COUNT) {
-
-        bet.addStar(star.getId());
-
-      } else if (getItemWeight(star) > getMinimumWeight(bet.getStars(), ItemType.STAR)) {
-
-        bet.getStars().remove(getMinimumWeightItem(bet.getStars(), ItemType.STAR));
-
-        bet.addStar(star.getId());
-      }
+        return minimumWeight < 1.0 ? minimumWeight : 0.0;
     }
 
-    for (Number number : getSnapshot().getNumbers()) {
+    Integer getMinimumWeightItem(SortedSet<Integer> items, ItemType itemType) {
 
-      if (bet.getNumbers().size() < Result.NUMBERS_COUNT) {
+        double minimumWeight = getMinimumWeight(items, itemType);
 
-        bet.addNumber(number.getId());
+        for (Integer item : items) {
 
-      } else if (getItemWeight(number) > getMinimumWeight(bet.getNumbers(), ItemType.NUMBER)) {
+            if (minimumWeight == 0.0) {
 
-        bet.getNumbers().remove(getMinimumWeightItem(bet.getNumbers(), ItemType.NUMBER));
+                return item;
+            }
 
-        bet.addNumber(number.getId());
-      }
+            if (itemType == ItemType.STAR) {
+
+                if (getItemWeight(getSnapshot().getStars().get(item - 1)) == minimumWeight) {
+
+                    return item;
+                }
+            }
+
+            if (itemType == ItemType.NUMBER) {
+
+                if (getItemWeight(getSnapshot().getNumbers().get(item - 1)) == minimumWeight) {
+
+                    return item;
+                }
+            }
+        }
+
+        throw new IllegalStateException("Unable to find the Minimum Weight Item in " + items.toString());
     }
 
-    return bet;
-  }
+    public Bet getNextBet() {
+
+        Bet bet = new Bet(this);
+
+        for (Star star : getSnapshot().getStars()) {
+
+            if (bet.getStars().size() < Result.STARS_COUNT) {
+
+                bet.addStar(star.getId());
+
+            } else if (getItemWeight(star) > getMinimumWeight(bet.getStars(), ItemType.STAR)) {
+
+                bet.getStars().remove(getMinimumWeightItem(bet.getStars(), ItemType.STAR));
+
+                bet.addStar(star.getId());
+            }
+        }
+
+        for (Number number : getSnapshot().getNumbers()) {
+
+            if (bet.getNumbers().size() < Result.NUMBERS_COUNT) {
+
+                bet.addNumber(number.getId());
+
+            } else if (getItemWeight(number) > getMinimumWeight(bet.getNumbers(), ItemType.NUMBER)) {
+
+                bet.getNumbers().remove(getMinimumWeightItem(bet.getNumbers(), ItemType.NUMBER));
+
+                bet.addNumber(number.getId());
+            }
+        }
+
+        return bet;
+    }
 }
