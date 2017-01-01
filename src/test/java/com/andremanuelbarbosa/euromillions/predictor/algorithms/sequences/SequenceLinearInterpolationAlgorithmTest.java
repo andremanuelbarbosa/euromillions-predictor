@@ -17,7 +17,7 @@ public class SequenceLinearInterpolationAlgorithmTest extends AlgorithmIntegrati
 
   private static final Integer[] SEQUENCE_ITEMS = { 1, 2, 4, 0, 4, 3, 4 };
 
-  private SequenceLinearInterpolationAlgorithm sequenceLinearInterpolationAlgorithm;
+  private LinearInterpolationSequenceAlgorithm sequenceLinearInterpolationAlgorithm;
 
   @Before
   public void setUp() {
@@ -29,7 +29,7 @@ public class SequenceLinearInterpolationAlgorithmTest extends AlgorithmIntegrati
       intervals.add(item);
     }
 
-    sequenceLinearInterpolationAlgorithm = new SequenceLinearInterpolationAlgorithm(new Star(1, 3, 1, 0.025, intervals),
+    sequenceLinearInterpolationAlgorithm = new LinearInterpolationSequenceAlgorithm(new Star(1, 3, 1, 0.025, intervals),
         FULL_SNAPSHOT.getDraws());
   }
 

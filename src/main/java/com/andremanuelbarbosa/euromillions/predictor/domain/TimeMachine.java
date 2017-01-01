@@ -16,6 +16,7 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
 public class TimeMachine {
 
     private static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+    private static final DecimalFormat DECIMAL_FORMAT_PERCENT = new DecimalFormat("0.00");
     private static final DecimalFormat DECIMAL_FORMAT_AVERAGE_POINTS = new DecimalFormat("0.00");
 
     private final ConcurrentHashMap<Class<? extends Algorithm>, Integer> algorithmsPointsSum = new ConcurrentHashMap<>();
@@ -30,6 +31,7 @@ public class TimeMachine {
 
     private final List<Snapshot> snapshots = new LinkedList<>();
     private final List<Class<? extends Algorithm>> algorithmClasses = new LinkedList<>();
+    private final List<AlgorithmsSnapshotThread> snapshotsAlgorithms = new LinkedList<>();
 
     private final ExecutorService executorServiceSnapshots = Executors.newFixedThreadPool(AVAILABLE_PROCESSORS);
     private final ExecutorService executorServiceAlgorithms = Executors.newFixedThreadPool(AVAILABLE_PROCESSORS);
@@ -93,7 +95,13 @@ public class TimeMachine {
 
     private void executeAlgorithms() {
 
-        snapshots.forEach(snapshot -> executorServiceAlgorithms.execute(new AlgorithmsSnapshotThread(snapshot)));
+        snapshots.forEach(snapshot -> {
+
+            final AlgorithmsSnapshotThread algorithmsSnapshotThread = new AlgorithmsSnapshotThread(snapshot);
+
+            snapshotsAlgorithms.add(algorithmsSnapshotThread);
+            executorServiceAlgorithms.execute(algorithmsSnapshotThread);
+        });
 
         executorServiceAlgorithms.shutdown();
 
@@ -142,27 +150,39 @@ public class TimeMachine {
         return executionTime;
     }
 
-    public void showAlgorithmsPoints(String title) {
+    public void showAlgorithmsStatistics() {
 
-        System.out.println("##### Draws: " + draws.size() + ", Snapshots: " + snapshots.size() + ", Algorithms: " + algorithmClasses.size() + ", Execution Time: " + DurationFormatUtils.formatDuration(executionTime, "m'm' s's'") + ".");
-        System.out.println("                                                             ALGORITHM MODE MAX AVERAGE WINS (%) STARS_DISTRIBUTED_FREQ          NUMBERS_DISTRIBUTED_FREQ                            DISTRIBUTED_FREQ");
+        System.out.println("##### Algorithms Statistics [Draws: " + draws.size() + ", Snapshots: " + snapshots.size() + ", Algorithms: " + algorithmClasses.size() + ", Execution Time: " + DurationFormatUtils.formatDuration(executionTime, "m'm' s's'") + "]");
+        System.out.println("                                                                ALGORITHM MODE MAX AVERAGE WINS   (%) STARS_DISTRIBUTED_FREQ          NUMBERS_DISTRIBUTED_FREQ                            DISTRIBUTED_FREQ");
 
         algorithmClasses.forEach(algorithmClass -> {
 
-            System.out.println(String.format("    %66s %4s %3s %7s %4s %3s %22s %33s %43s",
+            System.out.println(String.format("    %69s %4s %3s %7s %4s %5s %22s %33s %43s",
                 algorithmClass.getSimpleName(),
                 algorithmsModePoints.get(algorithmClass).toString(),
                 algorithmsMaximumPoints.get(algorithmClass).toString(),
                 DECIMAL_FORMAT_AVERAGE_POINTS.format(algorithmsAveragePoints.get(algorithmClass)),
                 algorithmsWins.containsKey(algorithmClass) ? algorithmsWins.get(algorithmClass).toString() : "0",
-                (int) (((double) (algorithmsWins.containsKey(algorithmClass) ? algorithmsWins.get(algorithmClass) : 0) / snapshots.size()) * 100),
+                DECIMAL_FORMAT_PERCENT.format((((double) (algorithmsWins.containsKey(algorithmClass) ? algorithmsWins.get(algorithmClass) : 0) / snapshots.size()) * 100)),
                 algorithmsStarsDistributedFreq.get(algorithmClass).toString(),
                 algorithmsNumbersDistributedFreq.get(algorithmClass).toString(),
                 algorithmsPoints.get(algorithmClass).toString()));
         });
     }
 
+//    public void showSnapshotsStatistics() {
+//
+//        for (int i = 0; i < snapshots.size(); i++) {
+//
+//            final AlgorithmsSnapshotThread algorithmsSnapshotThread = snapshotsAlgorithms.get(i);
+//
+//            System.out.println("#" + (minimumDrawsIndex + i) + " " + algorithmsSnapshotThread);
+//        }
+//    }
+
     class AlgorithmsSnapshotThread implements Runnable {
+
+        private final List<Algorithm> algorithms = new LinkedList<>();
 
         private final Snapshot snapshot;
 
@@ -171,9 +191,12 @@ public class TimeMachine {
             this.snapshot = snapshot;
         }
 
-        private List<Algorithm> getAlgorithms() {
+        public List<Algorithm> getAlgorithms() {
 
-            final List<Algorithm> algorithms = new LinkedList<>();
+            return algorithms;
+        }
+
+        private List<Algorithm> loadAlgorithms() {
 
             algorithmClasses.forEach(algorithmClass -> {
 
@@ -193,7 +216,7 @@ public class TimeMachine {
         @Override
         public void run() {
 
-            final List<Algorithm> algorithms = getAlgorithms();
+            final List<Algorithm> algorithms = loadAlgorithms();
 
             for (Algorithm algorithm : algorithms) {
 

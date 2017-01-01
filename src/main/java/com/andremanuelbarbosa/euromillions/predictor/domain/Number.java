@@ -15,6 +15,6 @@ public class Number extends Item {
     @Override
     public double getAverageInterval(int numDraws) {
 
-        return (double) COUNT / COUNT_PER_DRAW;
+        return ItemType.NUMBER.getAverageInterval(numDraws);
     }
 }

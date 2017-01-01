@@ -53,9 +53,23 @@ public class Snapshot implements Runnable {
 
     private int getInterval(int id, ItemType itemType) {
 
+        int minIndex = 0;
+
+        if (itemType == ItemType.STAR) {
+
+            if (id == 11) {
+
+                minIndex = Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS;
+
+            } else if (id == 12) {
+
+                minIndex = Snapshot.DRAWS_COUNT_BEFORE_TWELVE_STARS;
+            }
+        }
+
         int interval = 0;
 
-        for (int i = (draws.size() - 1); i >= 0; i--) {
+        for (int i = (draws.size() - 1); i >= minIndex; i--) {
 
             if ((itemType == ItemType.STAR && draws.get(i).getStars().contains(id))
                 || (itemType == ItemType.NUMBER && draws.get(i).getNumbers().contains(id))) {
@@ -65,6 +79,11 @@ public class Snapshot implements Runnable {
             } else {
 
                 interval++;
+
+                if (itemType == ItemType.STAR && (id == 11 || id == 12) && i == minIndex) {
+
+                    interval += itemType.getAverageInterval(draws.size());
+                }
             }
         }
 
@@ -79,7 +98,7 @@ public class Snapshot implements Runnable {
 
         if (itemType == ItemType.STAR) {
 
-            while (index < draws.size() && !draws.get(index++).getStars().contains(id));
+            while (index < draws.size() && !draws.get(index++).getStars().contains(id)) ;
 
             index++;
             int interval = 0;
@@ -100,7 +119,7 @@ public class Snapshot implements Runnable {
 
         } else if (itemType == ItemType.NUMBER) {
 
-            while (index++ < draws.size() && !draws.get(index).getNumbers().contains(id));
+            while (index++ < draws.size() && !draws.get(index).getNumbers().contains(id)) ;
 
             index++;
             int interval = 0;

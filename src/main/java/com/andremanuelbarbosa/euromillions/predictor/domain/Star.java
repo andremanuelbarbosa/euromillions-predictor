@@ -18,6 +18,6 @@ public class Star extends Item {
     @Override
     public double getAverageInterval(int numDraws) {
 
-        return (double) (numDraws <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (numDraws <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : 12)) / COUNT_PER_DRAW;
+        return ItemType.STAR.getAverageInterval(numDraws);
     }
 }

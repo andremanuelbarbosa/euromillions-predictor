@@ -10,13 +10,13 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
 
     private TimeMachine timeMachine;
 
-    private void assertAlgorithmsStatistics(String title) {
+    private void assertAlgorithmsStatistics() {
 
         assertNotNull(timeMachine.getAlgorithmsPointsSum());
         assertNotNull(timeMachine.getAlgorithmsMaximumPoints());
         assertNotNull(timeMachine.getAlgorithmsAveragePoints());
 
-        timeMachine.showAlgorithmsPoints(title);
+        timeMachine.showAlgorithmsStatistics();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
         timeMachine = new TimeMachine(new RandomDraws(RealDraws.getRealDraws().size()).getRandomDraws(),
             Snapshot.DRAWS_COUNT_BEFORE_ELEVEN_STARS + 100);
 
-        assertAlgorithmsStatistics("RANDOM");
+        assertAlgorithmsStatistics();
     }
 
     @Test
@@ -35,6 +35,6 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
         timeMachine = new TimeMachine(RealDraws.getRealDraws());
 //        timeMachine = new TimeMachine(RealDraws.getRealDraws(), RealDraws.getRealDraws().size() - 1);
 
-        assertAlgorithmsStatistics("REAL");
+        assertAlgorithmsStatistics();
     }
 }

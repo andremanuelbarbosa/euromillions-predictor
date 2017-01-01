@@ -4,9 +4,9 @@ import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.Relati
 import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
 
-public class ReverseRelativeIntervalFreqSequenceAlgorithm extends Algorithm {
+public class RelativeIntervalFreqSequenceAlgorithm extends Algorithm {
 
-    public ReverseRelativeIntervalFreqSequenceAlgorithm(Snapshot snapshot) {
+    public RelativeIntervalFreqSequenceAlgorithm(Snapshot snapshot) {
 
         super(snapshot);
     }
@@ -14,6 +14,6 @@ public class ReverseRelativeIntervalFreqSequenceAlgorithm extends Algorithm {
     @Override
     double getItemWeight(Item item) {
 
-        return 1 - (new RelativeFreqSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue();
+        return (new RelativeFreqSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue();
     }
 }
