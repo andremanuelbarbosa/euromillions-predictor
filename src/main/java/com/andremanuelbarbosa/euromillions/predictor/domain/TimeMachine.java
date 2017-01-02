@@ -38,18 +38,40 @@ public class TimeMachine {
 
     private final List<? extends Draw> draws;
     private final int minimumDrawsIndex;
+    private final int maximumDrawsIndex;
 
     private long executionTime;
 
     public TimeMachine(List<? extends Draw> draws) {
 
-        this(draws, 100);
+        this(draws, draws.size() / 2, 0);
     }
 
     public TimeMachine(List<? extends Draw> draws, int minimumDrawsIndex) {
 
+        this(draws, minimumDrawsIndex, 0);
+    }
+
+    public TimeMachine(List<? extends Draw> draws, int minimumDrawsIndex, int maximumDrawsIndex) {
+
+        if (draws.size() < 100) {
+
+            throw new IllegalArgumentException("The number of Draws needs to be > 100.");
+        }
+
+        if (minimumDrawsIndex > (draws.size() - 1)) {
+
+            throw new IllegalArgumentException("The minimum Draws Index needs to be <= the number of Draws - 1.");
+        }
+
+        if (maximumDrawsIndex != 0 && (maximumDrawsIndex > (draws.size() - 1) || maximumDrawsIndex < minimumDrawsIndex)) {
+
+            throw new IllegalArgumentException("The maximum Draws Index needs to be 0 or <= the number of Draws - 1 and >= the minimum Draws Index.");
+        }
+
         this.draws = draws;
         this.minimumDrawsIndex = minimumDrawsIndex;
+        this.maximumDrawsIndex = maximumDrawsIndex > 0 ? maximumDrawsIndex : draws.size() - 1;
 
         final long startTime = System.currentTimeMillis();
 
@@ -73,7 +95,7 @@ public class TimeMachine {
 
     private void loadSnapshots() {
 
-        for (int i = minimumDrawsIndex; i < draws.size(); i++) {
+        for (int i = minimumDrawsIndex; i <= maximumDrawsIndex; i++) {
 
             final Snapshot snapshot = new Snapshot(draws.subList(0, i), draws.get(i));
 
