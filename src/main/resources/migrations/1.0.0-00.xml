@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="1.0.0-00" author="euromillions-predictor">
+        <createTable tableName="draws">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prize" type="double" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="draws_stars">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stars_draw_id_fk"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_stars" columnNames="draw_id, star"/>
+        <addForeignKeyConstraint baseTableName="draws_stars" baseColumnNames="draw_id" constraintName="draws_stars_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_numbers">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_numbers_draw_id_fk"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_numbers" columnNames="draw_id, number"/>
+        <addForeignKeyConstraint baseTableName="draws_numbers" baseColumnNames="draw_id" constraintName="draws_numbers_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_stats_stars">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_stars_draw_id_fk"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="freq" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interval" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="relative_freq" type="double" defaultValue="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="average_interval" type="double" defaultValue="0.0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_stats_stars" columnNames="draw_id, star"/>
+        <addForeignKeyConstraint baseTableName="draws_stats_stars" baseColumnNames="draw_id" constraintName="draws_stats_stars_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_stats_numbers">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_numbers_draw_id_fk"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="freq" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interval" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="relative_freq" type="double" defaultValue="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="average_interval" type="double" defaultValue="0.0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_stats_numbers" columnNames="draw_id, number"/>
+        <addForeignKeyConstraint baseTableName="draws_stats_numbers" baseColumnNames="draw_id" constraintName="draws_stats_numbers_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_stats_intervals_stars">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_intervals_stars_draw_id_star_fk"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_intervals_stars_draw_id_star_fk"/>
+            </column>
+            <column name="id" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interval" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_stats_intervals_stars" columnNames="draw_id, star, id"/>
+        <addForeignKeyConstraint baseTableName="draws_stats_intervals_stars" baseColumnNames="draw_id, star"
+                                 constraintName="draws_stats_intervals_stars_draw_id_star_fk" referencedTableName="draws_stats_stars"
+                                  referencedColumnNames="draw_id, star"/>
+
+        <createTable tableName="draws_stats_intervals_numbers">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_intervals_numbers_draw_id_number_fk"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false" foreignKeyName="draws_stats_intervals_numbers_draw_id_number_fk"/>
+            </column>
+            <column name="id" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interval" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_stats_intervals_numbers" columnNames="draw_id, number, id"/>
+        <addForeignKeyConstraint baseTableName="draws_stats_intervals_numbers" baseColumnNames="draw_id, number"
+                                 constraintName="draws_stats_intervals_numbers_draw_id_number_fk" referencedTableName="draws_stats_numbers"
+                                 referencedColumnNames="draw_id, number"/>
+
+        <createTable tableName="draws_templates_stars">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_templates_stars_draw_id_fk"/>
+            </column>
+            <column name="template" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_templates_stars" columnNames="draw_id, template, star"/>
+        <addForeignKeyConstraint baseTableName="draws_templates_stars" baseColumnNames="draw_id" constraintName="draws_templates_stars_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_templates_numbers">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_templates_numbers_draw_id_fk"/>
+            </column>
+            <column name="template" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_templates_numbers" columnNames="draw_id, template, number"/>
+        <addForeignKeyConstraint baseTableName="draws_templates_numbers" baseColumnNames="draw_id" constraintName="draws_templates_numbers_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <include file="migrations/1.0.0-00.xml"/>
+    <include file="migrations/1.0.0-01.xml"/>
+    <include file="migrations/1.0.0-02.xml"/>
+    <include file="migrations/1.0.0-03.xml"/>
+    <include file="migrations/1.0.0-04.xml"/>
+    <include file="migrations/1.0.0-05.xml"/>
+    <include file="migrations/1.0.0-06.xml"/>
+    <include file="migrations/1.0.0-07.xml"/>
+    <include file="migrations/1.0.0-08.xml"/>
+    <include file="migrations/1.0.0-09.xml"/>
+    <include file="migrations/1.0.0-10.xml"/>
+</databaseChangeLog>

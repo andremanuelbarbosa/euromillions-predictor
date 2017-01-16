@@ -19,7 +19,7 @@ public class RandomDraws {
 
         for (int i = 0; i < numRandomDraw; i++) {
 
-            RandomDraw randomDraw = new RandomDraw();
+            RandomDraw randomDraw = new RandomDraw(0, null, 0.0);
 
             for (int j = 0; j < Result.STARS_COUNT; j++) {
 

@@ -14,10 +14,10 @@ public class SnapshotIntegrationTest extends EuroMillionsPredictorIntegrationTes
         assertEquals(snapshot.getStars().size(), Star.COUNT);
         assertEquals(snapshot.getNumbers().size(), Number.COUNT);
 
-        int starIndex = random.nextInt(Star.COUNT);
+        int starIndex = 1;
         int starIndexInterval = snapshot.getDraws().size() - snapshot.getStars().get(starIndex).getInterval() - 1;
 
-        int numberIndex = random.nextInt(Number.COUNT);
+        int numberIndex = 1;
         int numberIndexInterval = snapshot.getDraws().size() - snapshot.getNumbers().get(numberIndex).getInterval() - 1;
 
         assertTrue(snapshot.getDraws().get(starIndexInterval).getStars()

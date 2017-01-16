@@ -35,11 +35,14 @@ public class TimeMachineIntegrationTest extends EuroMillionsPredictorIntegration
 //        timeMachine = new TimeMachine(REAL_DRAWS);
 //        assertAlgorithmsStatistics();
 
+//        final TimeMachine timeMachine1 = new TimeMachine(REAL_DRAWS, REAL_DRAWS.size() - 2, REAL_DRAWS.size() - 1);
+//        timeMachine1.showAlgorithmsStatistics();
+
         final TimeMachine timeMachine1 = new TimeMachine(REAL_DRAWS, REAL_DRAWS.size() - 48, REAL_DRAWS.size() - 1);
         timeMachine1.showAlgorithmsStatistics();
-
-        final TimeMachine timeMachine2 = new TimeMachine(REAL_DRAWS, REAL_DRAWS.size() - 96, REAL_DRAWS.size() - 49);
-        timeMachine2.showAlgorithmsStatistics();
+//
+//        final TimeMachine timeMachine2 = new TimeMachine(REAL_DRAWS, REAL_DRAWS.size() - 96, REAL_DRAWS.size() - 49);
+//        timeMachine2.showAlgorithmsStatistics();
 
 //        final TimeMachine timeMachine3 = new TimeMachine(REAL_DRAWS, REAL_DRAWS.size() - 73, REAL_DRAWS.size() - 49);
 //        timeMachine3.showAlgorithmsStatistics();

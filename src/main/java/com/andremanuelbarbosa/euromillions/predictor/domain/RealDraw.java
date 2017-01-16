@@ -8,48 +8,51 @@ import java.util.regex.Pattern;
 
 public class RealDraw extends Draw {
 
-  private static final Pattern DRAW_PATTERN = Pattern
-      .compile("^[ ]*([0-9]{1,3})[ ]{2}([ a-zA-Z0-9]{15})[ ]{2}([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) [*]([0-9]{2}) ([0-9]{2})[*][ ]{1,3}([0-9]{1,3}[,][0-9]{3}[,][0-9]{3})[ ]*$");
-  private static final SimpleDateFormat DRAW_SIMPLE_DATE_FORMAT = new SimpleDateFormat("EEE dd MMM yyyy");
+    private static final Pattern DRAW_PATTERN = Pattern
+        .compile("^[ ]*([0-9]{1,3})[ ]{2}([ a-zA-Z0-9]{15})[ ]{2}([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) ([0-9]{2}) [*]([0-9]{2}) ([0-9]{2})[*][ ]{1,3}([0-9]{1,3}[,][0-9]{3}[,][0-9]{3})[ ]*$");
+    private static final SimpleDateFormat DRAW_SIMPLE_DATE_FORMAT = new SimpleDateFormat("EEE dd MMM yyyy");
 
-  private final Date date;
-  private final Long jackpot;
+    private final Date date;
+    private final Long jackpot;
 
-  public RealDraw(String line) throws ParseException {
+    public RealDraw(String line) throws ParseException {
 
-    Matcher matcher = DRAW_PATTERN.matcher(line);
+        super(0, null, 0.0);
 
-    if (matcher.matches()) {
+        Matcher matcher = DRAW_PATTERN.matcher(line);
 
-      setIndex(Integer.parseInt(matcher.group(1)));
+        if (matcher.matches()) {
 
-      date = DRAW_SIMPLE_DATE_FORMAT.parse(matcher.group(2));
+//            setId(Integer.parseInt(matcher.group(1)));
 
-      for (int i = 0; i < Result.NUMBERS_COUNT; i++) {
+            date = DRAW_SIMPLE_DATE_FORMAT.parse(matcher.group(2));
 
-        numbers.add(Integer.parseInt(matcher.group(3 + i)));
-      }
+            for (int i = 0; i < Result.NUMBERS_COUNT; i++) {
 
-      for (int i = 0; i < Result.STARS_COUNT; i++) {
+                getNumbers().add(Integer.parseInt(matcher.group(3 + i)));
+            }
 
-        stars.add(Integer.parseInt(matcher.group(8 + i)));
-      }
+            for (int i = 0; i < Result.STARS_COUNT; i++) {
 
-      jackpot = Long.parseLong(matcher.group(10).replaceAll(",", ""));
+                getStars().add(Integer.parseInt(matcher.group(8 + i)));
+            }
 
-    } else {
+            jackpot = Long.parseLong(matcher.group(10).replaceAll(",", ""));
+//            setPrize(jackpot);
 
-      throw new IllegalArgumentException("Unable to parse a Real Draw from line [" + line + "].");
+        } else {
+
+            throw new IllegalArgumentException("Unable to parse a Real Draw from line [" + line + "].");
+        }
     }
-  }
 
-  public Date getDate() {
+    public Date getDate() {
 
-    return date;
-  }
+        return date;
+    }
 
-  public long getJackpot() {
+    public long getJackpot() {
 
-    return jackpot;
-  }
+        return jackpot;
+    }
 }

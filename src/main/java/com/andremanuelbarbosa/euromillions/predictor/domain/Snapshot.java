@@ -1,7 +1,9 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
+import java.util.*;
 
 /**
  * Snapshot is the representation of the metrics based on a set of Draws
@@ -19,6 +21,9 @@ public class Snapshot implements Runnable {
 
     int starsMaximumInterval;
     int numbersMaximumInterval;
+
+    private List<Template> starTemplates;
+    private List<Template> numberTemplates;
 
     public Snapshot(List<? extends Draw> draws, Draw lastDraw) {
 
@@ -146,6 +151,16 @@ public class Snapshot implements Runnable {
     public void run() {
 
         loadStarsAndNumbers();
+
+        loadTemplates();
+    }
+
+    private void loadTemplates() {
+
+        final TemplatesFinder templatesFinder = new TemplatesFinder(draws);
+
+        starTemplates = templatesFinder.getStarTemplates();
+        numberTemplates = templatesFinder.getNumberTemplates();
     }
 
     private void loadStarsAndNumbers() {
@@ -224,6 +239,16 @@ public class Snapshot implements Runnable {
     public int getNumbersMaximumInterval() {
 
         return numbersMaximumInterval;
+    }
+
+    private Template getItemTemplate(int item, List<Template> templates) {
+
+        return templates.stream().filter(template -> template.getElements().contains(item)).findFirst().get();
+    }
+
+    public Template getStarTemplate(int star) {
+
+        return getItemTemplate(star, starTemplates);
     }
 
     public void showStatistics() {

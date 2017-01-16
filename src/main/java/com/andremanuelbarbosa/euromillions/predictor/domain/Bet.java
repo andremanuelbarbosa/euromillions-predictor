@@ -41,29 +41,29 @@ public class Bet extends Result {
         return algorithm;
     }
 
-    public int getStarsPoints(Result result) {
+    public int getStarsPoints(Draw draw) {
 
-        return Sets.intersection(stars, result.getStars()).size();
+        return Sets.intersection(stars, draw.getStars()).size();
     }
 
-    public int getNumbersPoints(Result result) {
+    public int getNumbersPoints(Draw draw) {
 
-        return Sets.intersection(numbers, result.getNumbers()).size();
+        return Sets.intersection(numbers, draw.getNumbers()).size();
     }
 
-    public int getPoints(Result result) {
+    public int getPoints(Draw draw) {
 
-        return getStarsPoints(result) + getNumbersPoints(result);
+        return getStarsPoints(draw) + getNumbersPoints(draw);
     }
 
-    public boolean isWinner(Result result) {
+    public boolean isWinner(Draw draw) {
 
         int matchingStars = 0;
         int matchingNumbers = 0;
 
         for (Integer star : stars) {
 
-            if (result.getStars().contains(star)) {
+            if (draw.getStars().contains(star)) {
 
                 matchingStars++;
             }
@@ -71,7 +71,7 @@ public class Bet extends Result {
 
         for (Integer number : numbers) {
 
-            if (result.getNumbers().contains(number)) {
+            if (draw.getNumbers().contains(number)) {
 
                 matchingNumbers++;
             }

@@ -58,7 +58,7 @@ public abstract class RealDraws {
             int previousIndex = i - 1;
 
             while (previousIndex >= 0
-                && unorderedRealDraws.get(i).getIndex() < orderedRealDraws.get(previousIndex).getIndex()) {
+                && unorderedRealDraws.get(i).getId() < orderedRealDraws.get(previousIndex).getId()) {
 
                 orderedRealDraws.set(previousIndex + 1, orderedRealDraws.get(previousIndex));
                 orderedRealDraws.set(previousIndex--, unorderedRealDraws.get(i));

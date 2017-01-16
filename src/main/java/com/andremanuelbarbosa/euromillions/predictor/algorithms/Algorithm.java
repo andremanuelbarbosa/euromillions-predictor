@@ -1,19 +1,12 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
-import java.util.Random;
+import com.andremanuelbarbosa.euromillions.predictor.domain.*;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
+import com.google.common.collect.Lists;
+
 import java.util.SortedSet;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.ItemType;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Result;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Star;
-
 public abstract class Algorithm {
-
-    static final Random RANDOM = new Random();
 
     private final Snapshot snapshot;
 
@@ -29,9 +22,14 @@ public abstract class Algorithm {
 
     abstract double getItemWeight(Item item);
 
+    private boolean isUsingTemplates() {
+
+        return Lists.newArrayList(getClass().getAnnotations()).stream().anyMatch(annotation -> annotation.getClass() == TemplatesAlgorithm.class);
+    }
+
     private double getMinimumWeightFromStars(SortedSet<Integer> stars) {
 
-        double starsMinimumWeight = 1.0;
+        double starsMinimumWeight = Double.MAX_VALUE;
 
         for (Integer star : stars) {
 
@@ -48,7 +46,7 @@ public abstract class Algorithm {
 
     private double getMinimumWeightFromNumbers(SortedSet<Integer> numbers) {
 
-        double numbersMinimumWeight = 1.0;
+        double numbersMinimumWeight = Double.MAX_VALUE;
 
         for (Integer number : numbers) {
 
@@ -67,7 +65,7 @@ public abstract class Algorithm {
 
         double minimumWeight = itemType == ItemType.STAR ? getMinimumWeightFromStars(items) : getMinimumWeightFromNumbers(items);
 
-        return minimumWeight < 1.0 ? minimumWeight : 0.0;
+        return minimumWeight < Double.MAX_VALUE ? minimumWeight : 0.0;
     }
 
     Integer getMinimumWeightItem(SortedSet<Integer> items, ItemType itemType) {
@@ -105,11 +103,22 @@ public abstract class Algorithm {
 
         Bet bet = new Bet(this);
 
-        for (Star star : getSnapshot().getStars()) {
+        Template starTemplate = null;
+        final boolean usingTemplates = isUsingTemplates();
+
+        for (Star star : snapshot.getStars()) {
 
             if (bet.getStars().size() < Result.STARS_COUNT) {
 
-                bet.addStar(star.getId());
+                if (!usingTemplates || starTemplate == null || starTemplate.getElements().contains(star.getId())) {
+
+                    bet.addStar(star.getId());
+
+                    if (usingTemplates && starTemplate == null) {
+
+                        starTemplate = snapshot.getStarTemplate(star.getId());
+                    }
+                }
 
             } else if (getItemWeight(star) > getMinimumWeight(bet.getStars(), ItemType.STAR)) {
 
@@ -119,7 +128,7 @@ public abstract class Algorithm {
             }
         }
 
-        for (Number number : getSnapshot().getNumbers()) {
+        for (Number number : snapshot.getNumbers()) {
 
             if (bet.getNumbers().size() < Result.NUMBERS_COUNT) {
 

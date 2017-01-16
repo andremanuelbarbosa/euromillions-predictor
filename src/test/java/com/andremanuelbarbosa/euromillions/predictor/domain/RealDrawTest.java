@@ -19,7 +19,7 @@ public class RealDrawTest extends EuroMillionsPredictorTest {
 
     assertNotNull(realDraw);
 
-    assertEquals(expectedIndex, realDraw.getIndex());
+    assertEquals(expectedIndex, realDraw.getId());
 
     assertEquals(new DateTime(2014, 8, 5, 0, 0).toDate(), realDraw.getDate());
 
