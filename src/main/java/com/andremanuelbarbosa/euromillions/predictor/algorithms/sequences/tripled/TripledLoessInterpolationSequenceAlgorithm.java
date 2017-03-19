@@ -1,36 +1,34 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.tripled;
 
-import java.util.List;
-
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
 import org.apache.commons.math3.analysis.interpolation.LoessInterpolator;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
+import java.util.List;
 
 public class TripledLoessInterpolationSequenceAlgorithm extends TripledInterpolationSequenceAlgorithm {
 
-  public TripledLoessInterpolationSequenceAlgorithm(Item item, List<? extends Draw> draws) {
+    public TripledLoessInterpolationSequenceAlgorithm(List<Draw> draws, DrawStats drawStats) {
 
-    super(item, draws);
-  }
-
-  protected void calculateNextValue() {
-
-    loadValuesPolynomial();
-
-    if (valuesPolynomialX.length < 7) {
-
-      nextValue = (double) draws.size();
-
-    } else {
-
-      nextValue = new LoessInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(
-          item.getIntervals().size());
-
-      if (Double.isNaN(nextValue)) {
-
-        nextValue = (double) draws.size();
-      }
+        super(draws, drawStats);
     }
-  }
+
+    protected void calculateNextValue() {
+
+        loadValuesPolynomial();
+
+        if (valuesPolynomialX.length < 7) {
+
+            nextValue = (double) draws.size();
+
+        } else {
+
+            nextValue = new LoessInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(drawStats.getIntervals().size());
+
+            if (Double.isNaN(nextValue)) {
+
+                nextValue = (double) draws.size();
+            }
+        }
+    }
 }

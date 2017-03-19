@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.manager;
 
+import com.andremanuelbarbosa.euromillions.predictor.dao.DrawsDao;
 import com.andremanuelbarbosa.euromillions.predictor.dao.DrawsStatsDao;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
@@ -14,18 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.*;
+import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.NUMBERS_COUNT_PER_DRAW;
+import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.STARS_COUNT_PER_DRAW;
 
 @Singleton
 public class DrawsStatsManager {
 
-    private final DrawsManager drawsManager;
+    private final DrawsDao drawsDao;
     private final DrawsStatsDao drawsStatsDao;
 
     @Inject
-    public DrawsStatsManager(DrawsManager drawsManager, DrawsStatsDao drawsStatsDao) {
+    public DrawsStatsManager(DrawsDao drawsDao, DrawsStatsDao drawsStatsDao) {
 
-        this.drawsManager = drawsManager;
+        this.drawsDao = drawsDao;
         this.drawsStatsDao = drawsStatsDao;
     }
 
@@ -84,6 +86,24 @@ public class DrawsStatsManager {
         return numbersDrawStats;
     }
 
+    public List<Draw> getDraws() {
+
+        final List<Draw> draws = drawsDao.getDraws();
+
+        draws.forEach(draw -> loadDraw(draw));
+
+        return draws;
+    }
+
+    private void loadDraw(Draw draw) {
+
+        draw.getStars().addAll(drawsDao.getDrawStars(draw.getId()));
+        draw.getNumbers().addAll(drawsDao.getDrawNumbers(draw.getId()));
+
+        draw.getStarDrawStats().addAll(getStarsDrawStats(draw.getId()));
+        draw.getNumberDrawStats().addAll(getNumbersDrawStats(draw.getId()));
+    }
+
     private int getStarFreq(int star, List<Draw> draws) {
 
         return (int) draws.stream().filter(draw -> draw.getStars().contains(star)).count();
@@ -104,7 +124,7 @@ public class DrawsStatsManager {
             }
         }
 
-        return getStarNumDraws(star, draws) + (int) getStarsAverageInterval(draws);
+        return getStarNumDraws(star, draws) + (int) Math.ceil(getStarsAverageInterval(draws));
     }
 
     private int getNumberInterval(int number, List<Draw> draws) {
@@ -122,17 +142,17 @@ public class DrawsStatsManager {
 
     private int getStarNumDraws(int star, List<Draw> draws) {
 
-        return draws.size() - (star == 12 ? DRAWS_COUNT_BEFORE_TWELVE_STARS : (star == 11 ? DRAWS_COUNT_BEFORE_ELEVEN_STARS : 0));
+        return (int) draws.stream().filter(draw -> draw.getStarsCount() >= star).count();
     }
 
     private double getStarsAverageInterval(List<Draw> draws) {
 
-        return (double) (draws.size() <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (draws.size() <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : 12)) / STARS_COUNT_PER_DRAW;
+        return (double) draws.get(draws.size() - 1).getStarsCount() / STARS_COUNT_PER_DRAW;
     }
 
     private double getNumbersAverageInterval(List<Draw> draws) {
 
-        return NUMBERS_COUNT / NUMBERS_COUNT_PER_DRAW;
+        return (double) draws.get(draws.size() - 1).getNumbersCount() / NUMBERS_COUNT_PER_DRAW;
     }
 
     private List<Integer> getStarIntervals(int star, List<Draw> draws) {
@@ -199,22 +219,20 @@ public class DrawsStatsManager {
         return intervals;
     }
 
-    public List<DrawStats> updateDrawStats(int drawId) {
+    public List<DrawStats> updateDrawStats(int drawId, List<Draw> draws) {
 
-        return Stream.concat(updateStarsDrawStats(drawId).stream(), updateNumbersDrawStats(drawId).stream()).collect(Collectors.toList());
+        return Stream.concat(updateStarsDrawStats(drawId, draws).stream(), updateNumbersDrawStats(drawId, draws).stream()).collect(Collectors.toList());
     }
 
-    public List<StarDrawStats> updateStarsDrawStats(int drawId) {
+    public List<StarDrawStats> updateStarsDrawStats(int drawId, List<Draw> draws) {
 
         deleteStarsDrawStats(drawId);
 
-        final List<Draw> draws = Lists.reverse(drawsManager.getDraws()).subList(0, drawId);
+        final int starsCount = draws.get(draws.size() - 1).getStarsCount();
 
-        final int numStars = draws.size() <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (draws.size() <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : 12);
+        final List<StarDrawStats> starsDrawStats = Lists.newArrayListWithExpectedSize(starsCount);
 
-        final List<StarDrawStats> starsDrawStats = Lists.newArrayListWithExpectedSize(numStars);
-
-        for (int i = 1; i <= numStars; i++) {
+        for (int i = 1; i <= starsCount; i++) {
 
             final int freq = getStarFreq(i, draws);
 
@@ -237,15 +255,15 @@ public class DrawsStatsManager {
         return starsDrawStats;
     }
 
-    public List<NumberDrawStats> updateNumbersDrawStats(int drawId) {
+    public List<NumberDrawStats> updateNumbersDrawStats(int drawId, List<Draw> draws) {
 
         deleteNumbesDrawStats(drawId);
 
-        final List<Draw> draws = Lists.reverse(drawsManager.getDraws()).subList(0, drawId);
+        final int numbersCount = draws.get(draws.size() - 1).getNumbersCount();
 
-        final List<NumberDrawStats> numbersDrawStats = Lists.newArrayListWithExpectedSize(NUMBERS_COUNT);
+        final List<NumberDrawStats> numbersDrawStats = Lists.newArrayListWithExpectedSize(numbersCount);
 
-        for (int i = 1; i <= NUMBERS_COUNT; i++) {
+        for (int i = 1; i <= numbersCount; i++) {
 
             final int freq = getNumberFreq(i, draws);
 

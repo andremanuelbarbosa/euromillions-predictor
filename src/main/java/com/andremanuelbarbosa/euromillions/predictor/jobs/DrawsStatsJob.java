@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.jobs;
 
+import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsManager;
 import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsStatsManager;
 import com.google.inject.Inject;
 import org.quartz.DisallowConcurrentExecution;
@@ -16,19 +17,21 @@ import java.util.concurrent.TimeUnit;
 
 import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.AVAILABLE_PROCESSORS;
 
-@Cron("0 0/5 * * * ?")
+//@Cron("0 0/5 * * * ?")
 @DisallowConcurrentExecution
 public class DrawsStatsJob implements Job {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DrawsStatsJob.class);
 
+    private final DrawsManager drawsManager;
     private final DrawsStatsManager drawsStatsManager;
 
     private ExecutorService executorService;
 
     @Inject
-    public DrawsStatsJob(DrawsStatsManager drawsStatsManager) {
+    public DrawsStatsJob(DrawsManager drawsManager, DrawsStatsManager drawsStatsManager) {
 
+        this.drawsManager = drawsManager;
         this.drawsStatsManager = drawsStatsManager;
     }
 
@@ -76,7 +79,7 @@ public class DrawsStatsJob implements Job {
 
             LOGGER.debug("Updating the Stats for Draw with ID [{}]...", drawId);
 
-            drawsStatsManager.updateDrawStats(drawId);
+            drawsStatsManager.updateDrawStats(drawId, drawsManager.getDrawsUpToIncluding(drawId));
 
             LOGGER.debug("The Stats for Draw with ID [{}] have been updated.", drawId);
         }

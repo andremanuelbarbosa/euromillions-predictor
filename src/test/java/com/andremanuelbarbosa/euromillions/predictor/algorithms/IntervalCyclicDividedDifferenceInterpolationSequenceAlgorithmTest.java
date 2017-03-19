@@ -4,12 +4,11 @@ import org.junit.Test;
 
 public class IntervalCyclicDividedDifferenceInterpolationSequenceAlgorithmTest extends AlgorithmIntegrationTest {
 
-  private IntervalCyclicDividedDifferenceInterpolationSequenceAlgorithm intervalSequenceCyclicIntervalDividedDifferenceInterpolationAlgorithm = new IntervalCyclicDividedDifferenceInterpolationSequenceAlgorithm(
-      FULL_SNAPSHOT);
+    private IntervalCyclicDividedDifferenceInterpolationSequenceAlgorithm intervalSequenceCyclicIntervalDividedDifferenceInterpolationAlgorithm = new IntervalCyclicDividedDifferenceInterpolationSequenceAlgorithm(false);
 
-  @Test
-  public void shouldReturnNextBet() {
+    @Test
+    public void shouldReturnNextBet() {
 
-    assertNextBet(intervalSequenceCyclicIntervalDividedDifferenceInterpolationAlgorithm);
-  }
+        assertNextBet(intervalSequenceCyclicIntervalDividedDifferenceInterpolationAlgorithm);
+    }
 }

@@ -1,6 +1,8 @@
 package com.andremanuelbarbosa.euromillions.predictor.jobs;
 
+import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsManager;
 import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsTemplatesManager;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
@@ -16,19 +18,21 @@ import java.util.concurrent.TimeUnit;
 
 import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.AVAILABLE_PROCESSORS;
 
-@Cron("0 0/5 * * * ?")
+//@Cron("0 0/5 * * * ?")
 @DisallowConcurrentExecution
 public class DrawsTemplatesJob implements Job {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DrawsTemplatesJob.class);
 
+    private final DrawsManager drawsManager;
     private final DrawsTemplatesManager drawsTemplatesManager;
 
     private ExecutorService executorService;
 
     @Inject
-    public DrawsTemplatesJob(DrawsTemplatesManager drawsTemplatesManager) {
+    public DrawsTemplatesJob(DrawsManager drawsManager, DrawsTemplatesManager drawsTemplatesManager) {
 
+        this.drawsManager = drawsManager;
         this.drawsTemplatesManager = drawsTemplatesManager;
     }
 
@@ -76,7 +80,7 @@ public class DrawsTemplatesJob implements Job {
 
             LOGGER.debug("Updating the Templates for Draw with ID [{}]...", drawId);
 
-            drawsTemplatesManager.updateDrawsTemplates(drawId, false);
+            drawsTemplatesManager.updateDrawsTemplates(Lists.reverse(drawsManager.getDraws()).subList(0, drawId), drawId, false);
 
             LOGGER.debug("The Templates for Draw with ID [{}] have been updated.", drawId);
         }

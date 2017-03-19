@@ -1,22 +1,22 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
 
-import java.util.List;
-
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class RelativeFreqSequenceAlgorithm extends SequenceAlgorithm {
 
-    public RelativeFreqSequenceAlgorithm(Item item, List<? extends Draw> draws) {
+    public RelativeFreqSequenceAlgorithm(List<Draw> draws, DrawStats drawStats) {
 
-        super(item, draws);
+        super(draws, drawStats);
     }
 
     protected void calculateNextValue() {
 
         nextValue = 0.0;
 
-        Integer minimumFreq = item.getIntervals().size();
+        Integer minimumFreq = drawStats.getIntervals().size();
 
         for (Integer value : valuesFreq.keySet()) {
 
@@ -24,7 +24,7 @@ public class RelativeFreqSequenceAlgorithm extends SequenceAlgorithm {
 
                 minimumFreq = valuesFreq.get(value);
 
-                nextValue = (double) valuesFreq.get(value) / item.getIntervals().size();
+                nextValue = (double) valuesFreq.get(value) / drawStats.getIntervals().size();
             }
         }
     }

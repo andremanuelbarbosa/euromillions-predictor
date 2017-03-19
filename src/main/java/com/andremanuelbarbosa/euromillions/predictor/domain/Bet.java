@@ -1,19 +1,43 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
-import com.andremanuelbarbosa.euromillions.predictor.algorithms.RelativeFreqAndReverseRelativeIntervalAlgorithm;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import com.andremanuelbarbosa.euromillions.predictor.algorithms.Algorithm;
-
 public class Bet extends Result {
 
-    private final Algorithm algorithm;
+    private final Long id;
+    private final int drawId;
+    private final String formulaName;
 
-    public Bet(Algorithm algorithm) {
+    public Bet(int drawId, String formulaName) {
 
-        this.algorithm = algorithm;
+        this(null, drawId, formulaName);
+    }
+
+    @JsonCreator
+    public Bet(@JsonProperty("id") Long id, @JsonProperty("drawId") int drawId, @JsonProperty("formulaName") String formulaName) {
+
+        this.id = id;
+        this.drawId = drawId;
+        this.formulaName = formulaName;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
+    public int getDrawId() {
+
+        return drawId;
+    }
+
+    public String getFormulaName() {
+
+        return formulaName;
     }
 
     public void addStar(Integer star) {
@@ -36,11 +60,6 @@ public class Bet extends Result {
         numbers.add(number);
     }
 
-    public Algorithm getAlgorithm() {
-
-        return algorithm;
-    }
-
     public int getStarsPoints(Draw draw) {
 
         return Sets.intersection(stars, draw.getStars()).size();
@@ -58,26 +77,10 @@ public class Bet extends Result {
 
     public boolean isWinner(Draw draw) {
 
-        int matchingStars = 0;
-        int matchingNumbers = 0;
+        final long matchingStars = stars.stream().filter(star -> draw.getStars().contains(star)).count();
+        final long matchingNumbers = numbers.stream().filter(number -> draw.getNumbers().contains(number)).count();
 
-        for (Integer star : stars) {
-
-            if (draw.getStars().contains(star)) {
-
-                matchingStars++;
-            }
-        }
-
-        for (Integer number : numbers) {
-
-            if (draw.getNumbers().contains(number)) {
-
-                matchingNumbers++;
-            }
-        }
-
-        return matchingNumbers >= 2 || (matchingStars == 2 && matchingNumbers >= 1);
+        return matchingNumbers >= 2 || (matchingStars == 2 && (matchingNumbers >= 1 || draw.getStarsCount() > 10));
     }
 
     @Override

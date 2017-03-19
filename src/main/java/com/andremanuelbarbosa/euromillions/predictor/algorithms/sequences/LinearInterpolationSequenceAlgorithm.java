@@ -1,17 +1,16 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
 
-import java.util.List;
-
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
 import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
+import java.util.List;
 
 public class LinearInterpolationSequenceAlgorithm extends InterpolationSequenceAlgorithm {
 
-    public LinearInterpolationSequenceAlgorithm(Item item, List<? extends Draw> draws) {
+    public LinearInterpolationSequenceAlgorithm(List<Draw> draws, DrawStats drawStats) {
 
-        super(item, draws);
+        super(draws, drawStats);
     }
 
     protected void calculateNextValue() {
@@ -24,7 +23,7 @@ public class LinearInterpolationSequenceAlgorithm extends InterpolationSequenceA
 
         } else {
 
-            nextValue = new LinearInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(item.getIntervals().size());
+            nextValue = new LinearInterpolator().interpolate(valuesPolynomialX, valuesPolynomialY).value(drawStats.getIntervals().size());
         }
     }
 }

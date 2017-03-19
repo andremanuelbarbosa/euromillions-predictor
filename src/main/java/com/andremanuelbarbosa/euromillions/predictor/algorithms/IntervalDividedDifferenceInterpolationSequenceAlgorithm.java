@@ -1,19 +1,21 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.DividedDifferenceInterpolationSequenceAlgorithm;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class IntervalDividedDifferenceInterpolationSequenceAlgorithm extends Algorithm {
 
-    public IntervalDividedDifferenceInterpolationSequenceAlgorithm(Snapshot snapshot) {
+    public IntervalDividedDifferenceInterpolationSequenceAlgorithm(Boolean reverse) {
 
-        super(snapshot);
+        super("IDDIS", reverse);
     }
 
     @Override
-    double getItemWeight(Item item) {
+    public double getItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        return (new DividedDifferenceInterpolationSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue() / getSnapshot().getDraws().size();
+        return (new DividedDifferenceInterpolationSequenceAlgorithm(draws, drawStats)).getNextValue() / draws.size();
     }
 }

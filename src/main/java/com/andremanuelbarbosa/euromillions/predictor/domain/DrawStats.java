@@ -1,5 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.domain;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,6 +46,16 @@ public abstract class DrawStats {
     public double getAverageInterval() {
 
         return averageInterval;
+    }
+
+    public double getMaximumInterval() {
+
+        if (intervals.size() == 0) {
+
+            return getAverageInterval();
+        }
+
+        return Collections.max(intervals);
     }
 
     public List<Integer> getIntervals() {

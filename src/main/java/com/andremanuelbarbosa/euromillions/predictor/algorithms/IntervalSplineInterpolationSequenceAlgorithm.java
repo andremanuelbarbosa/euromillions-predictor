@@ -1,19 +1,21 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.SplineInterpolationSequenceAlgorithm;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class IntervalSplineInterpolationSequenceAlgorithm extends Algorithm {
 
-    public IntervalSplineInterpolationSequenceAlgorithm(Snapshot snapshot) {
+    public IntervalSplineInterpolationSequenceAlgorithm(Boolean reverse) {
 
-        super(snapshot);
+        super("ISIS", reverse);
     }
 
     @Override
-    double getItemWeight(Item item) {
+    public double getItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        return (new SplineInterpolationSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue() / getSnapshot().getDraws().size();
+        return (new SplineInterpolationSequenceAlgorithm(draws, drawStats)).getNextValue() / draws.size();
     }
 }

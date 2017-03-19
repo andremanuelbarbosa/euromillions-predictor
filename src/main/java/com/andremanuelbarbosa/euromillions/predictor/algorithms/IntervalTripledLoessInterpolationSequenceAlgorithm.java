@@ -1,19 +1,21 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.tripled.TripledLoessInterpolationSequenceAlgorithm;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class IntervalTripledLoessInterpolationSequenceAlgorithm extends Algorithm {
 
-    public IntervalTripledLoessInterpolationSequenceAlgorithm(Snapshot snapshot) {
+    public IntervalTripledLoessInterpolationSequenceAlgorithm(Boolean reverse) {
 
-        super(snapshot);
+        super("ITLoIS", reverse);
     }
 
     @Override
-    double getItemWeight(Item item) {
+    public double getItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        return (new TripledLoessInterpolationSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue() / getSnapshot().getDraws().size();
+        return (new TripledLoessInterpolationSequenceAlgorithm(draws, drawStats)).getNextValue() / draws.size();
     }
 }

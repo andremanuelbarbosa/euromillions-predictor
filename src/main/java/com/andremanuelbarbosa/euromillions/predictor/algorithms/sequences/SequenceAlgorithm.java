@@ -1,25 +1,25 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences;
 
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-
 public abstract class SequenceAlgorithm {
 
-    protected final Item item;
-    protected final List<? extends Draw> draws;
+    protected final List<Draw> draws;
+    protected final DrawStats drawStats;
 
     protected final Map<Integer, Integer> valuesFreq = new HashMap<>();
 
     protected double nextValue;
 
-    public SequenceAlgorithm(Item item, List<? extends Draw> draws) {
+    public SequenceAlgorithm(List<Draw> draws, DrawStats drawStats) {
 
-        this.item = item;
         this.draws = draws;
+        this.drawStats = drawStats;
 
         loadValuesFreq();
         calculateNextValue();
@@ -36,7 +36,7 @@ public abstract class SequenceAlgorithm {
 
         Integer maximumValue = 0;
 
-        for (Integer value : item.getIntervals()) {
+        for (Integer value : drawStats.getIntervals()) {
 
             if (value > maximumValue) {
 
@@ -54,7 +54,7 @@ public abstract class SequenceAlgorithm {
 
     void loadValuesFreq() {
 
-        for (Integer value : item.getIntervals()) {
+        for (Integer value : drawStats.getIntervals()) {
 
             valuesFreq.put(value, valuesFreq.containsKey(value) ? valuesFreq.get(value) + 1 : 1);
         }

@@ -1,31 +1,40 @@
 package com.andremanuelbarbosa.euromillions.predictor;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.RealDraw;
-import com.andremanuelbarbosa.euromillions.predictor.domain.RealDraws;
+import ch.qos.logback.classic.Level;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsManager;
 import com.codahale.metrics.MetricRegistry;
+import com.google.common.collect.Lists;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jackson.Jackson;
 import io.dropwizard.jdbi.DBIFactory;
+import io.dropwizard.logging.DefaultLoggingFactory;
+import io.dropwizard.logging.LoggingFactory;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class EuroMillionsPredictorIntegrationTest {
 
-    protected static final List<RealDraw> REAL_DRAWS = RealDraws.getRealDraws();
+    private static final AtomicBoolean INITIALIZED = new AtomicBoolean(false);
 
-    protected DBI dbi;
-    protected Handle handle;
-    protected Injector injector;
+    protected static DBI dbi;
+    protected static Handle handle;
+    protected static Injector injector;
 
-    protected void setUp() {
+    protected static DrawsManager drawsManager;
 
-        if (injector == null) {
+    protected static List<Draw> draws;
+    protected static List<Draw> drawsReversed;
+
+    protected static void initialize() {
+
+        if (!INITIALIZED.getAndSet(true)) {
 
             final DataSourceFactory dataSourceFactory = new DataSourceFactory();
             dataSourceFactory.setDriverClass("org.postgresql.Driver");
@@ -36,6 +45,10 @@ public abstract class EuroMillionsPredictorIntegrationTest {
             final EuroMillionsPredictorConfiguration euroMillionsPredictorConfiguration = new EuroMillionsPredictorConfiguration();
             euroMillionsPredictorConfiguration.setDataSourceFactory(dataSourceFactory);
 
+            final DefaultLoggingFactory defaultLoggingFactory = new DefaultLoggingFactory();
+            defaultLoggingFactory.setLevel(Level.INFO);
+            euroMillionsPredictorConfiguration.setLoggingFactory(defaultLoggingFactory);
+
             final Environment environment = new Environment("EuroMillionsPredictorIntegrationTest", Jackson.newObjectMapper(), null, new MetricRegistry(), null);
 
             final EuroMillionsPredictorModule euroMillionsPredictorModule = new EuroMillionsPredictorModule(environment, euroMillionsPredictorConfiguration);
@@ -43,16 +56,13 @@ public abstract class EuroMillionsPredictorIntegrationTest {
             injector = Guice.createInjector(euroMillionsPredictorModule);
 
             dbi = (new DBIFactory()).build(environment, dataSourceFactory, "EuroMillionsPredictorIntegrationTest");
-        }
 
-        handle = dbi.open();
-    }
+            handle = dbi.open();
 
-    protected void tearDown() {
+            drawsManager = injector.getInstance(DrawsManager.class);
 
-        if (handle != null) {
-
-            handle.close();
+            draws = drawsManager.getDraws(true, true, true);
+            drawsReversed = Lists.reverse(draws);
         }
     }
 }

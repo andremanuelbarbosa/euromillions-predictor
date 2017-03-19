@@ -4,12 +4,11 @@ import org.junit.Test;
 
 public class IntervalLoessInterpolationSequenceAlgorithmIntegrationTest extends AlgorithmIntegrationTest {
 
-  private IntervalLoessInterpolationSequenceAlgorithm intervalLoessInterpolationSequenceAlgorithm = new IntervalLoessInterpolationSequenceAlgorithm(
-      FULL_SNAPSHOT);
+    private IntervalLoessInterpolationSequenceAlgorithm intervalLoessInterpolationSequenceAlgorithm = new IntervalLoessInterpolationSequenceAlgorithm(false);
 
-  @Test
-  public void shouldReturnNextBet() {
+    @Test
+    public void shouldReturnNextBet() {
 
-    assertNextBet(intervalLoessInterpolationSequenceAlgorithm);
-  }
+        assertNextBet(intervalLoessInterpolationSequenceAlgorithm);
+    }
 }

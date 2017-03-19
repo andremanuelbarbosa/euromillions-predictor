@@ -8,7 +8,7 @@ public class RelativeFreqSequenceAlgorithmIntegrationTest extends AlgorithmInteg
     @Test
     public void should() {
 
-        RelativeFreqSequenceAlgorithm relativeRelativeFreqSequenceAlgorithm = new RelativeFreqSequenceAlgorithm(FULL_SNAPSHOT.getStars().get(0), REAL_DRAWS);
+        RelativeFreqSequenceAlgorithm relativeRelativeFreqSequenceAlgorithm = new RelativeFreqSequenceAlgorithm(draws, draws.get(0).getNumberDrawStats().get(0));
 
         relativeRelativeFreqSequenceAlgorithm.getNextValue();
     }

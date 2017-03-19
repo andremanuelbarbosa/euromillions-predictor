@@ -9,7 +9,16 @@
             <column name="date" type="datetime">
                 <constraints nullable="false"/>
             </column>
+            <column name="cost" type="double" defaultValue="2.50">
+                <constraints nullable="false"/>
+            </column>
             <column name="prize" type="double" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="stars_count" type="int" defaultValue="12">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numbers_count" type="int" defaultValue="50">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -36,6 +45,24 @@
         </createTable>
         <addPrimaryKey tableName="draws_numbers" columnNames="draw_id, number"/>
         <addForeignKeyConstraint baseTableName="draws_numbers" baseColumnNames="draw_id" constraintName="draws_numbers_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="draws_prizes">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="draws_prizes_draw_id_fk"/>
+            </column>
+            <column name="stars" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numbers" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="prize" type="double" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="draws_prizes" columnNames="draw_id, stars, numbers"/>
+        <addForeignKeyConstraint baseTableName="draws_prizes" baseColumnNames="draw_id" constraintName="draws_prizes_draw_id_fk"
                                  referencedTableName="draws" referencedColumnNames="id"/>
 
         <createTable tableName="draws_stats_stars">
@@ -103,7 +130,7 @@
         <addPrimaryKey tableName="draws_stats_intervals_stars" columnNames="draw_id, star, id"/>
         <addForeignKeyConstraint baseTableName="draws_stats_intervals_stars" baseColumnNames="draw_id, star"
                                  constraintName="draws_stats_intervals_stars_draw_id_star_fk" referencedTableName="draws_stats_stars"
-                                  referencedColumnNames="draw_id, star"/>
+                                 referencedColumnNames="draw_id, star"/>
 
         <createTable tableName="draws_stats_intervals_numbers">
             <column name="draw_id" type="int">
@@ -153,5 +180,167 @@
         <addPrimaryKey tableName="draws_templates_numbers" columnNames="draw_id, template, number"/>
         <addForeignKeyConstraint baseTableName="draws_templates_numbers" baseColumnNames="draw_id" constraintName="draws_templates_numbers_draw_id_fk"
                                  referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="formulas_stats">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_draw_id_fk"/>
+            </column>
+            <column name="draws_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="formulas_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="algorithms_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="starting_draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_starting_draw_id_fk"/>
+            </column>
+            <column name="finishing_draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_finishing_draw_id_fk"/>
+            </column>
+            <column name="costs" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execution_time" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_points" type="char(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_wins" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_wins_percentage" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_earnings" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_earnings_percentage" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="formulas_stats" columnNames="draw_id, draws_count"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats" baseColumnNames="draw_id" constraintName="formulas_stats_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats" baseColumnNames="starting_draw_id" constraintName="formulas_stats_starting_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats" baseColumnNames="finishing_draw_id"
+                                 constraintName="formulas_stats_finishing_draw_id_fk" referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="formulas_stats_formulas">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_draw_id_draws_count_fk"/>
+            </column>
+            <column name="draws_count" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_draw_id_draws_count_fk"/>
+            </column>
+            <column name="formula_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maximum_points" type="char(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wins" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wins_percentage" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="earnings" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="earnings_percentage" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="formulas_stats_formulas" columnNames="draw_id, draws_count, formula_name"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats_formulas" baseColumnNames="draw_id, draws_count"
+                                 constraintName="formulas_stats_formulas_draw_id_draws_count_fk" referencedTableName="formulas_stats"
+                                 referencedColumnNames="draw_id, draws_count"/>
+
+        <createTable tableName="formulas_stats_formulas_stars">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_stars_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="draws_count" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_stars_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="formula_name" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_stars_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="freq" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="formulas_stats_formulas_stars" columnNames="draw_id, draws_count, formula_name, star"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats_formulas_stars" baseColumnNames="draw_id, draws_count, formula_name"
+                                 constraintName="formulas_stats_formulas_stars_draw_id_draws_count_formula_name_fk"
+                                 referencedTableName="formulas_stats_formulas" referencedColumnNames="draw_id, draws_count, formula_name"/>
+
+        <createTable tableName="formulas_stats_formulas_numbers">
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_numbers_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="draws_count" type="int">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_numbers_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="formula_name" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="formulas_stats_formulas_numbers_draw_id_draws_count_formula_name_fk"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="freq" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="formulas_stats_formulas_numbers" columnNames="draw_id, draws_count, formula_name, number"/>
+        <addForeignKeyConstraint baseTableName="formulas_stats_formulas_numbers" baseColumnNames="draw_id, draws_count, formula_name"
+                                 constraintName="formulas_stats_formulas_numbers_draw_id_draws_count_formula_name_fk"
+                                 referencedTableName="formulas_stats_formulas" referencedColumnNames="draw_id, draws_count, formula_name"/>
+
+        <createTable tableName="ids">
+            <column name="name" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="bets">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="draw_id" type="int">
+                <constraints nullable="false" foreignKeyName="bets_draw_id_fk"/>
+            </column>
+            <column name="formula_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="bets" baseColumnNames="draw_id" constraintName="bets_draw_id_fk"
+                                 referencedTableName="draws" referencedColumnNames="id"/>
+
+        <createTable tableName="bets_stars">
+            <column name="bet_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="bets_stars_bet_id_fk"/>
+            </column>
+            <column name="star" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="bets_stars" columnNames="bet_id, star"/>
+        <addForeignKeyConstraint baseTableName="bets_stars" baseColumnNames="bet_id" constraintName="bets_stars_bet_id_fk"
+                                 referencedTableName="bets" referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>

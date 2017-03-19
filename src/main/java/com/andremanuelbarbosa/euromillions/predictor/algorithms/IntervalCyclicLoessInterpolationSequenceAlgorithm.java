@@ -1,19 +1,21 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.cyclic.CyclicLoessInterpolationSequenceAlgorithm;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class IntervalCyclicLoessInterpolationSequenceAlgorithm extends Algorithm {
 
-    public IntervalCyclicLoessInterpolationSequenceAlgorithm(Snapshot snapshot) {
+    public IntervalCyclicLoessInterpolationSequenceAlgorithm(Boolean reverse) {
 
-        super(snapshot);
+        super("ICLoIS", reverse);
     }
 
     @Override
-    double getItemWeight(Item item) {
+    public double getItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        return (new CyclicLoessInterpolationSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue() / getSnapshot().getDraws().size();
+        return (new CyclicLoessInterpolationSequenceAlgorithm(draws, drawStats).getNextValue() / draws.size());
     }
 }

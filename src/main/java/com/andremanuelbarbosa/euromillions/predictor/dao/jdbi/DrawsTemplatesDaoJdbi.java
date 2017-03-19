@@ -21,7 +21,7 @@ public interface DrawsTemplatesDaoJdbi extends DrawsTemplatesDao {
     void deleteNumbersDrawsTemplates(@Bind("drawId") int drawId);
 
     @Override
-    @SqlQuery("SELECT d.id FROM draws d WHERE NOT EXISTS ( SELECT 1 FROM draws_templates_stars dts WHERE dts.draw_id = d.id ) AND NOT EXISTS ( SELECT 1 FROM draws_templates_numbers dtn WHERE dtn.draw_id = d.id ) ORDER BY d.id ASC")
+    @SqlQuery("SELECT d.id FROM draws d WHERE ( SELECT COUNT(*) FROM draws_stars ds WHERE ds.draw_id = d.id ) > 0 AND ( SELECT COUNT(*) FROM draws_numbers dn WHERE dn.draw_id = d.id ) > 0 AND ( NOT EXISTS ( SELECT 1 FROM draws_templates_stars dts WHERE dts.draw_id = d.id ) OR NOT EXISTS ( SELECT 1 FROM draws_templates_numbers dtn WHERE dtn.draw_id = d.id ) OR ( SELECT COUNT(*) FROM draws_templates_stars dts WHERE dts.draw_id = d.id ) != d.stars_count OR ( SELECT COUNT(*) FROM draws_templates_numbers dtn WHERE dtn.draw_id = d.id ) != d.numbers_count ) ORDER BY d.id ASC")
     List<Integer> getDrawIdsWithoutTemplates();
 
     @Override

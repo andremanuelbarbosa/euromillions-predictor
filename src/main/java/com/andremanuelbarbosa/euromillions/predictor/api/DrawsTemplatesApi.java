@@ -1,6 +1,8 @@
 package com.andremanuelbarbosa.euromillions.predictor.api;
 
+import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsManager;
 import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsTemplatesManager;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,11 +18,13 @@ import java.util.Set;
 @Path("/draws/{drawId}/templates")
 public class DrawsTemplatesApi extends AbstractApi {
 
+    private final DrawsManager drawsManager;
     private final DrawsTemplatesManager drawsTemplatesManager;
 
     @Inject
-    public DrawsTemplatesApi(DrawsTemplatesManager drawsTemplatesManager) {
+    public DrawsTemplatesApi(DrawsManager drawsManager, DrawsTemplatesManager drawsTemplatesManager) {
 
+        this.drawsManager = drawsManager;
         this.drawsTemplatesManager = drawsTemplatesManager;
     }
 
@@ -61,7 +65,7 @@ public class DrawsTemplatesApi extends AbstractApi {
     @ApiOperation("Updates the Stars Templates for the Draw")
     public Response updateStarsDrawsTemplates(@PathParam("drawId") int drawId) {
 
-        drawsTemplatesManager.updateStarsDrawsTemplates(drawId);
+        drawsTemplatesManager.updateStarsDrawsTemplates(Lists.reverse(drawsManager.getDraws()).subList(0, drawId), drawId);
 
         return Response.accepted().build();
     }
@@ -71,7 +75,7 @@ public class DrawsTemplatesApi extends AbstractApi {
     @ApiOperation("Updates the Numbers Templates for the Draw")
     public Response updateNumbersDrawsTemplates(@PathParam("drawId") int drawId) {
 
-        drawsTemplatesManager.updateNumbersDrawsTemplates(drawId);
+        drawsTemplatesManager.updateNumbersDrawsTemplates(Lists.reverse(drawsManager.getDraws()).subList(0, drawId), drawId);
 
         return Response.accepted().build();
     }

@@ -15,19 +15,24 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
-import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.*;
+import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.NUMBERS_COUNT_PER_DRAW;
+import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.STARS_COUNT_PER_DRAW;
 
 @Singleton
 public class DrawsTemplatesManager {
 
-    private final DrawsManager drawsManager;
     private final DrawsTemplatesDao drawsTemplatesDao;
 
     @Inject
-    public DrawsTemplatesManager(DrawsManager drawsManager, DrawsTemplatesDao drawsTemplatesDao) {
+    public DrawsTemplatesManager(DrawsTemplatesDao drawsTemplatesDao) {
 
-        this.drawsManager = drawsManager;
         this.drawsTemplatesDao = drawsTemplatesDao;
+    }
+
+    public void deleteDrawsTemplates(int drawId) {
+
+        deleteStarsDrawsTemplates(drawId);
+        deleteNumbersDrawsTemplates(drawId);
     }
 
     public void deleteStarsDrawsTemplates(int drawId) {
@@ -114,7 +119,8 @@ public class DrawsTemplatesManager {
                 }
             }
 
-            loadTemplates(templates, numTemplates, numElements, new Combinations(numElementsReduced, combinations.getK()), coOccurrenceMatrix, elementsInTemplates, combinationsElementsMapReduced);
+            loadTemplates(templates, numTemplates, numElements, new Combinations(numElementsReduced, numElementsReduced < combinations.getK() ? numElementsReduced : combinations.getK()),
+                coOccurrenceMatrix, elementsInTemplates, combinationsElementsMapReduced);
         }
     }
 
@@ -152,31 +158,29 @@ public class DrawsTemplatesManager {
         }
     }
 
-    public void updateDrawsTemplates(int drawId) {
+    public void updateDrawsTemplates(List<Draw> draws, int drawId) {
 
-        updateDrawsTemplates(drawId, true);
+        updateDrawsTemplates(draws, drawId, true);
     }
 
-    public void updateDrawsTemplates(int drawId, boolean newThread) {
+    public void updateDrawsTemplates(List<Draw> draws, int drawId, boolean newThread) {
 
-        updateStarsDrawsTemplates(drawId, newThread);
-        updateNumbersDrawsTemplates(drawId, newThread);
+        updateStarsDrawsTemplates(draws, drawId, newThread);
+        updateNumbersDrawsTemplates(draws, drawId, newThread);
     }
 
-    public void updateStarsDrawsTemplates(int drawId) {
+    public void updateStarsDrawsTemplates(List<Draw> draws, int drawId) {
 
-        updateNumbersDrawsTemplates(drawId, true);
+        updateStarsDrawsTemplates(draws, drawId, true);
     }
 
-    public void updateStarsDrawsTemplates(int drawId, boolean newThread) {
+    public void updateStarsDrawsTemplates(List<Draw> draws, int drawId, boolean newThread) {
 
         deleteStarsDrawsTemplates(drawId);
 
-        final List<Draw> draws = Lists.reverse(drawsManager.getDraws()).subList(0, drawId);
+        final int starsCount = draws.get(draws.size() - 1).getStarsCount();
 
-        final int numStars = draws.size() <= DRAWS_COUNT_BEFORE_ELEVEN_STARS ? 10 : (draws.size() <= DRAWS_COUNT_BEFORE_TWELVE_STARS ? 11 : STARS_COUNT);
-
-        final int[][] starsCoOccurrenceMatrix = new int[numStars][numStars];
+        final int[][] starsCoOccurrenceMatrix = new int[starsCount][starsCount];
 
         draws.forEach(draw -> {
 
@@ -191,35 +195,37 @@ public class DrawsTemplatesManager {
             });
         });
 
-        final int[] starCombinationsElementsMap = new int[numStars];
+        final int[] starCombinationsElementsMap = new int[starsCount];
 
         for (int i = 0; i < starCombinationsElementsMap.length; i++) {
 
             starCombinationsElementsMap[i] = i + 1;
         }
 
+        final Combinations combinations = new Combinations(starsCount, (int) Math.ceil((double) starsCount / STARS_COUNT_PER_DRAW));
+
         if (newThread) {
 
-            new Thread(new StarTemplatesBuilderThread(drawId, STARS_COUNT_PER_DRAW, numStars, new Combinations(numStars, numStars / STARS_COUNT_PER_DRAW), starsCoOccurrenceMatrix, Sets.newHashSet(), starCombinationsElementsMap)).start();
+            new Thread(new StarTemplatesBuilderThread(drawId, STARS_COUNT_PER_DRAW, starsCount, combinations, starsCoOccurrenceMatrix, Sets.newHashSet(), starCombinationsElementsMap)).start();
 
         } else {
 
-            saveStarTemplates(drawId, STARS_COUNT_PER_DRAW, numStars, new Combinations(numStars, numStars / STARS_COUNT_PER_DRAW), starsCoOccurrenceMatrix, Sets.newHashSet(), starCombinationsElementsMap);
+            saveStarTemplates(drawId, STARS_COUNT_PER_DRAW, starsCount, combinations, starsCoOccurrenceMatrix, Sets.newHashSet(), starCombinationsElementsMap);
         }
     }
 
-    public void updateNumbersDrawsTemplates(int drawId) {
+    public void updateNumbersDrawsTemplates(List<Draw> draws, int drawId) {
 
-        updateNumbersDrawsTemplates(drawId, true);
+        updateNumbersDrawsTemplates(draws, drawId, true);
     }
 
-    public void updateNumbersDrawsTemplates(int drawId, boolean newThread) {
+    public void updateNumbersDrawsTemplates(List<Draw> draws, int drawId, boolean newThread) {
 
         deleteNumbersDrawsTemplates(drawId);
 
-        final List<Draw> draws = Lists.reverse(drawsManager.getDraws()).subList(0, drawId);
+        final int numbersCount = draws.get(draws.size() - 1).getNumbersCount();
 
-        final int[][] numbersCoOccurrenceMatrix = new int[NUMBERS_COUNT][NUMBERS_COUNT];
+        final int[][] numbersCoOccurrenceMatrix = new int[numbersCount][numbersCount];
 
         draws.forEach(draw -> {
 
@@ -234,20 +240,22 @@ public class DrawsTemplatesManager {
             });
         });
 
-        final int[] numberCombinationsElementsMap = new int[NUMBERS_COUNT];
+        final int[] numberCombinationsElementsMap = new int[numbersCount];
 
         for (int i = 0; i < numberCombinationsElementsMap.length; i++) {
 
             numberCombinationsElementsMap[i] = i + 1;
         }
 
+        final Combinations combinations = new Combinations(numbersCount, (int) Math.ceil((double) numbersCount / NUMBERS_COUNT_PER_DRAW));
+
         if (newThread) {
 
-            new Thread(new NumberTemplatesBuilderThread(drawId, NUMBERS_COUNT_PER_DRAW, NUMBERS_COUNT, new Combinations(NUMBERS_COUNT, NUMBERS_COUNT / NUMBERS_COUNT_PER_DRAW), numbersCoOccurrenceMatrix, Sets.newHashSet(), numberCombinationsElementsMap)).start();
+            new Thread(new NumberTemplatesBuilderThread(drawId, NUMBERS_COUNT_PER_DRAW, numbersCount, combinations, numbersCoOccurrenceMatrix, Sets.newHashSet(), numberCombinationsElementsMap)).start();
 
         } else {
 
-            saveNumberTemplates(drawId, NUMBERS_COUNT_PER_DRAW, NUMBERS_COUNT, new Combinations(NUMBERS_COUNT, NUMBERS_COUNT / NUMBERS_COUNT_PER_DRAW), numbersCoOccurrenceMatrix, Sets.newHashSet(), numberCombinationsElementsMap);
+            saveNumberTemplates(drawId, NUMBERS_COUNT_PER_DRAW, numbersCount, combinations, numbersCoOccurrenceMatrix, Sets.newHashSet(), numberCombinationsElementsMap);
         }
     }
 

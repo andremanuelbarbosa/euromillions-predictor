@@ -1,19 +1,21 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
 import com.andremanuelbarbosa.euromillions.predictor.algorithms.sequences.tripled.TripledSplineInterpolationSequenceAlgorithm;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Item;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Snapshot;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+
+import java.util.List;
 
 public class IntervalTripledSplineInterpolationSequenceAlgorithm extends Algorithm {
 
-    public IntervalTripledSplineInterpolationSequenceAlgorithm(Snapshot snapshot) {
+    public IntervalTripledSplineInterpolationSequenceAlgorithm(Boolean reverse) {
 
-        super(snapshot);
+        super("ITSIS", reverse);
     }
 
     @Override
-    double getItemWeight(Item item) {
+    public double getItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        return (new TripledSplineInterpolationSequenceAlgorithm(item, getSnapshot().getDraws())).getNextValue() / getSnapshot().getDraws().size();
+        return (new TripledSplineInterpolationSequenceAlgorithm(draws, drawStats)).getNextValue() / draws.size();
     }
 }

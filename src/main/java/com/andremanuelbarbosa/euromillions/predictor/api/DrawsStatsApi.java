@@ -1,9 +1,12 @@
 package com.andremanuelbarbosa.euromillions.predictor.api;
 
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
 import com.andremanuelbarbosa.euromillions.predictor.domain.NumberDrawStats;
 import com.andremanuelbarbosa.euromillions.predictor.domain.StarDrawStats;
+import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsManager;
 import com.andremanuelbarbosa.euromillions.predictor.manager.DrawsStatsManager;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,11 +21,13 @@ import java.util.List;
 @Path("/draws/{drawId}/stats")
 public class DrawsStatsApi extends AbstractApi {
 
+    private final DrawsManager drawsManager;
     private final DrawsStatsManager drawsStatsManager;
 
     @Inject
-    public DrawsStatsApi(DrawsStatsManager drawsStatsManager) {
+    public DrawsStatsApi(DrawsManager drawsManager, DrawsStatsManager drawsStatsManager) {
 
+        this.drawsManager = drawsManager;
         this.drawsStatsManager = drawsStatsManager;
     }
 
@@ -82,7 +87,7 @@ public class DrawsStatsApi extends AbstractApi {
     @ApiOperation("Updates the Stats for the Draw")
     public List<DrawStats> updateDrawStats(@PathParam("drawId") int drawId) {
 
-        return drawsStatsManager.updateDrawStats(drawId);
+        return drawsStatsManager.updateDrawStats(drawId, drawsManager.getDrawsUpToIncluding(drawId));
     }
 
     @PUT
@@ -90,7 +95,7 @@ public class DrawsStatsApi extends AbstractApi {
     @ApiOperation("Updates the Stars Stats for the Draw")
     public List<StarDrawStats> updateStarsDrawStats(@PathParam("drawId") int drawId) {
 
-        return drawsStatsManager.updateStarsDrawStats(drawId);
+        return drawsStatsManager.updateStarsDrawStats(drawId, drawsManager.getDrawsUpToIncluding(drawId));
     }
 
     @PUT
@@ -98,6 +103,6 @@ public class DrawsStatsApi extends AbstractApi {
     @ApiOperation("Updates the Numbers Stats for the Draw")
     public List<NumberDrawStats> updateNumbersDrawStats(@PathParam("drawId") int drawId) {
 
-        return drawsStatsManager.updateNumbersDrawStats(drawId);
+        return drawsStatsManager.updateNumbersDrawStats(drawId, drawsManager.getDrawsUpToIncluding(drawId));
     }
 }

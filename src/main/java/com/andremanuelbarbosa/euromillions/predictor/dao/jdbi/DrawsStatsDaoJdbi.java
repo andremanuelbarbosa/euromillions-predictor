@@ -35,7 +35,7 @@ public interface DrawsStatsDaoJdbi extends DrawsStatsDao {
     void deleteNumberStarsDrawStatsIntervals(@Bind("drawId") int drawId);
 
     @Override
-    @SqlQuery("SELECT d.id FROM draws d WHERE NOT EXISTS ( SELECT 1 FROM draws_stats_stars dss WHERE dss.draw_id = d.id ) AND NOT EXISTS ( SELECT 1 FROM draws_stats_numbers dsn WHERE dsn.draw_id = d.id ) ORDER BY d.id ASC")
+    @SqlQuery("SELECT d.id FROM draws d WHERE ( SELECT COUNT(*) FROM draws_stars ds WHERE ds.draw_id = d.id ) > 0 AND ( SELECT COUNT(*) FROM draws_numbers dn WHERE dn.draw_id = d.id ) > 0 AND ( NOT EXISTS ( SELECT 1 FROM draws_stats_stars dss WHERE dss.draw_id = d.id ) AND NOT EXISTS ( SELECT 1 FROM draws_stats_numbers dsn WHERE dsn.draw_id = d.id ) ) ORDER BY d.id ASC")
     List<Integer> getDrawIdsWithoutStats();
 
     @Override

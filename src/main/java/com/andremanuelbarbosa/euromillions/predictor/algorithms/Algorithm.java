@@ -1,147 +1,68 @@
 package com.andremanuelbarbosa.euromillions.predictor.algorithms;
 
-import com.andremanuelbarbosa.euromillions.predictor.domain.*;
-import com.andremanuelbarbosa.euromillions.predictor.domain.Number;
-import com.google.common.collect.Lists;
+import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
+import com.andremanuelbarbosa.euromillions.predictor.domain.DrawStats;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.util.SortedSet;
+import java.util.List;
 
-public abstract class Algorithm {
+public abstract class Algorithm implements Comparable {
 
-    private final Snapshot snapshot;
+    protected final boolean reverse;
 
-    public Algorithm(Snapshot snapshot) {
+    private final String name;
 
-        this.snapshot = snapshot;
+    public Algorithm(String name, Boolean reverse) {
+
+        this.name = name;
+        this.reverse = reverse;
     }
 
-    public Snapshot getSnapshot() {
+    public String getName() {
 
-        return snapshot;
+        return (reverse ? "R" : "") + name;
     }
 
-    abstract double getItemWeight(Item item);
+    public boolean isReverse() {
 
-    private boolean isUsingTemplates() {
-
-        return Lists.newArrayList(getClass().getAnnotations()).stream().anyMatch(annotation -> annotation.getClass() == TemplatesAlgorithm.class);
+        return reverse;
     }
 
-    private double getMinimumWeightFromStars(SortedSet<Integer> stars) {
+    public double getAdjustedItemWeight(List<Draw> draws, DrawStats drawStats) {
 
-        double starsMinimumWeight = Double.MAX_VALUE;
+        if (reverse) {
 
-        for (Integer star : stars) {
-
-            double starWeight = getItemWeight(getSnapshot().getStars().get(star - 1));
-
-            if (starWeight < starsMinimumWeight) {
-
-                starsMinimumWeight = starWeight;
-            }
+            return Double.MAX_VALUE - getItemWeight(draws, drawStats);
         }
 
-        return starsMinimumWeight;
+        return getItemWeight(draws, drawStats);
     }
 
-    private double getMinimumWeightFromNumbers(SortedSet<Integer> numbers) {
+    public abstract double getItemWeight(List<Draw> draws, DrawStats drawStats);
 
-        double numbersMinimumWeight = Double.MAX_VALUE;
+    @Override
+    public boolean equals(Object o) {
 
-        for (Integer number : numbers) {
-
-            double numberWeight = getItemWeight(getSnapshot().getNumbers().get(number - 1));
-
-            if (numberWeight < numbersMinimumWeight) {
-
-                numbersMinimumWeight = numberWeight;
-            }
-        }
-
-        return numbersMinimumWeight;
+        return EqualsBuilder.reflectionEquals(this, o);
     }
 
-    double getMinimumWeight(SortedSet<Integer> items, ItemType itemType) {
+    @Override
+    public int hashCode() {
 
-        double minimumWeight = itemType == ItemType.STAR ? getMinimumWeightFromStars(items) : getMinimumWeightFromNumbers(items);
-
-        return minimumWeight < Double.MAX_VALUE ? minimumWeight : 0.0;
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
-    Integer getMinimumWeightItem(SortedSet<Integer> items, ItemType itemType) {
+    @Override
+    public int compareTo(Object o) {
 
-        double minimumWeight = getMinimumWeight(items, itemType);
+        final int classNameComparison = getClass().getSimpleName().compareTo(((Algorithm) o).getClass().getSimpleName());
 
-        for (Integer item : items) {
+        if (classNameComparison == 0) {
 
-            if (minimumWeight == 0.0) {
-
-                return item;
-            }
-
-            if (itemType == ItemType.STAR) {
-
-                if (getItemWeight(getSnapshot().getStars().get(item - 1)) == minimumWeight) {
-
-                    return item;
-                }
-            }
-
-            if (itemType == ItemType.NUMBER) {
-
-                if (getItemWeight(getSnapshot().getNumbers().get(item - 1)) == minimumWeight) {
-
-                    return item;
-                }
-            }
+            return reverse ? 1 : -1;
         }
 
-        throw new IllegalStateException("Unable to find the Minimum Weight Item in " + items.toString());
-    }
-
-    public Bet getNextBet() {
-
-        Bet bet = new Bet(this);
-
-        Template starTemplate = null;
-        final boolean usingTemplates = isUsingTemplates();
-
-        for (Star star : snapshot.getStars()) {
-
-            if (bet.getStars().size() < Result.STARS_COUNT) {
-
-                if (!usingTemplates || starTemplate == null || starTemplate.getElements().contains(star.getId())) {
-
-                    bet.addStar(star.getId());
-
-                    if (usingTemplates && starTemplate == null) {
-
-                        starTemplate = snapshot.getStarTemplate(star.getId());
-                    }
-                }
-
-            } else if (getItemWeight(star) > getMinimumWeight(bet.getStars(), ItemType.STAR)) {
-
-                bet.getStars().remove(getMinimumWeightItem(bet.getStars(), ItemType.STAR));
-
-                bet.addStar(star.getId());
-            }
-        }
-
-        for (Number number : snapshot.getNumbers()) {
-
-            if (bet.getNumbers().size() < Result.NUMBERS_COUNT) {
-
-                bet.addNumber(number.getId());
-
-            } else if (getItemWeight(number) > getMinimumWeight(bet.getNumbers(), ItemType.NUMBER)) {
-
-                bet.getNumbers().remove(getMinimumWeightItem(bet.getNumbers(), ItemType.NUMBER));
-
-                bet.addNumber(number.getId());
-            }
-        }
-
-        return bet;
+        return classNameComparison;
     }
 }

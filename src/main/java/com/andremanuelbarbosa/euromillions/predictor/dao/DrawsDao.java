@@ -7,6 +7,12 @@ import java.util.SortedSet;
 
 public interface DrawsDao extends Dao {
 
+    void deleteDraw(int id);
+
+    void deleteDrawStars(int drawId);
+
+    void deleteDrawNumbers(int drawId);
+
     Draw getDraw(int id);
 
     SortedSet<Integer> getDrawStars(int id);
@@ -15,5 +21,15 @@ public interface DrawsDao extends Dao {
 
     List<Draw> getDraws();
 
+    List<Draw> getDrawsWithStarsAndNumbers();
+
+    List<Draw> getDrawsWithoutStarsOrNumbers();
+
     void insertDraw(Draw draw);
+
+    void insertDrawStar(int drawId, int star);
+
+    void insertDrawNumber(int drawId, int number);
+
+    void updateDraw(int id, Draw draw);
 }
