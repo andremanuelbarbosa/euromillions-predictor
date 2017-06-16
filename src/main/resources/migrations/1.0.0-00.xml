@@ -12,9 +12,6 @@
             <column name="cost" type="double" defaultValue="2.50">
                 <constraints nullable="false"/>
             </column>
-            <column name="prize" type="double" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
             <column name="stars_count" type="int" defaultValue="12">
                 <constraints nullable="false"/>
             </column>
@@ -188,12 +185,6 @@
             <column name="draws_count" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="formulas_count" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="algorithms_count" type="int">
-                <constraints nullable="false"/>
-            </column>
             <column name="starting_draw_id" type="int">
                 <constraints nullable="false" foreignKeyName="formulas_stats_starting_draw_id_fk"/>
             </column>
@@ -201,25 +192,25 @@
                 <constraints nullable="false" foreignKeyName="formulas_stats_finishing_draw_id_fk"/>
             </column>
             <column name="costs" type="double">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="execution_time" type="bigint">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="maximum_points" type="char(7)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="maximum_wins" type="int">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="maximum_wins_percentage" type="int">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="maximum_earnings" type="double">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="maximum_earnings_percentage" type="double">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
         <addPrimaryKey tableName="formulas_stats" columnNames="draw_id, draws_count"/>

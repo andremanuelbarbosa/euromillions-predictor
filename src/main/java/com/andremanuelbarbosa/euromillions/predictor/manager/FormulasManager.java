@@ -34,24 +34,24 @@ public class FormulasManager {
 
         });
 
-//        algorithmsManager.getAlgorithms().forEach(algorithm1 -> {
-//
-//            algorithmsManager.getAlgorithms().forEach(algorithm2 -> {
-//
-//                if (algorithm1.getClass() != algorithm2.getClass()) {
-//
-//                    templatesModes.forEach(starsTemplatesMode -> {
-//
-//                        templatesModes.forEach(numbersTemplateMode -> {
-//
-//                            formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2), Lists.newArrayList(algorithm1), starsTemplatesMode, numbersTemplateMode));
-//                            formulas.add(new Formula(Lists.newArrayList(algorithm1), Lists.newArrayList(algorithm1, algorithm2), starsTemplatesMode, numbersTemplateMode));
-//                            formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2), Lists.newArrayList(algorithm1, algorithm2), starsTemplatesMode, numbersTemplateMode));
-//                        });
-//                    });
-//                }
-//            });
-//        });
+        algorithmsManager.getAlgorithms().forEach(algorithm1 -> {
+
+            algorithmsManager.getAlgorithms().forEach(algorithm2 -> {
+
+                if (algorithm1.getClass() != algorithm2.getClass()) {
+
+                    templatesModes.forEach(starsTemplatesMode -> {
+
+                        templatesModes.forEach(numbersTemplateMode -> {
+
+                            formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2), Lists.newArrayList(algorithm1), starsTemplatesMode, numbersTemplateMode));
+                            formulas.add(new Formula(Lists.newArrayList(algorithm1), Lists.newArrayList(algorithm1, algorithm2), starsTemplatesMode, numbersTemplateMode));
+                            formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2), Lists.newArrayList(algorithm1, algorithm2), starsTemplatesMode, numbersTemplateMode));
+                        });
+                    });
+                }
+            });
+        });
     }
 
     public List<Formula> getFormulas() {
