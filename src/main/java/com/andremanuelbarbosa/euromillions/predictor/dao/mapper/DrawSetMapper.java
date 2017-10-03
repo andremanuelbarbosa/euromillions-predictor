@@ -12,7 +12,7 @@ public class DrawSetMapper implements ResultSetMapper<Draw> {
     @Override
     public Draw map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
 
-        return new Draw(resultSet.getInt("id"), resultSet.getTimestamp("date"), resultSet.getDouble("cost"), resultSet.getDouble("prize"),
+        return new Draw(resultSet.getInt("id"), resultSet.getTimestamp("date"), resultSet.getDouble("cost"),
             resultSet.getInt("stars_count"), resultSet.getInt("numbers_count"));
     }
 }

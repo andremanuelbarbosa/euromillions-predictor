@@ -15,7 +15,7 @@ import java.util.SortedSet;
 @RegisterMapper(DrawSetMapper.class)
 public interface DrawsDaoJdbi extends DrawsDao {
 
-    String DRAW_COLUMNS = "id, date, cost, prize, stars_count, numbers_count";
+    String DRAW_COLUMNS = "id, date, cost, stars_count, numbers_count";
 
     @Override
     @SqlUpdate("DELETE FROM draws WHERE id = :id")

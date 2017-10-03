@@ -27,7 +27,7 @@ public class DrawPrizeIntegrationTest extends EuroMillionsPredictorIntegrationTe
 
     private String getPrizeInsert(int drawId, int stars, int numbers, WebElement prizeTableRow) {
 
-        return "        <insert tableName=\"draws_prizes\"><column name=\"draw_id\" value=\"" + drawId + "\"></column><column name=\"stars\" value=\"" + stars + "\"></column><column name=\"numbers\" value=\"" + numbers + "\"></column><column name=\"prize\" value=\"" + prizeTableRow.findElements(By.tagName("td")).get(1).getText().replaceAll("[£,]", "") + "\"></column></insert>";
+        return "        <insert tableName=\"draws_prizes\"><column name=\"draw_id\" value=\"" + drawId + "\"></column><column name=\"stars\" value=\"" + stars + "\"></column><column name=\"numbers\" value=\"" + numbers + "\"></column><column name=\"prize\" value=\"" + prizeTableRow.findElements(By.tagName("td")).get(1).getText().replaceAll("[£€,]", "") + "\"></column></insert>";
     }
 
     @Test
@@ -35,7 +35,7 @@ public class DrawPrizeIntegrationTest extends EuroMillionsPredictorIntegrationTe
 
         List<List<String>> prizesInserts = Lists.newArrayListWithExpectedSize(draws.size());
 
-        for (int i = draws.size() - 990; i >= 0; i--) {
+        for (int i = draws.size() - 1001; i >= 0; i--) {
 
             final Draw draw = draws.get(i);
 

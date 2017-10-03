@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet id="1.0.0-105" author="euromillions-predictor">
+
+        <insert tableName="draws"><column name="id" value="1041"></column><column name="date" value="2017-09-12"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1041"></column><column name="star" value="4"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1041"></column><column name="star" value="11"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1041"></column><column name="number" value="10"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1041"></column><column name="number" value="17"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1041"></column><column name="number" value="27"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1041"></column><column name="number" value="29"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1041"></column><column name="number" value="35"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="37430146.24"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="408037.88"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="38014.66"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="3575.79"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="142.27"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="110.29"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="45.11"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="20.86"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="13.18"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="9.21"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="11.85"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="7.91"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1041"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="3.81"></column></insert>
+
+        <insert tableName="draws"><column name="id" value="1042"></column><column name="date" value="2017-09-15"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1042"></column><column name="star" value="9"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1042"></column><column name="star" value="12"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1042"></column><column name="number" value="13"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1042"></column><column name="number" value="18"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1042"></column><column name="number" value="37"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1042"></column><column name="number" value="44"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1042"></column><column name="number" value="49"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="130000000.00"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="354592.00"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="26080.58"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="5770.93"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="182.32"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="142.46"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="59.68"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="26.00"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="15.44"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="11.84"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="13.96"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="8.69"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1042"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="4.30"></column></insert>
+
+        <insert tableName="draws"><column name="id" value="1043"></column><column name="date" value="2017-09-19"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1043"></column><column name="star" value="2"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1043"></column><column name="star" value="3"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1043"></column><column name="number" value="1"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1043"></column><column name="number" value="8"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1043"></column><column name="number" value="21"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1043"></column><column name="number" value="30"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1043"></column><column name="number" value="45"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="139531727.62"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="174307.05"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="29525.89"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="3874.68"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="161.53"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="113.11"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="60.70"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="20.41"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="13.74"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="12.72"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="11.09"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="7.52"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1043"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="4.58"></column></insert>
+
+        <insert tableName="draws"><column name="id" value="1044"></column><column name="date" value="2017-09-22"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1044"></column><column name="star" value="1"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1044"></column><column name="star" value="3"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1044"></column><column name="number" value="6"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1044"></column><column name="number" value="11"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1044"></column><column name="number" value="31"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1044"></column><column name="number" value="39"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1044"></column><column name="number" value="42"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="152701510.70"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="963345.24"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="49860.90"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="3429.63"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="184.93"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="122.35"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="67.22"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="19.87"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="15.22"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="12.85"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="10.44"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="8.15"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1044"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="4.53"></column></insert>
+
+        <insert tableName="draws"><column name="id" value="1045"></column><column name="date" value="2017-09-26"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1045"></column><column name="star" value="6"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1045"></column><column name="star" value="12"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1045"></column><column name="number" value="1"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1045"></column><column name="number" value="29"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1045"></column><column name="number" value="40"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1045"></column><column name="number" value="41"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1045"></column><column name="number" value="48"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="163620565.71"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="199677.16"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="53150.95"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="4332.95"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="242.64"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="154.65"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="80.20"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="26.53"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="19.77"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="15.01"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="13.43"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="10.05"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1045"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="4.95"></column></insert>
+
+        <insert tableName="draws"><column name="id" value="1046"></column><column name="date" value="2017-09-29"></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1046"></column><column name="star" value="3"></column></insert>
+        <insert tableName="draws_stars"><column name="draw_id" value="1046"></column><column name="star" value="7"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1046"></column><column name="number" value="7"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1046"></column><column name="number" value="18"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1046"></column><column name="number" value="19"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1046"></column><column name="number" value="32"></column></insert>
+        <insert tableName="draws_numbers"><column name="draw_id" value="1046"></column><column name="number" value="48"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="2"></column><column name="numbers" value="5"></column><column name="prize" value="178941891.93"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="1"></column><column name="numbers" value="5"></column><column name="prize" value="320207.61"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="0"></column><column name="numbers" value="5"></column><column name="prize" value="26103.00"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="2"></column><column name="numbers" value="4"></column><column name="prize" value="2059.31"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="1"></column><column name="numbers" value="4"></column><column name="prize" value="134.24"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="0"></column><column name="numbers" value="4"></column><column name="prize" value="59.89"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="2"></column><column name="numbers" value="3"></column><column name="prize" value="55.17"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="1"></column><column name="numbers" value="3"></column><column name="prize" value="10.91"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="2"></column><column name="numbers" value="2"></column><column name="prize" value="12.55"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="12.18"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="6.18"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="7.07"></column></insert>
+        <insert tableName="draws_prizes"><column name="draw_id" value="1046"></column><column name="stars" value="0"></column><column name="numbers" value="2"></column><column name="prize" value="4.50"></column></insert>
+
+        <!--<insert tableName="draws"><column name="id" value="1047"></column><column name="date" value=""></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1047"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1047"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1047"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1047"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1047"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1047"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1047"></column><column name="number" value=""></column></insert>-->
+
+        <!--<insert tableName="draws"><column name="id" value="1048"></column><column name="date" value=""></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1048"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1048"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1048"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1048"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1048"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1048"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1048"></column><column name="number" value=""></column></insert>-->
+
+        <!--<insert tableName="draws"><column name="id" value="1049"></column><column name="date" value=""></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1049"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1049"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1049"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1049"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1049"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1049"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1049"></column><column name="number" value=""></column></insert>-->
+
+        <!--<insert tableName="draws"><column name="id" value="1050"></column><column name="date" value=""></column><column name="cost" value="2.50"></column><column name="stars_count" value="12"></column><column name="numbers_count" value="50"></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1050"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_stars"><column name="draw_id" value="1050"></column><column name="star" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1050"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1050"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1050"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1050"></column><column name="number" value=""></column></insert>-->
+        <!--<insert tableName="draws_numbers"><column name="draw_id" value="1050"></column><column name="number" value=""></column></insert>-->
+
+        <rollback>
+            <delete tableName="draws_templates_numbers"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_templates_stars"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_stats_intervals_numbers"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_stats_intervals_stars"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_stats_numbers"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_stats_stars"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_prizes"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_numbers"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws_stars"><where>draw_id &gt;= 1041 AND draw_id &lt;= 1050</where></delete>
+            <delete tableName="draws"><where>id &gt;= 1041 AND id &lt;= 1050</where></delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

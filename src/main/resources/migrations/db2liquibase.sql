@@ -34,7 +34,7 @@ SELECT ( CASE WHEN (ROW_NUMBER() OVER() - 1) % 11 = 0 THEN CHR(13) ELSE '' END) 
  WHERE draw_id >= 379 AND draw_id <= 940
  ORDER BY draw_id ASC, template ASC, star ASC;
 
--- draws_templates_stars (draw_id >= 379 AND draw_id <= 940)
+-- draws_templates_stars (draw_id >= 941)
 SELECT ( CASE WHEN (ROW_NUMBER() OVER() - 1) % 12 = 0 THEN CHR(13) ELSE '' END) || '        <insert tableName="draws_templates_stars"><column name="draw_id" value="' || draw_id ||'"></column><column name="template" value="' || template ||'"></column><column name="star" value="' || star ||'"></column></insert>'
   FROM draws_templates_stars
  WHERE draw_id >= 941

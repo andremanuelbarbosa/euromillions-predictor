@@ -1,7 +1,6 @@
 package com.andremanuelbarbosa.euromillions.predictor.manager;
 
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
-import com.google.common.collect.Lists;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -18,11 +17,15 @@ public class DrawsTemplatesManagerIntegrationTest extends EuroMillionsPredictorI
     }
 
     @Test
-    public void shouldUpdateStarsDrawsTemplates() {
+    public void shouldCreateDrawsTemplatesForDrawsWithoutTemplates() {
 
-        for (int i = 751; i <= 950; i++) {
+        drawsTemplatesManager.getDrawIdsWithoutTemplates().forEach(drawId -> {
 
-            drawsTemplatesManager.updateStarsDrawsTemplates(drawsReversed.subList(0, i), i, false);
-        }
+            System.out.println("Generating the Templates for Draw with ID [" + drawId + "]...");
+
+            drawsTemplatesManager.updateDrawsTemplates(drawsReversed.subList(0, drawId), drawId, false);
+
+            System.out.println("The Templates for Draw with ID [" + drawId + "] have been generated.");
+        });
     }
 }

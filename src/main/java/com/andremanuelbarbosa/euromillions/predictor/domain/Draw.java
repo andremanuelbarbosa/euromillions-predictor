@@ -13,7 +13,6 @@ public class Draw implements Comparable {
     private final int id;
     private final Date date;
     private final double cost;
-    private final double prize;
     private final int starsCount;
     private final int numbersCount;
 
@@ -29,12 +28,11 @@ public class Draw implements Comparable {
     private final List<Set<Integer>> numbersDrawsTemplates = Lists.newArrayListWithExpectedSize(NUMBERS_COUNT_PER_DRAW);
 
     @JsonCreator
-    public Draw(@JsonProperty("id") int id, @JsonProperty("date") Date date, @JsonProperty("cost") double cost, @JsonProperty("prize") double prize, @JsonProperty("starsCount") int starsCount, @JsonProperty("numbersCount") int numbersCount) {
+    public Draw(@JsonProperty("id") int id, @JsonProperty("date") Date date, @JsonProperty("cost") double cost, @JsonProperty("starsCount") int starsCount, @JsonProperty("numbersCount") int numbersCount) {
 
         this.id = id;
         this.date = date;
         this.cost = cost;
-        this.prize = prize;
         this.starsCount = starsCount;
         this.numbersCount = numbersCount;
     }
@@ -52,11 +50,6 @@ public class Draw implements Comparable {
     public double getCost() {
 
         return cost;
-    }
-
-    public double getPrize() {
-
-        return prize;
     }
 
     public int getStarsCount() {

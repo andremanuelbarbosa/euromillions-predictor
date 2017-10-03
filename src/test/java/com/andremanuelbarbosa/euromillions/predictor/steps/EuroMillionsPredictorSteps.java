@@ -14,7 +14,7 @@ import cucumber.api.java.en.When;
 public class EuroMillionsPredictorSteps {
 
     private static final String BASE_URL = "http://localhost:9090/euromillions-predictor";
-    private static final String CHROME_DRIVER_VERSION = "2.27";
+    private static final String CHROME_DRIVER_VERSION = "2.32";
 
     static Scenario thisScenario;
     static WebDriver webDriver = createChromeDriver();
@@ -36,9 +36,9 @@ public class EuroMillionsPredictorSteps {
 
     private static WebDriver createChromeDriver() {
 
-        final String osName = System.getProperty("os.name").toLowerCase();
+        final String osName = System.getProperty("os.name").toLowerCase().replaceAll(" ", "");
         final String osArch = System.getProperty("os.arch");
-        final String osBits = osName.equals("linux") && osArch.endsWith("64") ? "64" : "32";
+        final String osBits = osArch.endsWith("64") ? "64" : "32";
 
         final String chromeDriverVersion = System.getProperty("chrome.driver.version") != null ? System.getProperty("chrome.driver.version") : CHROME_DRIVER_VERSION;
 

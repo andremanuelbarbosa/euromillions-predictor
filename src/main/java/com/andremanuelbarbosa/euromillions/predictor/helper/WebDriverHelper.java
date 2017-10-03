@@ -12,7 +12,7 @@ public class WebDriverHelper {
     private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
     private static final String OS_BITS = OS_NAME.equals("linux") && System.getProperty("os.arch").endsWith("64") ? "64" : "32";
 
-    private static final String CHROME_DRIVER_VERSION = System.getProperty("chrome.driver.version") != null ? System.getProperty("chrome.driver.version") : "2.27";
+    private static final String CHROME_DRIVER_VERSION = System.getProperty("chrome.driver.version") != null ? System.getProperty("chrome.driver.version") : "2.32";
 
     private static final String WEB_DRIVER_CHROME_DRIVER = "src/test/resources/selenium/drivers/chrome/" + CHROME_DRIVER_VERSION + "/" + OS_NAME + "/" + OS_BITS + "/chromedriver";
 
