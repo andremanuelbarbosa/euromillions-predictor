@@ -3,18 +3,11 @@ The EuroMillions Predictor is a simple application that collects some statistics
 
 ## TODO
 * review prizes after draw >= 991
-* fix migrations for formula stats
 * db dump
 * fix crons
 * move web driver to resources
 
 
 
-ONLY COMPLETED FOR <= 100:
-draws_stats_stars
-draws_stats_numbers
-draws_stats_intervals_stars
-draws_stats_intervals_numbers
-
-
-pg_dump -Fc -U postgres -t draws_stats_stars -t draws_stats_numbers -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -f DrawStatsUpToDraw1046.dmp euromillions-predictor 
+pg_dump -Fc -U postgres -t draws_stats_stars -t draws_stats_numbers -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -f src/main/resources/dumps/DrawStatsUpToDraw1046.dmp euromillions-predictor
+pg_dump -Fc -U postgres -t draws_templates_stars -t draws_templates_numbers -f src/main/resources/dumps/DrawTemplatesUpToDraw1046.dmp euromillions-predictor 

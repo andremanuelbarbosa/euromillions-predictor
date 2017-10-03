@@ -34,67 +34,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="461"></column><column name="star" value="9"></column><column name="freq" value="92"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.199566160520607383"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="461"></column><column name="star" value="10"></column><column name="freq" value="14"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.168674698795180711"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="461"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.216867469879518077"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="461"></column><column name="template" value="5"></column><column name="number" value="48"></column></insert>
 
         <insert tableName="draws"><column name="id" value="462"></column><column name="date" value="2012-02-24"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="462"></column><column name="star" value="8"></column></insert>
@@ -128,67 +67,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="462"></column><column name="star" value="9"></column><column name="freq" value="92"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.199134199134199136"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="462"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.178571428571428575"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="462"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.214285714285714274"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="462"></column><column name="template" value="5"></column><column name="number" value="48"></column></insert>
 
         <insert tableName="draws"><column name="id" value="463"></column><column name="date" value="2012-02-28"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="463"></column><column name="star" value="2"></column></insert>
@@ -222,67 +100,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="463"></column><column name="star" value="9"></column><column name="freq" value="92"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.198704103671706267"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="463"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.176470588235294129"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="463"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.211764705882352938"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="463"></column><column name="template" value="5"></column><column name="number" value="48"></column></insert>
 
         <insert tableName="draws"><column name="id" value="464"></column><column name="date" value="2012-03-02"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="464"></column><column name="star" value="2"></column></insert>
@@ -316,67 +133,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="464"></column><column name="star" value="9"></column><column name="freq" value="92"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.198275862068965525"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="464"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.174418604651162795"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="464"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.20930232558139536"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="464"></column><column name="template" value="5"></column><column name="number" value="48"></column></insert>
 
         <insert tableName="draws"><column name="id" value="465"></column><column name="date" value="2012-03-06"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="465"></column><column name="star" value="2"></column></insert>
@@ -410,67 +166,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="465"></column><column name="star" value="9"></column><column name="freq" value="92"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.197849462365591394"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="465"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.172413793103448287"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="465"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.206896551724137928"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="465"></column><column name="template" value="5"></column><column name="number" value="48"></column></insert>
 
         <insert tableName="draws"><column name="id" value="466"></column><column name="date" value="2012-03-09"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="466"></column><column name="star" value="6"></column></insert>
@@ -504,67 +199,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="466"></column><column name="star" value="9"></column><column name="freq" value="93"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.199570815450643785"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="466"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.170454545454545442"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="466"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.204545454545454558"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="4"></column><column name="number" value="48"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="466"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
 
         <insert tableName="draws"><column name="id" value="467"></column><column name="date" value="2012-03-13"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="467"></column><column name="star" value="8"></column></insert>
@@ -598,67 +232,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="467"></column><column name="star" value="9"></column><column name="freq" value="94"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.201284796573875796"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="467"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.168539325842696625"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="467"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.202247191011235949"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="4"></column><column name="number" value="48"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="467"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
 
         <insert tableName="draws"><column name="id" value="468"></column><column name="date" value="2012-03-16"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="468"></column><column name="star" value="4"></column></insert>
@@ -692,67 +265,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="468"></column><column name="star" value="9"></column><column name="freq" value="94"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.200854700854700863"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="468"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.166666666666666657"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="468"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.200000000000000011"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="4"></column><column name="number" value="48"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="468"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
 
         <insert tableName="draws"><column name="id" value="469"></column><column name="date" value="2012-03-20"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="469"></column><column name="star" value="3"></column></insert>
@@ -786,67 +298,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="469"></column><column name="star" value="9"></column><column name="freq" value="94"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.200426439232409381"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="469"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.164835164835164832"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="469"></column><column name="star" value="11"></column><column name="freq" value="18"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.197802197802197793"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="4"></column><column name="number" value="48"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="469"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
 
         <insert tableName="draws"><column name="id" value="470"></column><column name="date" value="2012-03-23"></column><column name="cost" value="2.00"></column><column name="stars_count" value="11"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="470"></column><column name="star" value="8"></column></insert>
@@ -880,67 +331,6 @@
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="470"></column><column name="star" value="9"></column><column name="freq" value="94"></column><column name="interval" value="0"></column><column name="relative_freq" value="0.200000000000000011"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="470"></column><column name="star" value="10"></column><column name="freq" value="15"></column><column name="interval" value="386"></column><column name="relative_freq" value="0.163043478260869568"></column><column name="average_interval" value="5.5"></column></insert>-->
         <!--<insert tableName="draws_stats_stars"><column name="draw_id" value="470"></column><column name="star" value="11"></column><column name="freq" value="19"></column><column name="interval" value="381"></column><column name="relative_freq" value="0.206521739130434784"></column><column name="average_interval" value="5.5"></column></insert>-->
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="1"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="2"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="3"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="5"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="6"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="star" value="7"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="star" value="4"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="star" value="8"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="star" value="9"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="star" value="10"></column></insert>
-        <insert tableName="draws_templates_stars"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="star" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="4"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="12"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="14"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="19"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="21"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="23"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="24"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="26"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="44"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="1"></column><column name="number" value="50"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="6"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="11"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="15"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="16"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="25"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="36"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="38"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="41"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="42"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="2"></column><column name="number" value="45"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="1"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="9"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="17"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="18"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="30"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="35"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="37"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="39"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="40"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="3"></column><column name="number" value="49"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="2"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="3"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="7"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="10"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="22"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="27"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="28"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="31"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="47"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="4"></column><column name="number" value="48"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="5"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="8"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="13"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="20"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="29"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="32"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="33"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="34"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="43"></column></insert>
-        <insert tableName="draws_templates_numbers"><column name="draw_id" value="470"></column><column name="template" value="5"></column><column name="number" value="46"></column></insert>
 
     </changeSet>
 </databaseChangeLog>

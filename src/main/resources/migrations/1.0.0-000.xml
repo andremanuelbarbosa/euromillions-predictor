@@ -333,5 +333,17 @@
         <addPrimaryKey tableName="bets_stars" columnNames="bet_id, star"/>
         <addForeignKeyConstraint baseTableName="bets_stars" baseColumnNames="bet_id" constraintName="bets_stars_bet_id_fk"
                                  referencedTableName="bets" referencedColumnNames="id"/>
+
+        <createTable tableName="bets_numbers">
+            <column name="bet_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="bets_numbers_bet_id_fk"/>
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="bets_numbers" columnNames="bet_id, number"/>
+        <addForeignKeyConstraint baseTableName="bets_numbers" baseColumnNames="bet_id" constraintName="bets_numbers_bet_id_fk"
+                                 referencedTableName="bets" referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>
