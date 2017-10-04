@@ -11,3 +11,4 @@ The EuroMillions Predictor is a simple application that collects some statistics
 
 pg_dump -Fc -U postgres -t draws_stats_stars -t draws_stats_numbers -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -f src/main/resources/dumps/DrawStatsUpToDraw1046.dmp euromillions-predictor
 pg_dump -Fc -U postgres -t draws_templates_stars -t draws_templates_numbers -f src/main/resources/dumps/DrawTemplatesUpToDraw1046.dmp euromillions-predictor 
+pg_dump -Fc -U postgres -t formulas_stats -t formulas_stats_formulas -t formulas_stats_formulas_stars -t formulas_stats_formulas_numbers -f src/main/resources/dumps/FormulaStatsUpToDraw1046.dmp euromillions-predictor
