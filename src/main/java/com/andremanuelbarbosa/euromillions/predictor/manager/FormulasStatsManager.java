@@ -106,10 +106,10 @@ public class FormulasStatsManager {
     public void updateFormulasStats(int drawId, List<Draw> draws, List<Formula> formulas) {
 
         updateFormulasStats(drawId, 5, draws, formulas);
-        updateFormulasStats(drawId, 10, draws, formulas);
-        updateFormulasStats(drawId, 15, draws, formulas);
-        updateFormulasStats(drawId, 20, draws, formulas);
-        updateFormulasStats(drawId, 25, draws, formulas);
+//        updateFormulasStats(drawId, 10, draws, formulas);
+//        updateFormulasStats(drawId, 15, draws, formulas);
+//        updateFormulasStats(drawId, 20, draws, formulas);
+//        updateFormulasStats(drawId, 25, draws, formulas);
     }
 
     public void updateFormulasStats(int drawId, int drawsCount, List<Draw> draws, List<Formula> formulas) {

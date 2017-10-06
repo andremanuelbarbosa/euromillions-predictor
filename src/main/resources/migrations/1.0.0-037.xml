@@ -148,7 +148,6 @@
         <insert tableName="draws_prizes"><column name="draw_id" value="367"></column><column name="stars" value="0"></column><column name="numbers" value="3"></column><column name="prize" value="14.00"></column></insert>
         <insert tableName="draws_prizes"><column name="draw_id" value="367"></column><column name="stars" value="2"></column><column name="numbers" value="1"></column><column name="prize" value="6.40"></column></insert>
         <insert tableName="draws_prizes"><column name="draw_id" value="367"></column><column name="stars" value="1"></column><column name="numbers" value="2"></column><column name="prize" value="6.30"></column></insert>
-       <insert tableName="draws_templates_numbers"><column name="draw_id" value="367"></column><column name="template" value="1"></column><column name="number" value="7"></column></insert>
 
         <insert tableName="draws"><column name="id" value="368"></column><column name="date" value="2011-02-25"></column><column name="cost" value="2.00"></column><column name="stars_count" value="9"></column><column name="numbers_count" value="50"></column></insert>
         <insert tableName="draws_stars"><column name="draw_id" value="368"></column><column name="star" value="3"></column></insert>

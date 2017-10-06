@@ -56,7 +56,11 @@ public class DrawsTemplatesManagerIntegrationTest extends EuroMillionsPredictorI
         @Override
         public void run() {
 
+            System.out.println("Generating the Templates for Draw with ID [" + drawId + "]...");
+
             drawsTemplatesManager.updateDrawsTemplates(drawsReversed.subList(0, drawId), drawId, false);
+
+            System.out.println("The Templates for Draw with ID [" + drawId + "] have been generated.");
         }
     }
 }
