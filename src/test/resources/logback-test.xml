@@ -17,7 +17,7 @@
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="org.reflections" level="ERROR">
+  <logger name="org.reflections" level="WARN">
     <appender-ref ref="STDOUT" />
   </logger>
 </configuration>

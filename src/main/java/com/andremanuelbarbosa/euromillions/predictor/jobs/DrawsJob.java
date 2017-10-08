@@ -12,8 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-// every wed and sat @ 00:00
-@Cron("0 * * * * ?")
+@Cron("0 0 0 ? * WED,SAT")
 @DisallowConcurrentExecution
 public class DrawsJob implements Job {
 

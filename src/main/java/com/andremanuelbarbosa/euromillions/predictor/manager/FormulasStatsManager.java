@@ -5,6 +5,7 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Bet;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Formula;
 import com.andremanuelbarbosa.euromillions.predictor.domain.FormulaStats;
+import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.AtomicDouble;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -24,8 +25,6 @@ public class FormulasStatsManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FormulasStatsManager.class);
 
-//    private static final DecimalFormat DECIMAL_FORMAT_TWO_FRACTIONAL_DIGITS = new DecimalFormat("0.00");
-
     final ConcurrentHashMap<Formula, Integer> formulasPointsSum = new ConcurrentHashMap<>();
     final ConcurrentHashMap<Formula, String> formulasMaximumPoints = new ConcurrentHashMap<>();
 
@@ -35,10 +34,16 @@ public class FormulasStatsManager {
     final ConcurrentHashMap<Formula, ConcurrentHashMap<Integer, Integer>> formulasStarsDistributedFreq = new ConcurrentHashMap<>();
     final ConcurrentHashMap<Formula, ConcurrentHashMap<Integer, Integer>> formulasNumbersDistributedFreq = new ConcurrentHashMap<>();
 
+    private final DrawsManager drawsManager;
+    private final FormulasManager formulasManager;
+
     private final FormulasStatsDao formulasStatsDao;
 
     @Inject
-    public FormulasStatsManager(FormulasStatsDao formulasStatsDao) {
+    public FormulasStatsManager(DrawsManager drawsManager, FormulasManager formulasManager, FormulasStatsDao formulasStatsDao) {
+
+        this.drawsManager = drawsManager;
+        this.formulasManager = formulasManager;
 
         this.formulasStatsDao = formulasStatsDao;
     }
@@ -103,9 +108,22 @@ public class FormulasStatsManager {
         return formulaStats;
     }
 
+    public void updateFormulasStats(int drawId) {
+
+        new Thread() {
+
+            public void run() {
+
+                updateFormulasStats(drawId, Lists.reverse(drawsManager.getDraws(true, true, true)).subList(0, drawId), formulasManager.getFormulas());
+            }
+
+        }.start();
+    }
+
     public void updateFormulasStats(int drawId, List<Draw> draws, List<Formula> formulas) {
 
-        updateFormulasStats(drawId, 5, draws, formulas);
+        updateFormulasStats(drawId, 1, draws, formulas);
+//        updateFormulasStats(drawId, 5, draws, formulas);
 //        updateFormulasStats(drawId, 10, draws, formulas);
 //        updateFormulasStats(drawId, 15, draws, formulas);
 //        updateFormulasStats(drawId, 20, draws, formulas);
