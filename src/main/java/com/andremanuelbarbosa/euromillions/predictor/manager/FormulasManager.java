@@ -19,6 +19,7 @@ public class FormulasManager {
 
         final List<Formula.TemplatesMode> templatesModes = Lists.newArrayList(Formula.TemplatesMode.values());
 
+        // One Algorithm per Formula
         algorithmsManager.getAlgorithms().forEach(starsAlgorithm -> {
 
             algorithmsManager.getAlgorithms().forEach(numbersAlgorithm -> {
@@ -34,6 +35,7 @@ public class FormulasManager {
 
         });
 
+        // One and Two Algorithms per Formula
         algorithmsManager.getAlgorithms().forEach(algorithm1 -> {
 
             algorithmsManager.getAlgorithms().forEach(algorithm2 -> {

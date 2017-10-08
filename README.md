@@ -12,13 +12,11 @@ The EuroMillions Predictor is a simple application that collects some statistics
 export PGPASSWORD='postgres';
 pg_dump -Fc -U postgres -t draws_stats_stars -t draws_stats_numbers -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -f src/main/resources/dumps/DrawStatsUpToDraw1048.dmp euromillions-predictor
 pg_dump -Fc -U postgres -t draws_templates_stars -t draws_templates_numbers -f src/main/resources/dumps/DrawTemplatesUpToDraw1048.dmp euromillions-predictor 
-pg_dump -Fc -U postgres -t formulas_stats -t formulas_stats_formulas -t formulas_stats_formulas_stars -t formulas_stats_formulas_numbers -f src/main/resources/dumps/FormulaStatsUpToDraw1048.dmp euromillions-predictor
+pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsUpToDraw1048.dmp euromillions-predictor
 
 
 export PGPASSWORD='postgres';
-pg_restore -U postgres -t draws_stats_stars -t draws_stats_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1046.dmp
-pg_restore -U postgres -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1046.dmp
-pg_restore -U postgres -t draws_templates_stars -t draws_templates_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawTemplatesUpToDraw1046.dmp
-pg_restore -U postgres -t formulas_stats -d euromillions-predictor --data-only src/main/resources/dumps/FormulaStatsUpToDraw1046.dmp
-pg_restore -U postgres -t formulas_stats_formulas -d euromillions-predictor --data-only src/main/resources/dumps/FormulaStatsUpToDraw1046.dmp
-pg_restore -U postgres -t formulas_stats_formulas_stars -t formulas_stats_formulas_numbers -d euromillions-predictor --data-only src/main/resources/dumps/FormulaStatsUpToDraw1046.dmp
+pg_restore -U postgres -t draws_stats_stars -t draws_stats_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1048.dmp
+pg_restore -U postgres -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1048.dmp
+pg_restore -U postgres -t draws_templates_stars -t draws_templates_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawTemplatesUpToDraw1048.dmp
+pg_restore -U postgres -t formulas_stats -d euromillions-predictor --data-only src/main/resources/dumps/FormulaStatsUpToDraw1048.dmp

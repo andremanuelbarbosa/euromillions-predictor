@@ -28,21 +28,6 @@ public class FormulasStatsApi {
     }
 
     @GET
-    @Path("/{drawId}/{drawsCount}")
-    @ApiOperation("Retrieves the Formula Stats for the Draw with ID and with the Draws Count")
-    public FormulaStats getFormulaStats(@PathParam("drawId") int drawId, @PathParam("drawsCount") int drawsCount) {
-
-        return formulasStatsManager.getFormulaStats(drawId, drawsCount);
-    }
-
-//    @GET
-//    @ApiOperation("Retrieves the Formulas Stats")
-//    public List<FormulaStats> getFormulasStats() {
-//
-//        return formulasStatsManager.getFormulasStats();
-//    }
-
-    @GET
     @Path("/{drawId}")
     @ApiOperation("Retrieves the Formulas Stats for the Draw with ID")
     public List<FormulaStats> getFormulasStats(@PathParam("drawId") int drawId) {

@@ -6,14 +6,12 @@ import com.andremanuelbarbosa.euromillions.predictor.domain.Draw;
 import com.andremanuelbarbosa.euromillions.predictor.domain.Formula;
 import com.andremanuelbarbosa.euromillions.predictor.domain.FormulaStats;
 import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.AtomicDouble;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -24,15 +22,6 @@ import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredicto
 public class FormulasStatsManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FormulasStatsManager.class);
-
-    final ConcurrentHashMap<Formula, Integer> formulasPointsSum = new ConcurrentHashMap<>();
-    final ConcurrentHashMap<Formula, String> formulasMaximumPoints = new ConcurrentHashMap<>();
-
-    final ConcurrentHashMap<Formula, Integer> formulasWins = new ConcurrentHashMap<>();
-    final ConcurrentHashMap<Formula, Double> formulasEarnings = new ConcurrentHashMap<>();
-    final ConcurrentHashMap<Formula, ConcurrentHashMap<Integer, Integer>> formulasPoints = new ConcurrentHashMap<>();
-    final ConcurrentHashMap<Formula, ConcurrentHashMap<Integer, Integer>> formulasStarsDistributedFreq = new ConcurrentHashMap<>();
-    final ConcurrentHashMap<Formula, ConcurrentHashMap<Integer, Integer>> formulasNumbersDistributedFreq = new ConcurrentHashMap<>();
 
     private final DrawsManager drawsManager;
     private final FormulasManager formulasManager;
@@ -50,18 +39,7 @@ public class FormulasStatsManager {
 
     public void deleteFormulaStats(int drawId) {
 
-        formulasStatsDao.deleteFormulaStatsFormulaNumbers(drawId);
-        formulasStatsDao.deleteFormulaStatsFormulaStars(drawId);
-        formulasStatsDao.deleteFormulaStatsFormulas(drawId);
         formulasStatsDao.deleteFormulaStats(drawId);
-    }
-
-    public void deleteFormulaStats(int drawId, int drawsCount) {
-
-        formulasStatsDao.deleteFormulaStatsFormulaNumbers(drawId, drawsCount);
-        formulasStatsDao.deleteFormulaStatsFormulaStars(drawId, drawsCount);
-        formulasStatsDao.deleteFormulaStatsFormulas(drawId, drawsCount);
-        formulasStatsDao.deleteFormulaStats(drawId, drawsCount);
     }
 
     public List<Integer> getDrawIdsWithoutFormulasStats() {
@@ -74,38 +52,9 @@ public class FormulasStatsManager {
         return Math.round(rawDouble * 100.0) / 100.0;
     }
 
-    public FormulaStats getFormulaStats(int drawId, int drawsCount) {
-
-        return loadFormulaStats(formulasStatsDao.getFormulaStats(drawId, drawsCount));
-    }
-
-    public List<FormulaStats> getFormulasStats() {
-
-        return loadFormulasStats(formulasStatsDao.getFormulasStats());
-    }
-
     public List<FormulaStats> getFormulasStats(int drawId) {
 
-        return loadFormulasStats(formulasStatsDao.getFormulasStats(drawId));
-    }
-
-    private List<FormulaStats> loadFormulasStats(List<FormulaStats> formulasStats) {
-
-        formulasStats.forEach(formulaStats -> {
-
-            loadFormulaStats(formulaStats);
-        });
-
-        return formulasStats;
-    }
-
-    private FormulaStats loadFormulaStats(FormulaStats formulaStats) {
-
-        formulaStats.getMaximumPointsFormulas().addAll(formulasStatsDao.getFormulaNamesWithMaximumPoints(formulaStats.getDrawId(), formulaStats.getDrawsCount(), formulaStats.getMaximumPoints()));
-        formulaStats.getMaximumWinsFormulas().addAll(formulasStatsDao.getFormulaNamesWithWins(formulaStats.getDrawId(), formulaStats.getDrawsCount(), formulaStats.getMaximumWins()));
-        formulaStats.getMaximumEarningsFormulas().addAll(formulasStatsDao.getFormulaNamesWithEarnings(formulaStats.getDrawId(), formulaStats.getDrawsCount(), formulaStats.getMaximumEarnings()));
-
-        return formulaStats;
+        return formulasStatsDao.getFormulasStats(drawId);
     }
 
     public void updateFormulasStats(int drawId) {
@@ -122,24 +71,9 @@ public class FormulasStatsManager {
 
     public void updateFormulasStats(int drawId, List<Draw> draws, List<Formula> formulas) {
 
-        updateFormulasStats(drawId, 1, draws, formulas);
-//        updateFormulasStats(drawId, 5, draws, formulas);
-//        updateFormulasStats(drawId, 10, draws, formulas);
-//        updateFormulasStats(drawId, 15, draws, formulas);
-//        updateFormulasStats(drawId, 20, draws, formulas);
-//        updateFormulasStats(drawId, 25, draws, formulas);
-    }
+        LOGGER.debug("Updating the Formulas Stats for Draw with ID [{}]...", drawId);
 
-    public void updateFormulasStats(int drawId, int drawsCount, List<Draw> draws, List<Formula> formulas) {
-
-        deleteFormulaStats(drawId, drawsCount);
-
-        final int startingDrawId = drawId - drawsCount;
-        final int finishingDrawId = drawId - 1;
-
-        final FormulaStats formulaStats = new FormulaStats(drawId, drawsCount, startingDrawId, finishingDrawId);
-
-        formulasStatsDao.insertFormulaStats(formulaStats);
+        deleteFormulaStats(drawId);
 
         final long startTime = System.currentTimeMillis();
 
@@ -147,16 +81,7 @@ public class FormulasStatsManager {
 
         formulas.forEach(formula -> {
 
-            formulasPoints.put(formula, new ConcurrentHashMap<>());
-            formulasStarsDistributedFreq.put(formula, new ConcurrentHashMap<>());
-            formulasNumbersDistributedFreq.put(formula, new ConcurrentHashMap<>());
-
-            formulasPointsSum.put(formula, 0);
-            formulasWins.put(formula, 0);
-            formulasEarnings.put(formula, 0.0);
-            formulasMaximumPoints.put(formula, "(0+0) 0");
-
-            executorServiceFormulas.execute(new FormulaThread(formula, draws, startingDrawId, finishingDrawId, formulaStats));
+            executorServiceFormulas.execute(new FormulaThread(draws, drawId, formula));
         });
 
         executorServiceFormulas.shutdown();
@@ -170,106 +95,47 @@ public class FormulasStatsManager {
             throw new RuntimeException(e);
         }
 
-        final AtomicDouble formulasCosts = new AtomicDouble(0.0);
-
-        for (int i = startingDrawId; i <= finishingDrawId; i++) {
-
-            formulasCosts.getAndAdd(draws.get(i).getCost());
-        }
-
-        final long executionTime = System.currentTimeMillis() - startTime;
-
-        final int maximumWins = formulasStatsDao.getMaximumWins(drawId, drawsCount);
-        final String maximumPoints = formulasStatsDao.getMaximumPoints(drawId, drawsCount);
-        final double maximumEarnings = formulasStatsDao.getMaximumEarnings(drawId, drawsCount);
-
-        formulaStats.setCosts(formulasCosts.doubleValue());
-        formulaStats.setExecutionTime(executionTime);
-        formulaStats.setMaximumPoints(maximumPoints);
-        formulaStats.setMaximumWins(maximumWins);
-        formulaStats.setMaximumWinsPercentage(getDoubleWithTwoDecimalPlaces((double) maximumWins / drawsCount * 100));
-        formulaStats.setMaximumEarnings(getDoubleWithTwoDecimalPlaces(maximumEarnings));
-        formulaStats.setMaximumEarningsPercentage(getDoubleWithTwoDecimalPlaces(maximumEarnings / formulasCosts.doubleValue() * 100));
-
-        formulasStatsDao.updateFormulaStats(formulaStats);
+        LOGGER.debug("The Formulas Stats for Draw with ID [{}] have been updated in [{}] ms.", drawId, (System.currentTimeMillis() - startTime));
     }
 
     class FormulaThread implements Runnable {
 
-        private final ConcurrentHashMap<Integer, Integer> formulaPoints = new ConcurrentHashMap<>();
-        private final ConcurrentHashMap<Integer, Integer> formulaStarsDistributedFreq = new ConcurrentHashMap<>();
-        private final ConcurrentHashMap<Integer, Integer> formulaNumbersDistributedFreq = new ConcurrentHashMap<>();
-
-        private final Formula formula;
         private final List<Draw> draws;
-        private final int startingDrawId;
-        private final int finishingDrawId;
-        private final FormulaStats formulaStats;
+        private final int drawId;
+        private final Formula formula;
 
-        private int formulaWins = 0;
-        private double formulaCosts = 0.0;
-        private double formulaEarnings = 0.0;
-        private String formulaMaximumPoints = "(0+0) 0";
+        public FormulaThread(List<Draw> draws, int drawId, Formula formula) {
 
-        public FormulaThread(Formula formula, List<Draw> draws, int startingDrawId, int finishingDrawId, FormulaStats formulaStats) {
-
-            this.formula = formula;
             this.draws = draws;
-            this.startingDrawId = startingDrawId;
-            this.finishingDrawId = finishingDrawId;
-            this.formulaStats = formulaStats;
+            this.drawId = drawId;
+            this.formula = formula;
         }
 
         @Override
         public void run() {
 
-//            LOGGER.debug("The Stats for Formula [{}] with starting Draw ID [{}] and finishing Draw ID [{}] are being calculated...", formula.getName(), startingDrawId, finishingDrawId);
+            final Draw draw = draws.get(drawId - 1);
 
-            for (int i = startingDrawId; i <= finishingDrawId; i++) {
+            final Bet bet = formula.getNextBet(draws.subList(0, drawId - 1));
 
-                final Draw nextDraw = draws.get(i);
-                final Bet bet = formula.getNextBet(draws.subList(0, i));
+            final int starsPoints = bet.getStarsPoints(draw);
+            final int numbersPoints = bet.getNumbersPoints(draw);
+            final String points = "(" + numbersPoints + "+" + starsPoints + ") " + bet.getPoints(draw);
 
-                final int points = bet.getPoints(nextDraw);
-                final int starsPoints = bet.getStarsPoints(nextDraw);
-                final int numbersPoints = bet.getNumbersPoints(nextDraw);
+            final double costs = draw.getCost();
 
-                final String combinedPoints = "(" + numbersPoints + "+" + starsPoints + ") " + points;
+            double winnings = 0.0;
+            double earnings = 0.0;
 
-                formulaPoints.put(points, formulaPoints.getOrDefault(points, 0) + 1);
-                formulaStarsDistributedFreq.put(starsPoints, formulaStarsDistributedFreq.getOrDefault(starsPoints, 0) + 1);
-                formulaNumbersDistributedFreq.put(numbersPoints, formulaNumbersDistributedFreq.getOrDefault(numbersPoints, 0) + 1);
+            if (bet.isWinner(draw)) {
 
-                formulaCosts += nextDraw.getCost();
-
-                if (bet.isWinner(nextDraw)) {
-
-                    formulaWins++;
-                    formulaEarnings += nextDraw.getPrize(starsPoints, numbersPoints);
-
-                    if (combinedPoints.compareTo(formulaMaximumPoints) > 0) {
-
-                        formulaMaximumPoints = combinedPoints;
-                    }
-                }
+                winnings = draw.getPrize(starsPoints, numbersPoints);
+                earnings = getDoubleWithTwoDecimalPlaces(winnings - costs);
             }
 
-            formulasStatsDao.insertFormulaStatsFormula(formulaStats.getDrawId(), formulaStats.getDrawsCount(), new FormulaStats.Formula(formula.getName(), formulaMaximumPoints,
-                formulaWins, getDoubleWithTwoDecimalPlaces((double) formulaWins / formulaStats.getDrawsCount() * 100),
-                getDoubleWithTwoDecimalPlaces(formulaEarnings), getDoubleWithTwoDecimalPlaces(formulaEarnings / formulaCosts * 100),
-                getDoubleWithTwoDecimalPlaces(formulaEarnings - formulaCosts)));
+            final double earningsPercentage = getDoubleWithTwoDecimalPlaces(earnings / costs * 100);
 
-            formulaStarsDistributedFreq.forEach((star, freq) -> {
-
-                formulasStatsDao.insertFormulaStatsFormulaStars(formulaStats.getDrawId(), formulaStats.getDrawsCount(), formula.getName(), star, freq);
-            });
-
-            formulaNumbersDistributedFreq.forEach((number, freq) -> {
-
-                formulasStatsDao.insertFormulaStatsFormulaNumbers(formulaStats.getDrawId(), formulaStats.getDrawsCount(), formula.getName(), number, freq);
-            });
-
-//            LOGGER.debug("The Stats for Formula [{}] with starting Draw ID [{}] and finishing Draw ID [{}] have been calculated.", formula.getName(), startingDrawId, finishingDrawId);
+            formulasStatsDao.insertFormulaStats(new FormulaStats(drawId, formula.getName(), costs, points, winnings, earnings, earningsPercentage));
         }
     }
 }
