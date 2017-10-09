@@ -14,6 +14,8 @@ pg_dump -Fc -U postgres -t draws_stats_stars -t draws_stats_numbers -t draws_sta
 pg_dump -Fc -U postgres -t draws_templates_stars -t draws_templates_numbers -f src/main/resources/dumps/DrawTemplatesUpToDraw1048.dmp euromillions-predictor 
 pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsUpToDraw1048.dmp euromillions-predictor
 
+pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsUpToDraw1048OneTwoAndThreeAlgorithms.dmp euromillions-predictor
+
 
 export PGPASSWORD='postgres';
 pg_restore -U postgres -t draws_stats_stars -t draws_stats_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1048.dmp

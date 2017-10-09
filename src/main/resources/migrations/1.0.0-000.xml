@@ -206,7 +206,7 @@
             <column name="earnings" type="double">
                 <constraints nullable="false"/>
             </column>
-            <column name="earnings_percentage" type="double">
+            <column name="earnings_factor" type="double">
                 <constraints nullable="false"/>
             </column>
         </createTable>

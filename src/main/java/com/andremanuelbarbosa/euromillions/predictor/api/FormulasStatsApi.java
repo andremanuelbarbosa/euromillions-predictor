@@ -5,12 +5,10 @@ import com.andremanuelbarbosa.euromillions.predictor.manager.FormulasStatsManage
 import com.google.inject.Inject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -27,14 +25,6 @@ public class FormulasStatsApi {
         this.formulasStatsManager = formulasStatsManager;
     }
 
-    @GET
-    @Path("/{drawId}")
-    @ApiOperation("Retrieves the Formulas Stats for the Draw with ID")
-    public List<FormulaStats> getFormulasStats(@PathParam("drawId") int drawId) {
-
-        return formulasStatsManager.getFormulasStats(drawId);
-    }
-
     @PUT
     @Path("/{drawId}")
     @ApiOperation("Updates the Formulas Stats for the Draw with ID")
@@ -43,5 +33,23 @@ public class FormulasStatsApi {
         formulasStatsManager.updateFormulasStats(drawId);
 
         return Response.accepted().build();
+    }
+
+    @GET
+    @ApiOperation("Retrieves the Formulas Stats")
+    public List<FormulaStats> getFormulasStats(@QueryParam("drawId") int drawId, @QueryParam("formulaName") String formulaName) {
+
+        return formulasStatsManager.getFormulasStats(drawId, formulaName);
+    }
+
+    @GET
+    @Path("/formulas")
+    @ApiOperation("Retrieves the Formulas Stats Formulas")
+    public List<FormulaStats.Formula> getFormulasStatsFormulas(
+        @QueryParam("minDrawId") @ApiParam("The ID of the Draw from which the Formula Stats will be considered") Integer minDrawId,
+        @QueryParam("maxDrawId") @ApiParam("The ID of the Draw until which the Formula Stats will be considered") Integer maxDrawId,
+        @QueryParam("minEarningsFactor") @ApiParam("The minimum average Earnings Factor for the Formulas to be considered") @DefaultValue("0.01") Double minEarningsFactor) {
+
+        return formulasStatsManager.getFormulasStatsFormulas(minDrawId, maxDrawId, minEarningsFactor);
     }
 }

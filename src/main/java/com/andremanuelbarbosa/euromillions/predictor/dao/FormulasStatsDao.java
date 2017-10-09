@@ -10,9 +10,9 @@ public interface FormulasStatsDao extends Dao {
 
     List<Integer> getDrawIdsWithoutFormulasStats();
 
-    List<FormulaStats> getFormulasStats();
+    List<FormulaStats> getFormulasStats(int drawId, String formulaName);
 
-    List<FormulaStats> getFormulasStats(int drawId);
+    List<FormulaStats.Formula> getFormulasStatsFormulas(int minDrawId, int maxDrawId, double minEarningsFactor);
 
     void insertFormulaStats(FormulaStats formulaStats);
 }

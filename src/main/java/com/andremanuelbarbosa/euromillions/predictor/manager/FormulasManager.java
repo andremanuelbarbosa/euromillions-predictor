@@ -19,6 +19,15 @@ public class FormulasManager {
 
         final List<Formula.TemplatesMode> templatesModes = Lists.newArrayList(Formula.TemplatesMode.values());
 
+        initializeOneAlgorithmFormulas(algorithmsManager, templatesModes);
+
+        initializeOneAndTwoAlgorithmsFormulas(algorithmsManager, templatesModes);
+
+//        initializeOneTwoAndThreeAlgorithmsFormulas(algorithmsManager, templatesModes);
+    }
+
+    private void initializeOneAlgorithmFormulas(AlgorithmsManager algorithmsManager, List<Formula.TemplatesMode> templatesModes) {
+
         // One Algorithm per Formula
         algorithmsManager.getAlgorithms().forEach(starsAlgorithm -> {
 
@@ -32,8 +41,10 @@ public class FormulasManager {
                     });
                 });
             });
-
         });
+    }
+
+    private void initializeOneAndTwoAlgorithmsFormulas(AlgorithmsManager algorithmsManager, List<Formula.TemplatesMode> templatesModes) {
 
         // One and Two Algorithms per Formula
         algorithmsManager.getAlgorithms().forEach(algorithm1 -> {
@@ -52,6 +63,34 @@ public class FormulasManager {
                         });
                     });
                 }
+            });
+        });
+    }
+
+    private void initializeOneTwoAndThreeAlgorithmsFormulas(AlgorithmsManager algorithmsManager, List<Formula.TemplatesMode> templatesModes) {
+
+        // One, Two and Three Algorithms per Formula
+        algorithmsManager.getAlgorithms().forEach(algorithm1 -> {
+
+            algorithmsManager.getAlgorithms().forEach(algorithm2 -> {
+
+                algorithmsManager.getAlgorithms().forEach(algorithm3 -> {
+
+                    if (Lists.newArrayList(algorithm1, algorithm2, algorithm3).stream().distinct().count() == 3) {
+
+                        templatesModes.forEach(starsTemplatesMode -> {
+
+                            templatesModes.forEach(numbersTemplateMode -> {
+
+                                formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2, algorithm3), Lists.newArrayList(algorithm1), starsTemplatesMode, numbersTemplateMode));
+                                formulas.add(new Formula(Lists.newArrayList(algorithm1), Lists.newArrayList(algorithm1, algorithm2, algorithm3), starsTemplatesMode, numbersTemplateMode));
+                                formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2, algorithm3), Lists.newArrayList(algorithm1, algorithm2), starsTemplatesMode, numbersTemplateMode));
+                                formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2), Lists.newArrayList(algorithm1, algorithm2, algorithm3), starsTemplatesMode, numbersTemplateMode));
+                                formulas.add(new Formula(Lists.newArrayList(algorithm1, algorithm2, algorithm3), Lists.newArrayList(algorithm1, algorithm2, algorithm3), starsTemplatesMode, numbersTemplateMode));
+                            });
+                        });
+                    }
+                });
             });
         });
     }

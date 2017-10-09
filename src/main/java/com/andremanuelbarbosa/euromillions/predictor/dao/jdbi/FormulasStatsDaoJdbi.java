@@ -14,7 +14,7 @@ import java.util.List;
 @RegisterMapper(FormulaStatsSetMapper.class)
 public interface FormulasStatsDaoJdbi extends FormulasStatsDao {
 
-    String FORMULAS_STATS_COLUMNS = "draw_id, formula_name, costs, points, winnings, earnings, earnings_percentage";
+    String FORMULAS_STATS_COLUMNS = "draw_id, formula_name, costs, points, winnings, earnings, earnings_factor";
 
     @Override
     @SqlUpdate("DELETE FROM formulas_stats WHERE draw_id = :drawId")
@@ -25,17 +25,23 @@ public interface FormulasStatsDaoJdbi extends FormulasStatsDao {
     List<Integer> getDrawIdsWithoutFormulasStats();
 
     @Override
-    @RegisterMapper(FormulaStatsSetMapper.class)
-    @SqlQuery("SELECT " + FORMULAS_STATS_COLUMNS + " FROM formulas_stats ORDER BY draw_id DESC")
-    List<FormulaStats> getFormulasStats();
+    @SqlQuery("SELECT " + FORMULAS_STATS_COLUMNS + " FROM formulas_stats " +
+        "WHERE (:drawId = -1 OR draw_id = :drawId ) AND ( :formulaName = '' OR formula_name = :formulaName ) ")
+    List<FormulaStats> getFormulasStats(@Bind("drawId") int drawId, @Bind("formulaName") String formulaName);
 
     @Override
-    @RegisterMapper(FormulaStatsSetMapper.class)
-    @SqlQuery("SELECT " + FORMULAS_STATS_COLUMNS + " FROM formulas_stats WHERE draw_id = :drawId")
-    List<FormulaStats> getFormulasStats(@Bind("drawId") int drawId);
+    @RegisterMapper(FormulaStatsSetMapper.FormulaStatsFormulaSetMapper.class)
+    @SqlQuery(
+        "SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor " +
+        "  FROM formulas_stats " +
+        " WHERE ( :minDrawId = -1 OR draw_id >= :minDrawId ) AND ( :maxDrawId = -1 OR draw_id <= :maxDrawId )" +
+        " GROUP BY formula_name " +
+        "HAVING ( :minEarningsFactor = -1 OR AVG(earnings_factor) >= :minEarningsFactor ) " +
+        " ORDER BY AVG(earnings_factor) DESC")
+    List<FormulaStats.Formula> getFormulasStatsFormulas(@Bind("minDrawId") int minDrawId, @Bind("maxDrawId") int maxDrawId, @Bind("minEarningsFactor") double minEarningsFactor);
 
     @Override
     @SqlUpdate("INSERT INTO formulas_stats ( " + FORMULAS_STATS_COLUMNS + " ) " +
-        "VALUES ( :drawId, :formulaName, :costs, :points, :winnings, :earnings, :earningsPercentage )")
+        "VALUES ( :drawId, :formulaName, :costs, :points, :winnings, :earnings, :earningsFactor )")
     void insertFormulaStats(@BindBean FormulaStats formulaStats);
 }

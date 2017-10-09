@@ -8,9 +8,9 @@ public class FormulaStats {
     private final String points;
     private final double winnings;
     private final double earnings;
-    private final double earningsPercentage;
+    private final double earningsFactor;
 
-    public FormulaStats(int drawId, String formulaName, double costs, String points, double winnings, double earnings, double earningsPercentage) {
+    public FormulaStats(int drawId, String formulaName, double costs, String points, double winnings, double earnings, double earningsFactor) {
 
         this.drawId = drawId;
         this.formulaName = formulaName;
@@ -18,7 +18,7 @@ public class FormulaStats {
         this.points = points;
         this.winnings = winnings;
         this.earnings = earnings;
-        this.earningsPercentage = earningsPercentage;
+        this.earningsFactor = earningsFactor;
     }
 
     public int getDrawId() {
@@ -32,6 +32,7 @@ public class FormulaStats {
     }
 
     public double getCosts() {
+
         return costs;
     }
 
@@ -50,8 +51,58 @@ public class FormulaStats {
         return earnings;
     }
 
-    public double getEarningsPercentage() {
+    public double getEarningsFactor() {
 
-        return earningsPercentage;
+        return earningsFactor;
+    }
+
+    public static class Formula {
+
+        private final String name;
+        private final int draws;
+        private final double costs;
+        private final double winnings;
+        private final double earnings;
+        private final double earningsFactor;
+
+        public Formula(String name, int draws, double costs, double winnings, double earnings, double earningsFactor) {
+
+            this.name = name;
+            this.draws = draws;
+            this.costs = costs;
+            this.winnings = winnings;
+            this.earnings = earnings;
+            this.earningsFactor = earningsFactor;
+        }
+
+        public String getName() {
+
+            return name;
+        }
+
+        public int getDraws() {
+
+            return draws;
+        }
+
+        public double getCosts() {
+
+            return costs;
+        }
+
+        public double getWinnings() {
+
+            return winnings;
+        }
+
+        public double getEarnings() {
+
+            return earnings;
+        }
+
+        public double getEarningsFactor() {
+
+            return earningsFactor;
+        }
     }
 }

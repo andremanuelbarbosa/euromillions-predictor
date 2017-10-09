@@ -22,7 +22,7 @@ public class FormulasStatsManagerIntegrationTest extends EuroMillionsPredictorIn
     @Test
     public void shouldOnUpdateFormulasStats() {
 
-        for (int i = 1048; i >= 1048; i--) {
+        for (int i = 1048; i >= 999; i--) {
 
             formulasStatsManager.updateFormulasStats(i, Lists.reverse(draws).subList(0, i), formulasManager.getFormulas());
         }

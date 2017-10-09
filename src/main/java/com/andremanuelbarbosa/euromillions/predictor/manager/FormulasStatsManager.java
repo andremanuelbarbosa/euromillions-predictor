@@ -52,9 +52,15 @@ public class FormulasStatsManager {
         return Math.round(rawDouble * 100.0) / 100.0;
     }
 
-    public List<FormulaStats> getFormulasStats(int drawId) {
+    public List<FormulaStats> getFormulasStats(Integer drawId, String formulaName) {
 
-        return formulasStatsDao.getFormulasStats(drawId);
+        return formulasStatsDao.getFormulasStats(drawId != null ? drawId : -1, formulaName != null ? formulaName : "");
+    }
+
+    public List<FormulaStats.Formula> getFormulasStatsFormulas(Integer minDrawId, Integer maxDrawId, Double minEarningsFactor) {
+
+        return formulasStatsDao.getFormulasStatsFormulas(minDrawId != null ? minDrawId : -1, maxDrawId != null ? maxDrawId : -1,
+            minEarningsFactor != null ? minEarningsFactor : -1);
     }
 
     public void updateFormulasStats(int drawId) {
@@ -125,17 +131,16 @@ public class FormulasStatsManager {
             final double costs = draw.getCost();
 
             double winnings = 0.0;
-            double earnings = 0.0;
 
             if (bet.isWinner(draw)) {
 
                 winnings = draw.getPrize(starsPoints, numbersPoints);
-                earnings = getDoubleWithTwoDecimalPlaces(winnings - costs);
             }
 
-            final double earningsPercentage = getDoubleWithTwoDecimalPlaces(earnings / costs * 100);
+            final double earnings = getDoubleWithTwoDecimalPlaces(winnings - costs);
+            final double earningsFactor = getDoubleWithTwoDecimalPlaces(earnings / costs);
 
-            formulasStatsDao.insertFormulaStats(new FormulaStats(drawId, formula.getName(), costs, points, winnings, earnings, earningsPercentage));
+            formulasStatsDao.insertFormulaStats(new FormulaStats(drawId, formula.getName(), costs, points, winnings, earnings, earningsFactor));
         }
     }
 }
