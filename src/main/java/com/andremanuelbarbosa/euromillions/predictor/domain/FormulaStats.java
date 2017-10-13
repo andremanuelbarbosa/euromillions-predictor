@@ -61,18 +61,22 @@ public class FormulaStats {
         private final String name;
         private final int draws;
         private final double costs;
+        private final int wins;
         private final double winnings;
         private final double earnings;
         private final double earningsFactor;
+        private final String points;
 
-        public Formula(String name, int draws, double costs, double winnings, double earnings, double earningsFactor) {
+        public Formula(String name, int draws, double costs, int wins, double winnings, double earnings, double earningsFactor, String points) {
 
             this.name = name;
             this.draws = draws;
             this.costs = costs;
+            this.wins = wins;
             this.winnings = winnings;
             this.earnings = earnings;
             this.earningsFactor = earningsFactor;
+            this.points = points;
         }
 
         public String getName() {
@@ -90,6 +94,11 @@ public class FormulaStats {
             return costs;
         }
 
+        public int getWins() {
+
+            return wins;
+        }
+
         public double getWinnings() {
 
             return winnings;
@@ -103,6 +112,11 @@ public class FormulaStats {
         public double getEarningsFactor() {
 
             return earningsFactor;
+        }
+
+        public String getPoints() {
+
+            return points;
         }
     }
 }

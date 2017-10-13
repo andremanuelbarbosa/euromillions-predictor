@@ -57,10 +57,10 @@ public class FormulasStatsManager {
         return formulasStatsDao.getFormulasStats(drawId != null ? drawId : -1, formulaName != null ? formulaName : "");
     }
 
-    public List<FormulaStats.Formula> getFormulasStatsFormulas(Integer minDrawId, Integer maxDrawId, Double minEarningsFactor) {
+    public List<FormulaStats.Formula> getFormulasStatsFormulas(Integer minDrawId, Integer maxDrawId, Integer minWins, Double minEarningsFactor, Integer count) {
 
         return formulasStatsDao.getFormulasStatsFormulas(minDrawId != null ? minDrawId : -1, maxDrawId != null ? maxDrawId : -1,
-            minEarningsFactor != null ? minEarningsFactor : -1);
+            minWins != null ? minWins : -1, minEarningsFactor != null ? minEarningsFactor : -1, count != null ? count : Integer.MAX_VALUE);
     }
 
     public void updateFormulasStats(int drawId) {

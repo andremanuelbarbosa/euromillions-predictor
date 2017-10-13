@@ -32,13 +32,14 @@ public interface FormulasStatsDaoJdbi extends FormulasStatsDao {
     @Override
     @RegisterMapper(FormulaStatsSetMapper.FormulaStatsFormulaSetMapper.class)
     @SqlQuery(
-        "SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor " +
+        "SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) AS wins, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor, string_agg(points, ' | ' ORDER BY draw_id DESC) AS points " +
         "  FROM formulas_stats " +
         " WHERE ( :minDrawId = -1 OR draw_id >= :minDrawId ) AND ( :maxDrawId = -1 OR draw_id <= :maxDrawId )" +
         " GROUP BY formula_name " +
-        "HAVING ( :minEarningsFactor = -1 OR AVG(earnings_factor) >= :minEarningsFactor ) " +
-        " ORDER BY AVG(earnings_factor) DESC")
-    List<FormulaStats.Formula> getFormulasStatsFormulas(@Bind("minDrawId") int minDrawId, @Bind("maxDrawId") int maxDrawId, @Bind("minEarningsFactor") double minEarningsFactor);
+        "HAVING ( :minDrawId = -1 OR :maxDrawId = -1 OR COUNT(*) = (:maxDrawId - :minDrawId + 1) ) AND ( :minWins = -1 OR SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) >= :minWins ) AND ( :minEarningsFactor = -1 OR AVG(earnings_factor) >= :minEarningsFactor ) " +
+        " ORDER BY SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) DESC, AVG(earnings_factor) DESC " +
+        " LIMIT :count")
+    List<FormulaStats.Formula> getFormulasStatsFormulas(@Bind("minDrawId") int minDrawId, @Bind("maxDrawId") int maxDrawId, @Bind("minWins") int minWins, @Bind("minEarningsFactor") double minEarningsFactor, @Bind("count") int count);
 
     @Override
     @SqlUpdate("INSERT INTO formulas_stats ( " + FORMULAS_STATS_COLUMNS + " ) " +

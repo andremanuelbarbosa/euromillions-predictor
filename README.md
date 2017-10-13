@@ -16,9 +16,7 @@ pg_dump -Fc -U postgres -t draws_templates_stars -t draws_templates_numbers -f s
 
 pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsUpToDraw1048.dmp euromillions-predictor
 
-pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsBetweenDraw1044AndDraw1049.dmp euromillions-predictor
-
-pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsUpToDraw1048OneTwoAndThreeAlgorithmsPermutations.dmp euromillions-predictor
+pg_dump -Fc -U postgres -t formulas_stats -f src/main/resources/dumps/FormulaStatsBetweenDraw1040AndDraw1049.dmp euromillions-predictor
 
 
 export PGPASSWORD='postgres';
@@ -26,3 +24,13 @@ pg_restore -U postgres -t draws_stats_stars -t draws_stats_numbers -d euromillio
 pg_restore -U postgres -t draws_stats_intervals_stars -t draws_stats_intervals_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawStatsUpToDraw1049.dmp
 pg_restore -U postgres -t draws_templates_stars -t draws_templates_numbers -d euromillions-predictor --data-only src/main/resources/dumps/DrawTemplatesUpToDraw1049.dmp
 pg_restore -U postgres -t formulas_stats -d euromillions-predictor --data-only src/main/resources/dumps/FormulaStatsUpToDraw1049.dmp
+
+
+
+
+SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) AS wins, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor, string_agg(points, ' | ') AS points
+  FROM formulas_stats
+ WHERE draw_id >= 1045 AND draw_id <= 1049
+ GROUP BY formula_name
+HAVING COUNT(*) = 5 AND AVG(earnings_factor) > 0 AND SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) > 1
+ ORDER BY AVG(earnings_factor) DESC;

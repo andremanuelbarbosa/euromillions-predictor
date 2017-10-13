@@ -22,11 +22,15 @@ public class FormulaStatsSetMapper implements ResultSetMapper<FormulaStats> {
         @Override
         public FormulaStats.Formula map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
 
-            return new FormulaStats.Formula(resultSet.getString("name"), resultSet.getInt("draws"),
+            return new FormulaStats.Formula(
+                resultSet.getString("name"),
+                resultSet.getInt("draws"),
                 MathHelper.getDoubleWithTwoDecimalPlaces(resultSet.getDouble("costs")),
+                resultSet.getInt("wins"),
                 MathHelper.getDoubleWithTwoDecimalPlaces(resultSet.getDouble("winnings")),
                 MathHelper.getDoubleWithTwoDecimalPlaces(resultSet.getDouble("earnings")),
-                MathHelper.getDoubleWithTwoDecimalPlaces(resultSet.getDouble("earnings_factor")));
+                MathHelper.getDoubleWithTwoDecimalPlaces(resultSet.getDouble("earnings_factor")),
+                resultSet.getString("points"));
         }
     }
 }
