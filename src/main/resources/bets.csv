@@ -1,4 +1,4 @@
 draw_id,stars,numbers,formula_name,costs,winnings,notes
 1048,"10,12","41,44,47,48,50","S(RI)N.N(RI-ICDDIS)D,S(RI)D.N(RI-ICDDIS)D,S(RI)D.N(RI-IDDIS)D,S(RI)N.N(RI-IDDIS)D,S(RI)N.N(RI-ITDDIS)D,S(RI)D.N(RI-ITDDIS)D",2.50,0.00,Highest Earnings in 5 Draws
 1049,"10,12","41,44,47,48,50","S(RI)N.N(RI-IDDIS)D,S(RI)N.N(RI-ITDDIS)D,S(RI)D.N(RI-ICDDIS)D,S(RI)D.N(RI-IDDIS)D,S(RI)D.N(RI-ITDDIS)D,S(RI)N.N(RI-ICDDIS)D",2.50,0.00,Highest Earnings in 5 Draws
-1050,"4,5","21,27,38,44,50","S(ILoIS)D.N(ICDDIS-RI)D,S(ILoIS)D.N(IDDIS-RI)D,S(ILoIS)D.N(ITDDIS-RI)D",2.50,,Wins >= 2 and Earnings Factor >= 2 in 9 Draws
+1050,"4,5","21,27,38,44,50","S(ILoIS)D.N(ICDDIS-RI)D,S(ILoIS)D.N(IDDIS-RI)D,S(ILoIS)D.N(ITDDIS-RI)D",2.50,0.00,Wins >= 2 and Earnings Factor >= 2 in 9 Draws

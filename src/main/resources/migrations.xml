@@ -107,5 +107,6 @@
     <include file="migrations/1.0.0-103.xml"/>
     <include file="migrations/1.0.0-104.xml"/>
     <include file="migrations/1.0.0-105.xml"/>
-    <!--<include file="migrations/1.0.0-106.xml"/>-->
+    <include file="migrations/1.0.0-106.xml"/>
+    <!--<include file="migrations/1.0.0-107.xml"/>-->
 </databaseChangeLog>
