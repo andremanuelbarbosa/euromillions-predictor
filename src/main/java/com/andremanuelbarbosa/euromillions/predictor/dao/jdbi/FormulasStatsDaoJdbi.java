@@ -21,7 +21,10 @@ public interface FormulasStatsDaoJdbi extends FormulasStatsDao {
     void deleteFormulaStats(@Bind("drawId") int drawId);
 
     @Override
-    @SqlQuery("SELECT id FROM draws d WHERE d.id > 100 AND ( SELECT COUNT(*) FROM formulas_stats fs WHERE fs.draw_id = d.id ) < 5 AND ( SELECT COUNT(*) FROM draws_stars ds WHERE ds.draw_id = d.id ) > 0 AND ( SELECT COUNT(*) FROM draws_numbers dn WHERE dn.draw_id = d.id ) > 0 ORDER BY d.id ASC")
+    @SqlQuery("SELECT id FROM draws d WHERE d.id > 1000 " +
+        "AND ( SELECT COUNT(*) FROM formulas_stats fs WHERE fs.draw_id = d.id ) = 0 " +
+        "AND ( SELECT COUNT(*) FROM draws_stars ds WHERE ds.draw_id = d.id ) > 0 " +
+        "AND ( SELECT COUNT(*) FROM draws_numbers dn WHERE dn.draw_id = d.id ) > 0 ORDER BY d.id ASC")
     List<Integer> getDrawIdsWithoutFormulasStats();
 
     @Override
