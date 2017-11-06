@@ -161,6 +161,19 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+        <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.44</version>
+            <scope>test</scope>
+</dependency>
+
+        <dependency>
+    <groupId>org.dhatim</groupId>
+    <artifactId>dropwizard-jwt-cookie-authentication</artifactId>
+    <version>3.0.1</version>
+</dependency>
     </dependencies>
 
     <build>

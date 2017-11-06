@@ -42,6 +42,11 @@ public abstract class EuroMillionsPredictorIntegrationTest {
             dataSourceFactory.setPassword("postgres");
             dataSourceFactory.setUrl("jdbc:postgresql://localhost:5432/euromillions-predictor");
 
+//            dataSourceFactory.setDriverClass("com.mysql.jdbc.Driver");
+//            dataSourceFactory.setUser("STACKOVERFLOW");
+//            dataSourceFactory.setPassword("STACKOVERFLOW");
+//            dataSourceFactory.setUrl("jdbc:mysql://localhost:3306/STACKOVERFLOW?useSSL=false");
+
             final EuroMillionsPredictorConfiguration euroMillionsPredictorConfiguration = new EuroMillionsPredictorConfiguration();
             euroMillionsPredictorConfiguration.setDataSourceFactory(dataSourceFactory);
 
