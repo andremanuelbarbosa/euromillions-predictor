@@ -23,7 +23,7 @@ http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html
 
 SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) AS wins, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor, string_agg(points, ' | ' ORDER BY draw_id DESC) AS points
   FROM formulas_stats
- WHERE draw_id >= 1051 AND draw_id <= 1055
+ WHERE draw_id >= 1053 AND draw_id <= 1057
  GROUP BY formula_name
 HAVING COUNT(*) = 5 AND AVG(earnings_factor) > 0 AND SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) > 0
  ORDER BY SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) DESC, AVG(earnings_factor) DESC, formula_name ASC
