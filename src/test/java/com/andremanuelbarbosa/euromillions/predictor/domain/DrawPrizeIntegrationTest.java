@@ -35,7 +35,7 @@ public class DrawPrizeIntegrationTest extends EuroMillionsPredictorIntegrationTe
 
         List<List<String>> prizesInserts = Lists.newArrayListWithExpectedSize(draws.size());
 
-        for (int i = draws.size() - 1060; i >= 0; i--) {
+        for (int i = draws.size() - 1061; i >= 0; i--) {
 
             final Draw draw = draws.get(i);
 
