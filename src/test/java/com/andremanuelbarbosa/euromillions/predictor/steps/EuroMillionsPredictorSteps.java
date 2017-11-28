@@ -1,15 +1,14 @@
 package com.andremanuelbarbosa.euromillions.predictor.steps;
 
-import java.io.File;
-
+import cucumber.api.Scenario;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.When;
+import java.io.File;
 
 public class EuroMillionsPredictorSteps {
 
