@@ -9,21 +9,26 @@ import java.io.File;
 @Singleton
 public class WebDriverHelper {
 
-    private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
-    private static final String OS_BITS = OS_NAME.equals("linux") && System.getProperty("os.arch").endsWith("64") ? "64" : "32";
+    private static final String OS_NAME_SYS_PROP_NAME = "os.name";
+    private static final String OS_ARCH_SYS_PROP_NAME = "os.arch";
 
-    private static final String CHROME_DRIVER_VERSION = System.getProperty("chrome.driver.version") != null ? System.getProperty("chrome.driver.version") : "2.32";
+    private static final String OS_NAME = System.getProperty(OS_NAME_SYS_PROP_NAME).toLowerCase().replaceAll(" ", "");
+    private static final String OS_ARCH = System.getProperty(OS_ARCH_SYS_PROP_NAME);
+    private static final String OS_BITS = OS_ARCH.endsWith("64") ? "64" : "32";
 
-    private static final String WEB_DRIVER_CHROME_DRIVER = "src/test/resources/selenium/drivers/chrome/" + CHROME_DRIVER_VERSION + "/" + OS_NAME + "/" + OS_BITS + "/chromedriver";
+    private static final String CHROME_DRIVER_VERSION = "2.32";
+    private static final String CHROME_DRIVER_LOCATION = "src/test/resources/selenium/drivers/chrome/" + CHROME_DRIVER_VERSION + "/" + OS_NAME + "/" + OS_BITS + "/chromedriver";
+
+    private static final String WEBDRIVER_CHROME_DRIVER_SYS_PROP_NAME = "webdriver.chrome.driver";
 
     static {
 
-        if (!new File(WEB_DRIVER_CHROME_DRIVER).canExecute()) {
+        if (!new File(CHROME_DRIVER_LOCATION).canExecute()) {
 
-            throw new IllegalStateException("The specified Chrome Driver [" + WEB_DRIVER_CHROME_DRIVER + "] cannot be found or cannot be executed.");
+            throw new IllegalStateException("The specified Chrome Driver [" + CHROME_DRIVER_LOCATION + "] cannot be found or cannot be executed.");
         }
 
-        System.setProperty("webdriver.chrome.driver", WEB_DRIVER_CHROME_DRIVER);
+        System.setProperty(WEBDRIVER_CHROME_DRIVER_SYS_PROP_NAME, CHROME_DRIVER_LOCATION);
     }
 
     public WebDriver createChromeDriver() {
