@@ -1,5 +1,12 @@
-# euromillions-predictor
+# EuroMillions Predictor
 The EuroMillions Predictor is a simple application that collects some statistics from the past EuroMillions results and tries to guess which numbers/combinations could be more successful on future draws.
+
+## Setup
+createdb euromillions-predictor -U postgres
+... EuroMillionsPredictor db migrate src/main/resources/conf.yaml
+src/main/resources/dumps/restore.sh
+
+
 
 ## TODO
 * bug in combinations (MathHelper) for 30C3
