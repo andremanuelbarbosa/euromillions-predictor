@@ -10,3 +10,4 @@ draw_id,stars,numbers,formula_name,costs,winnings,notes
 1058,"6,9","2,17,22,38,48","S(ILoIS)D.N(ICLIS-ILIS)N,S(ILoIS)D.N(ICLIS-ISIS)N,S(ILoIS)D.N(ICLIS-ITLIS)N,S(ILoIS)D.N(ICLIS-ITSIS)N,S(ILoIS)D.N(ICSIS-ILIS)N,S(ILoIS)D.N(ICSIS-ISIS)N,S(ILoIS)D.N(ICSIS-ITLIS)N,S(ILoIS)D.N(ICSIS-ITSIS)N",2.50,0.00,Highest Wins and Earnings Factor in 5 Draws
 1060,"8,10","12,22,33,35,46","S(RF)D.N(ICLoIS-ILoIS)N",2.50,,Highest Wins and Earnings Factor in 5 Draws
 1060,"3,5","12,22,33,35,46","S(ICLIS)S.N(ICLoIS-ILoIS)N,S(ICSIS)S.N(ICLoIS-ILoIS)N,S(ILIS)S.N(ICLoIS-ILoIS)N,S(ITLIS)S.N(ICLoIS-ILoIS)N",2.50,,Highest Wins and Earnings Factor in 5 Draws
+1070,"11,12","4,16,38,44,50","S(ICLoIS)S.N(ITLoIS-RF)N",2.50,,Highest Wins and Earnings Factor in 5 Draws

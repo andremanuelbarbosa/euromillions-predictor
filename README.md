@@ -26,8 +26,17 @@ TensorFlow
 * http://mourafiq.com/2016/05/15/predicting-sequences-using-rnn-in-tensorflow.html
 
 
+## Highest Wins and Earnings Factor in 5 Draws
 
-SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) AS wins, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor, string_agg(points, ' | ' ORDER BY draw_id DESC) AS points
+| Formula                     | Wins | Winning | Earnings | Earning Factor | Points                                          |
+| --------------------------- | ---- | ------- | -------- | -------------- | ----------------------------------------------- |
+| S(ICDDIS-RI)N.N(ICDDIS-RI)D | 3    | 32.95   | 20.45    | 1.638          | (0+0) 0 < (1+0) 1 < (3+1) 4 < (2+0) 2 < (2+1) 3 |
+| S(IDDIS-RI)N.N(IDDIS-RI)D   |	3    | 32.95   | 20.45    | 1.638          | (0+0) 0 < (1+0) 1 < (3+1) 4 < (2+0) 2 < (2+1) 3 |
+| S(ITDDIS-RI)N.N(ITDDIS-RI)D |	3    | 32.95   | 20.45    | 1.638          | (0+0) 0 < (1+0) 1 < (3+1) 4 < (2+0) 2 < (2+1) 3 |
+| S(ICLoIS)S.N(ITLoIS-RF)N    |	3    | 22.85   | 10.35    | 0.830          | (1+0) 1 < (2+1) 3 < (2+0) 2 < (1+0) 1 < (2+1) 3 |
+
+
+SELECT formula_name AS name, COUNT(*) AS draws, SUM(costs) AS costs, SUM(CASE WHEN winnings > 0 THEN 1 ELSE 0 END) AS wins, SUM(winnings) AS winnings, SUM(earnings) AS earnings, AVG(earnings_factor) AS earnings_factor, string_agg(points, ' < ' ORDER BY draw_id DESC) AS points
   FROM formulas_stats
  WHERE draw_id >= 1065 AND draw_id <= 1069
  GROUP BY formula_name
