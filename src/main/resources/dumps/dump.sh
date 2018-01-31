@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DRAW_ID="1078"
+DRAW_ID="1081"
 
 export PGPASSWORD='postgres';
 
