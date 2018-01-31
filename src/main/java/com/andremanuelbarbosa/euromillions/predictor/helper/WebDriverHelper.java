@@ -16,7 +16,7 @@ public class WebDriverHelper {
     private static final String OS_ARCH = System.getProperty(OS_ARCH_SYS_PROP_NAME);
     private static final String OS_BITS = OS_ARCH.endsWith("64") ? "64" : "32";
 
-    private static final String CHROME_DRIVER_VERSION = "2.32";
+    private static final String CHROME_DRIVER_VERSION = "2.35";
     private static final String CHROME_DRIVER_LOCATION = "src/test/resources/selenium/drivers/chrome/" + CHROME_DRIVER_VERSION + "/" + OS_NAME + "/" + OS_BITS + "/chromedriver";
 
     private static final String WEBDRIVER_CHROME_DRIVER_SYS_PROP_NAME = "webdriver.chrome.driver";

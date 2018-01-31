@@ -13,7 +13,7 @@ import java.io.File;
 public class EuroMillionsPredictorSteps {
 
     private static final String BASE_URL = "http://localhost:9090/euromillions-predictor";
-    private static final String CHROME_DRIVER_VERSION = "2.32";
+    private static final String CHROME_DRIVER_VERSION = "2.35";
 
     static Scenario thisScenario;
     static WebDriver webDriver = createChromeDriver();
@@ -39,9 +39,11 @@ public class EuroMillionsPredictorSteps {
         final String osArch = System.getProperty("os.arch");
         final String osBits = osArch.endsWith("64") ? "64" : "32";
 
-        final String chromeDriverVersion = System.getProperty("chrome.driver.version") != null ? System.getProperty("chrome.driver.version") : CHROME_DRIVER_VERSION;
+        final String chromeDriverVersion = System.getProperty("chrome.driver.version") != null ?
+            System.getProperty("chrome.driver.version") : CHROME_DRIVER_VERSION;
 
-        final String webDriverChromeDriver = "src/test/resources/selenium/drivers/chrome/" + chromeDriverVersion + "/" + osName + "/" + osBits + "/chromedriver";
+        final String webDriverChromeDriver = "src/test/resources/selenium/drivers/chrome/" + chromeDriverVersion +
+            "/" + osName + "/" + osBits + "/chromedriver";
 
         if (!new File(webDriverChromeDriver).canExecute()) {
 
