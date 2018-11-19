@@ -6,6 +6,12 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import static com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorProperties.AVAILABLE_PROCESSORS;
+
 public class FormulasStatsManagerIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
     private static FormulasManager formulasManager;
@@ -23,28 +29,42 @@ public class FormulasStatsManagerIntegrationTest extends EuroMillionsPredictorIn
     @Test
     public void shouldCreateFormulasStatsForDrawsWithoutFormulasStats() {
 
+        final ExecutorService executorService = Executors.newFixedThreadPool(AVAILABLE_PROCESSORS);
+
         formulasStatsManager.getDrawIdsWithoutFormulasStats().forEach(drawId -> {
+
+            executorService.execute(new FormulasStatsManagerIntegrationTestThead(drawId));
+        });
+
+        executorService.shutdown();
+
+        try {
+
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    class FormulasStatsManagerIntegrationTestThead implements Runnable {
+
+        private final int drawId;
+
+        FormulasStatsManagerIntegrationTestThead(int drawId) {
+
+            this.drawId = drawId;
+        }
+
+        @Override
+        public void run() {
 
             System.out.println("Generating the Formulas Stats for Draw with ID [" + drawId + "]...");
 
             formulasStatsManager.updateFormulasStats(drawId, Lists.reverse(draws).subList(0, drawId), formulasManager.getFormulas());
 
             System.out.println("The Formulas Stats for Draw with ID [" + drawId + "] have been generated.");
-        });
-    }
-
-    @Test
-    @Ignore
-    public void shouldOnUpdateFormulasStats() {
-
-        for (int i = 1010; i >= 1001; i--) { // 1021 - 1050
-
-            formulasStatsManager.updateFormulasStats(i, Lists.reverse(draws).subList(0, i), formulasManager.getFormulas());
         }
-
-//        formulasStatsManager.updateFormulasStats(990, 5, Lists.reverse(draws),
-//        formulasStatsManager.updateFormulasStats(990, 5, Lists.reverse(draws), 985, 989);
-//        formulasStatsManager.updateFormulasStats();
-//        formulasStatsManager.updateFormulasStats(Lists.reverse(draws), 983, 987);
     }
 }

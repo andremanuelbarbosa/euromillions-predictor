@@ -3,8 +3,10 @@ package com.andremanuelbarbosa.euromillions.predictor.manager;
 import com.andremanuelbarbosa.euromillions.predictor.EuroMillionsPredictorIntegrationTest;
 import com.google.common.collect.Lists;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class DrawsFormulasManagerIntegrationTest extends EuroMillionsPredictorIntegrationTest {
 
     private static FormulasManager formulasManager;

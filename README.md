@@ -15,10 +15,24 @@ The EuroMillions Predictor is a simple application that collects some statistics
 * move web driver to resources
 
 
+Create draw record in migrations.xml with stars and numbers
+Drop DB
+Migrate DB
+Run the Draw Prizes integration tests to generate the prized migrations XML
+Drop DB
+Migrate DB
+Restore DB
+Run the DrawStatsManagerIntegrationTest
+Run the DrawTemplatesManagerIntegrationTest
+Run the FormulasStatsManagerIntegrationTest
+Update the DRAW_ID in the dump.sh file
+Dump DB
 
 src/main/resources/dumps/dump.sh
-
 src/main/resources/dumps/restore.sh
+
+dropdb -U postgres euromillions-predictor
+createdb -U postgres euromillions-predictor
 
 
 TensorFlow
